@@ -20,6 +20,7 @@ const BookAppointment = () => {
 
   const [department, setDepartment] = useState('');
   const [doctor, setDoctor] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSelectOpt1 = (e) => {
     setDepartment(e.target.value);
@@ -29,14 +30,22 @@ const BookAppointment = () => {
     setDoctor(e.target.value);
   };
 
-  const subm = (dat, depar, doc) => {
-    const namail = JSON.stringify(dat);
-    alert(namail + depar + doc);
+  const handleTextarea = (e) => {
+    setMessage(e.target.value);
+  };
+
+  const data = {
+    ...user, department, doctor, message,
+  };
+
+  const subm = (dat) => {
+    const info = JSON.stringify(dat);
+    alert(info);
   };
 
   const sendData = (e) => {
     e.preventDefault();
-    subm(user, department, doctor);
+    subm(data);
   };
 
   return (
@@ -69,13 +78,13 @@ const BookAppointment = () => {
         />
         <select className="form__select" onClick={handleSelectOpt1}>
           <option value="" hidden className="form__opt--disabled">Department</option>
-          {departments.map((item) => <option name="department" value={item} key={item} className="form__opt">{item}</option>)}
+          {departments.map((item) => <option name={department} value={item} key={item} className="form__opt">{item}</option>)}
         </select>
         <select className="form__select" onClick={handleSelectOpt2}>
           <option value="" hidden className="form__opt--disabled">Doctor</option>
-          {doctors.map((item) => <option name="doctor" value={item} key={item} className="form__opt">{item}</option>)}
+          {doctors.map((item) => <option name={doctor} value={item} key={item} className="form__opt">{item}</option>)}
         </select>
-        <textarea className="form__message" placeholder="Your message" />
+        <textarea className="form__message" placeholder="Your message" onChange={handleTextarea} />
         <button type="submit" className="form__btn">
           Book appointment →
         </button>
