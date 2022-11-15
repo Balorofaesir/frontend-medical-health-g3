@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable global-require */
-import '../styles/style1.css';
+import './style1.css';
 
-const Comp1 = (props) => {
+const Header = (props) => {
   const { toggle, open } = props;
 
   return (
     <section>
       <div className="headerSmallerContainer">
         <div className="miniContainer">
-          <img src={require('../Assets/mebid-icon.jpeg')} alt=" " />
+          <img src={require('./assets/mebid-icon.jpeg')} alt=" " />
           <p>MEBID</p>
         </div>
         <section className="miniContainer2">
@@ -21,7 +21,6 @@ const Comp1 = (props) => {
           <p>Blog</p>
         </section>
         <section className="miniContainer4">
-          {' '}
           <img src="" alt="" />
           <img src="" alt="" />
           <button type="button">Appointment</button>
@@ -30,7 +29,7 @@ const Comp1 = (props) => {
           <p className="dots">...</p>
           <button className="imgButton" type="button" onClick={toggle}>
             <div className="img1"><img
-              src={require('../Assets/three-horizontal-lines-icon.png')}
+              src={require('./assets/three-horizontal-lines-icon.png')}
               alt="Lines Icon"
             />
             </div>
@@ -61,4 +60,4 @@ const Comp1 = (props) => {
   );
 };
 
-export default Comp1;
+export default Header;

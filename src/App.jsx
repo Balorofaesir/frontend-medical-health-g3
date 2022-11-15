@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import Header from './components/Header/Header';
+import WebPageInfoComponent from './components/WebPageInfoComponent/WebPageInfoComponent';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <p>
-        Edit <code>src/App.js</code> and save to reload.
-      </p>
-      <a
-        className="App-link"
-        href="https://reactjs.org"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Learn React
-      </a>
-    </header>
-  </div>
-);
+const App = () => {
+  const [open, setOPen] = useState(false);
+
+  const toggle = () => {
+    setOPen(!open);
+  };
+  return (
+    <div className="App">
+      <header>
+        <Header toggle={toggle} open={open} />
+      </header>
+      <section>
+        <WebPageInfoComponent />
+      </section>
+    </div>
+  );
+};
 
 export default App;
