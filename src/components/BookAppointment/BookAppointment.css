@@ -34,6 +34,11 @@ body {
   border: 1px solid gray;
 }
 
+.form__input--date:before {
+  content: attr(placeholder);
+  color: gray;
+}
+
 .form__select {
   font-size: 20px;
   padding: 0.8em;

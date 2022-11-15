@@ -72,8 +72,8 @@ const BookAppointment = () => {
         <input
           name="date"
           type="date"
-          className="form__input"
-          placeholder="Booking date"
+          className="form__input form__input--date"
+          placeholder="Booking date &nbsp;"
           onChange={handleInput}
         />
         <select className="form__select" onClick={handleSelectOpt1}>
