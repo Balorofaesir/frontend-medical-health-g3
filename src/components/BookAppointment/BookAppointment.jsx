@@ -60,6 +60,13 @@ const BookAppointment = () => {
           placeholder="Email address"
           onChange={handleInput}
         />
+        <input
+          name="date"
+          type="date"
+          className="form__input"
+          placeholder="Booking date"
+          onChange={handleInput}
+        />
         <select className="form__select" onClick={handleSelectOpt1}>
           <option value="" hidden className="form__opt--disabled">Department</option>
           {departments.map((item) => <option name="department" value={item} key={item} className="form__opt">{item}</option>)}
