@@ -5,6 +5,7 @@ import WebPageInfoComponent from './components/WebPageInfoComponent/WebPageInfoC
 import Emergency from './components/Emergency/Emergency';
 import BookAppointment from './components/BookAppointment/BookAppointment';
 import Article from './components/Article/Article';
+import Footer from './components/Footer/Footer';
 
 const App = () => {
   const [open, setOPen] = useState(false);
@@ -23,6 +24,7 @@ const App = () => {
       <section>
         <WebPageInfoComponent />
       </section>
+      <Footer />
     </div>
   );
 };
