@@ -1,18 +1,26 @@
-import React from 'react';
-
 import './App.css';
-import Article from './components/Article/Article';
+import { useState } from 'react';
+import Header from './components/Header/Header';
+import WebPageInfoComponent from './components/WebPageInfoComponent/WebPageInfoComponent';
 import Emergency from './components/Emergency/Emergency';
-import Footer from './components/Footer/Footer';
 
-const App = () => (
-  <div className="App">
-    <header className="App-header">
-      <Article />
+const App = () => {
+  const [open, setOPen] = useState(false);
+
+  const toggle = () => {
+    setOPen(!open);
+  };
+  return (
+    <div className="App">
+      <header>
+        <Header toggle={toggle} open={open} />
+      </header>
       <Emergency />
-      <Footer />
-    </header>
-  </div>
-);
+      <section>
+        <WebPageInfoComponent />
+      </section>
+    </div>
+  );
+};
 
 export default App;
