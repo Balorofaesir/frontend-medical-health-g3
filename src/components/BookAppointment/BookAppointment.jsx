@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import data from '../../data/data.json';
 import './BookAppointment.css';
 
 const BookAppointment = () => {
@@ -47,32 +46,9 @@ const BookAppointment = () => {
     alert(info);
   };
 
-  const postData = async () => {
-    try {
-      const result = await fetch(data, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          Accept: 'application/json',
-          'Content-type': 'application/json',
-        },
-        body: JSON.stringify({
-          user: user.Accept,
-          email: user.email,
-          department: department,
-          doctor: doctor,
-          message: message,
-        }),
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   const sendData = (e) => {
     e.preventDefault();
     subm(data);
-    postData(user, department, doctor, message);
   };
 
   return (
