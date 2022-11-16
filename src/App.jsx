@@ -4,7 +4,7 @@ import Header from './components/Header/Header';
 import WebPageInfoComponent from './components/WebPageInfoComponent/WebPageInfoComponent';
 import Emergency from './components/Emergency/Emergency';
 import BookAppointment from './components/BookAppointment/BookAppointment';
-import Article from './components/Article/Article';
+import Article from './components/CompArticle/Article';
 
 const App = () => {
   const [open, setOPen] = useState(false);
