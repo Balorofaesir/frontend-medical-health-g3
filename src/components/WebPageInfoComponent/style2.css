@@ -1,0 +1,18 @@
+.comp2FatherCont{
+  display: flex;
+  flex-direction: row;
+  justify-content:space-evenly;
+  gap:25px;
+  flex-wrap: wrap;
+}
+.imgCont img{
+  border-radius: 50%;
+  max-width: 50px;
+  height: 50px;
+
+
+}
+.comp2Cont{
+  background-color: beige;
+  border: 25px solid beige;
+}
