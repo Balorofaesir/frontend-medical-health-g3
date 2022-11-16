@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import data from '../../data/data.json';
 import './BookAppointment.css';
 
 const BookAppointment = () => {
@@ -35,7 +36,10 @@ const BookAppointment = () => {
   };
 
   const data = {
-    ...user, department, doctor, message,
+    ...user,
+    department,
+    doctor,
+    message,
   };
 
   const subm = (dat) => {
@@ -43,9 +47,32 @@ const BookAppointment = () => {
     alert(info);
   };
 
+  const postData = async () => {
+    try {
+      const result = await fetch(data, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          Accept: 'application/json',
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+          user: user.Accept,
+          email: user.email,
+          department: department,
+          doctor: doctor,
+          message: message,
+        }),
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const sendData = (e) => {
     e.preventDefault();
     subm(data);
+    postData(user, department, doctor, message);
   };
 
   return (
@@ -77,14 +104,35 @@ const BookAppointment = () => {
           onChange={handleInput}
         />
         <select className="form__select" onClick={handleSelectOpt1}>
-          <option value="" hidden className="form__opt--disabled">Department</option>
-          {departments.map((item) => <option name={department} value={item} key={item} className="form__opt">{item}</option>)}
+          <option value="" hidden className="form__opt--disabled">
+            Department
+          </option>
+          {departments.map((item) => (
+            <option
+              name={department}
+              value={item}
+              key={item}
+              className="form__opt"
+            >
+              {item}
+            </option>
+          ))}
         </select>
         <select className="form__select" onClick={handleSelectOpt2}>
-          <option value="" hidden className="form__opt--disabled">Doctor</option>
-          {doctors.map((item) => <option name={doctor} value={item} key={item} className="form__opt">{item}</option>)}
+          <option value="" hidden className="form__opt--disabled">
+            Doctor
+          </option>
+          {doctors.map((item) => (
+            <option name={doctor} value={item} key={item} className="form__opt">
+              {item}
+            </option>
+          ))}
         </select>
-        <textarea className="form__message" placeholder="Your message" onChange={handleTextarea} />
+        <textarea
+          className="form__message"
+          placeholder="Your message"
+          onChange={handleTextarea}
+        />
         <button type="submit" className="form__btn">
           Book appointment →
         </button>
