@@ -1,14 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './BookAppointment.css';
 
 const BookAppointment = () => {
-  const departments = ['Diagnostics', 'Dermatology', 'Urgency'];
+  const [departments, setDepartments] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
-  const doctors = ['Rosario', 'Valentina', 'Juan'];
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch('http://localhost:8080/departments');
+      const data = await response.json();
+      setDepartments(data);
+    };
+    getData();
+  }, []);
 
+  console.log(departments);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch('http://localhost:8080/doctors');
+      const data = await response.json();
+      setDoctors(data);
+    };
+    getData();
+  }, []);
+
+  console.log(doctors);
   const [user, setUser] = useState({
     name: '',
     email: '',
+    date: '',
+    department: '',
+    doctor: '',
+    message: '',
   });
 
   const handleInput = (e) => {
@@ -18,37 +42,8 @@ const BookAppointment = () => {
     });
   };
 
-  const [department, setDepartment] = useState('');
-  const [doctor, setDoctor] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSelectOpt1 = (e) => {
-    setDepartment(e.target.value);
-  };
-
-  const handleSelectOpt2 = (e) => {
-    setDoctor(e.target.value);
-  };
-
-  const handleTextarea = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const data = {
-    ...user,
-    department,
-    doctor,
-    message,
-  };
-
-  const subm = (dat) => {
-    const info = JSON.stringify(dat);
-    alert(info);
-  };
-
   const sendData = (e) => {
     e.preventDefault();
-    subm(data);
   };
 
   return (
@@ -79,35 +74,46 @@ const BookAppointment = () => {
           placeholder="Booking date &nbsp;"
           onChange={handleInput}
         />
-        <select className="form__select" onClick={handleSelectOpt1}>
-          <option value="" hidden className="form__opt--disabled">
+        <select
+          name="department"
+          className="form__select"
+          defaultValue="default"
+          onClick={handleInput}
+        >
+          <option
+            value="default"
+            disabled
+            hidden
+            className="form__opt--disabled"
+          >
             Department
           </option>
-          {departments.map((item) => (
-            <option
-              name={department}
-              value={item}
-              key={item}
-              className="form__opt"
-            >
-              {item}
+          {departments.map((department) => (
+            <option value={department} key={department} className="form__opt">
+              {department}
             </option>
           ))}
         </select>
-        <select className="form__select" onClick={handleSelectOpt2}>
-          <option value="" hidden className="form__opt--disabled">
+        <select
+          className="form__select"
+          defaultValue="default"
+          name="doctor"
+          onClick={handleInput}
+        >
+          <option value="default" hidden disabled>
             Doctor
           </option>
-          {doctors.map((item) => (
-            <option name={doctor} value={item} key={item} className="form__opt">
-              {item}
+          {doctors.map((doctor) => (
+            <option value={doctor} key={doctor} className="form__opt">
+              {doctor}
             </option>
           ))}
         </select>
         <textarea
+          name="message"
           className="form__message"
           placeholder="Your message"
-          onChange={handleTextarea}
+          onChange={handleInput}
         />
         <button type="submit" className="form__btn">
           Book appointment →
