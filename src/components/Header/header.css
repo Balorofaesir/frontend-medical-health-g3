@@ -1,10 +1,27 @@
 
+.headerBlackContainer{
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-weight: 600;
+}
+.miniHeaderBlackContainer{
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  column-gap: 35px;
+  flex-wrap: wrap;
+  color: white;
+}
 .headerSmallerContainer{
   background-color: white;
   display: flex;
   flex-direction:row ;
   justify-content: space-around;
   margin: 10px;
+  font-weight: 600;
 }
 .miniContainer{
   display: flex;
@@ -32,17 +49,18 @@
   display: none;
 }
 
-.dots{
+.miniContainer3__dots{
 margin:0px;
 font-size: 35px;
 align-self: flex-end;
 }
 .navegationBar{
-  background-color: aqua;
+  background-color: white;
   display: flex;
   justify-content: center;
+  color: black;
 }
-.img1 img{
+.miniContainer3__img1__image{
   width: 30px;
   height: 30px;
 }

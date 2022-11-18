@@ -5,7 +5,7 @@
   gap:25px;
   flex-wrap: wrap;
 }
-.imgCont img{
+.imgCont__img{
   border-radius: 50%;
   max-width: 50px;
   height: 50px;

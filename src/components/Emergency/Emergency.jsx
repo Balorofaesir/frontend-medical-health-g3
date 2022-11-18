@@ -22,12 +22,12 @@ const Emergency = () => (
         </div>
         <hr />
         <div className="cont1__list2">
-          <h1>Sarutday</h1>
+          <h1>Saturday</h1>
           <h2>09:00-06:00</h2>
         </div>
         <hr />
         <div className="cont1__list3">
-          <h1>Sanday</h1>
+          <h1>Sunday</h1>
           <h2>09:00-03:00</h2>
         </div>
       </div>
