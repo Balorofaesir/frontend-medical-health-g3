@@ -1,11 +1,36 @@
 import Types from 'prop-types';
-import './style1.css';
+import './Header.css';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { BsTelephonePlus, BsTelephone } from 'react-icons/bs';
+import { BiWorld } from 'react-icons/bi';
+import { GiPlagueDoctorProfile } from 'react-icons/gi';
 import mebid from './assets/mebid-icon.jpeg';
 import lines from './assets/three-horizontal-lines-icon.png';
 
 const Header = ({ toggle, open }) => (
   <section>
-    <div className="headerSmallerContainer">
+    <section className="headerBlackContainer">
+      <div className="miniHeaderBlackContainer">
+        <p>
+          <BsTelephonePlus /> emergency 24 hours
+        </p>
+        <p>
+          <GiPlagueDoctorProfile /> patients & visitors
+        </p>
+        <p>
+          <AiOutlineSearch /> find a doctor
+        </p>
+      </div>
+      <div className="miniHeaderBlackContainer">
+        <p>
+          <BsTelephone /> (04) 8544 3222
+        </p>
+        <p>
+          <BiWorld /> english
+        </p>
+      </div>
+    </section>
+    <section className="headerSmallerContainer">
       <div className="miniContainer">
         <img src={mebid} alt=" " />
         <p>MEBID</p>
@@ -24,17 +49,14 @@ const Header = ({ toggle, open }) => (
         <button type="button">Appointment</button>
       </section>
       <div className="miniContainer3">
-        <p className="dots">...</p>
-        <button className="imgButton" type="button" onClick={toggle}>
-          <div className="img1">
-            <img
-              src={lines}
-              alt="Lines Icon"
-            />
+        <p className="miniContainer3__dots">...</p>
+        <button className="miniContainer3__imgButton" type="button" onClick={toggle}>
+          <div className="miniContainer3__img1">
+            <img src={lines} alt="Lines Icon" className="miniContainer3__img1__image" />
           </div>
         </button>
       </div>
-    </div>
+    </section>
 
     <div className="navegationBar">
       {open && (
