@@ -1,0 +1,39 @@
+.cont4{
+    padding: 10px;
+}
+
+.cont4__image img{
+    max-width: 350px;
+}
+
+.doctor2{
+    font-size: 18px;
+}
+
+.cont4__section1{
+    background-color: aliceblue;
+
+}
+
+.p1 {
+    filter: opacity(0.6);
+}
+
+.cont4__section2{
+    background-color: aliceblue;
+}
+
+.p2{
+    color: rgb(74, 212, 212);
+}
+
+.lists2{
+    line-height : 35px;
+    
+}
+
+.list2{
+    background-color: aliceblue;
+}
+
+
