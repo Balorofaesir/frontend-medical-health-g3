@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./Logins.css";
 
 const Login = () => {
@@ -10,6 +10,7 @@ const Login = () => {
 
   const [checked, setChecked] = useState(false);
   const [getUsers, setGetUsers] = useState({});
+  let pass;
 
   const handleChange = (e) => {
     setUSer({
@@ -32,10 +33,12 @@ const Login = () => {
     users.map((idx) => {
       if (idx.username === userInfo.user || idx.email === userInfo.user) {
         if (idx.password === userInfo.password) {
-          return alert("melo");
+          return (pass = true);
         }
+      } else {
+        return (pass = false);
       }
-      return alert("nada");
+      return pass;
     });
   };
 
