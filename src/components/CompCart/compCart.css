@@ -1,0 +1,95 @@
+.CompCart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+.CompCart__Container{
+
+ flex-shrink: 0;
+ min-width: 1000px;
+  overflow-x:scroll;
+}
+.CompCart__Container#content {
+
+  flex-shrink: 0;
+  min-width: 1000px;
+   overflow-x:scroll;
+ }
+.CompCart__Container__tittles {
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 10% 20% 20% 20% 10% 20%;
+  gap: 15px;
+  margin: 10px;
+  position: relative;
+}
+.CompCart__Container__products {
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 10% 20% 20% 20% 10% 20%;
+  gap: 15px;
+  align-items: center;
+  margin: 10px;
+
+}
+.CompCart__Container__inputApply3{
+  margin-left: 10px;
+}
+.CompCart__Container3__ApplyButton{
+
+  background-color: #3eb6d6;
+  color: white;
+  border: 2px solid #3eb6d6 ;
+
+}
+.CompCart__Container3__Cart__ButtonUpdateCart{
+  max-width: 300px;
+  align-self: center;
+  background-color: #3eb6d6;
+  color: white;
+  font-size: 15px;
+  padding: 1em;
+  border: none;
+  margin: 10px;
+}
+.CompCart__Container__products__input {
+  width: 35px;
+}
+.CompCart__Container__products__cancelbutton {
+  display: flex;
+  width: 25px;
+  height: 25px;
+  padding: 0px;
+  align-items: center;
+  justify-content: center;
+}
+.CompCart__Container2__Cart {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(218, 218, 218);
+  width: 350px;
+  margin: 10px;
+  padding: 10px;
+  padding-bottom: 0px;
+  font-weight: bold;
+}
+.CompCart__Container2__Cart__h1 {
+  font-size: x-large;
+}
+.CompCart__Container2__Cart__Line {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.CompCart__Container__Cart__Button {
+  width: 80%;
+  align-self: center;
+  background-color: #3eb6d6;
+  color: white;
+  font-size: 15px;
+  padding: 1em;
+  border: none;
+  margin-bottom: 2em;
+}

@@ -1,0 +1,9 @@
+.NamePages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aliceblue;
+  height: 300px;
+  width: 100%;
+  font-size: 50px;
+}
