@@ -1,5 +1,5 @@
-import './App.css';
-import BookAppointment from './components/BookAppointment/BookAppointment';
+import "./App.css";
+import BookAppointment from "./components/BookAppointment/BookAppointment";
 
 const App = () => {
   return (

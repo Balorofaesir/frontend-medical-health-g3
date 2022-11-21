@@ -23,6 +23,7 @@
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "json-server": "^0.17.1",
+    "npm-run-all": "^4.1.5",
     "prettier": "2.7.1",
     "react-scripts": "5.0.1"
   },
@@ -31,13 +32,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "dev": "npx json-server --routes routes.json --watch db.json --port 8080"
+    "database": "json-server --routes routes.json --watch db.json --port 8080",
+    "dev": "run-p database start"
   },
   "eslintConfig": {
-    "extends": ["react-app", "react-app/jest"]
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
-    "production": [">0.2%", "not dead", "not op_mini all"],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
