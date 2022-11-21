@@ -1,5 +1,5 @@
 import Types from 'prop-types';
-import './Header.css';
+import './header.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsTelephonePlus, BsTelephone } from 'react-icons/bs';
 import { BiWorld } from 'react-icons/bi';
