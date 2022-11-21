@@ -1,10 +1,10 @@
-import './App.css';
-import BookAppointment from './components/BookAppointment/BookAppointment';
+import "./App.css";
+import Login from "./components/Login/Login";
 
 const App = () => {
   return (
     <div className="App">
-      <BookAppointment />
+      <Login />
     </div>
   );
 };

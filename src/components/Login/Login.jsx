@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Logins.css";
 
 const Login = () => {
   const [user, setUSer] = useState({
@@ -37,6 +38,7 @@ const Login = () => {
             className="form__input"
             placeholder="Username or email"
             onChange={handleChange}
+            required
           />
         </label>
         <label htmlFor="password" className="form__label">
@@ -48,27 +50,30 @@ const Login = () => {
             className="form__input"
             placeholder="Password"
             onChange={handleChange}
+            required
           />
         </label>
-        <span className="form__span">
-          <label htmlFor="remember" className="form__labelOpt">
-            Remember me
-            <input
-              type="checkbox"
-              name="remember"
-              id="remember"
-              className="form__inputOpt"
-              value={user.remember}
-              checked={checked}
-              onClick={handleCheck}
-            />
-          </label>
-        </span>
-        <span className="form__span">
-          <Link to="/" className="form__link">
-            Forgot password?
-          </Link>
-        </span>
+        <div className="options__container">
+          <span className="form__span">
+            <label htmlFor="remember" className="form__labelOpt">
+              <input
+                type="checkbox"
+                name="remember"
+                id="remember"
+                className="form__inputOpt"
+                value={user.remember}
+                checked={checked}
+                onClick={handleCheck}
+              />
+              Remember me
+            </label>
+          </span>
+          <span className="form__span">
+            <Link to="/" className="form__link">
+              Forgot password?
+            </Link>
+          </span>
+        </div>
         <button type="submit" className="form__btn">
           Login →
         </button>

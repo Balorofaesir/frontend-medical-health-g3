@@ -1,38 +1,27 @@
-import { useEffect, useState } from 'react';
-import './BookAppointment.css';
+import { useEffect, useState } from "react";
+import "./BookAppointment.css";
 
 const BookAppointment = () => {
-  const [departments, setDepartments] = useState([]);
-  const [doctors, setDoctors] = useState([]);
+  const [docdep, setDocdep] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const response = await fetch('http://localhost:8080/departments');
-      const data = await response.json();
-      setDepartments(data);
-    };
-    getData();
+    fetch("http://localhost:8080/db")
+      .then((response) => response.json())
+      .then((data) => {
+        setDocdep(data);
+      });
   }, []);
 
-  console.log(departments);
+  console.log(docdep);
+  const { departments, doctors } = docdep;
 
-  useEffect(() => {
-    const getData = async () => {
-      const response = await fetch('http://localhost:8080/doctors');
-      const data = await response.json();
-      setDoctors(data);
-    };
-    getData();
-  }, []);
-
-  console.log(doctors);
   const [user, setUser] = useState({
-    name: '',
-    email: '',
-    date: '',
-    department: '',
-    doctor: '',
-    message: '',
+    name: "",
+    email: "",
+    date: "",
+    department: "",
+    doctor: "",
+    message: "",
   });
 
   const handleInput = (e) => {
@@ -104,7 +93,7 @@ const BookAppointment = () => {
             Doctor
           </option>
           {doctors.map((doctor) => (
-            <option value={doctor} key={doctor} className="form__opt">
+            <option value={doctor.name} key={doctor.id} className="form__opt">
               {doctor}
             </option>
           ))}
