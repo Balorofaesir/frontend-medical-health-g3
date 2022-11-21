@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Logins.css";
 
@@ -9,6 +9,7 @@ const Login = () => {
   });
 
   const [checked, setChecked] = useState(false);
+  const [getUsers, setGetUsers] = useState({});
 
   const handleChange = (e) => {
     setUSer({
@@ -21,6 +22,17 @@ const Login = () => {
     setChecked(!checked);
   };
 
+  useEffect(() => {
+    fetch("http://localhost:8080/api/users").then((response) =>
+      response.json().then((data) => setGetUsers(data))
+    );
+  }, []);
+
+  const validate = () => {
+    getUsers.forEach((element) => element);
+  };
+
+  console.log(validate());
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -63,7 +75,7 @@ const Login = () => {
                 className="form__inputOpt"
                 value={user.remember}
                 checked={checked}
-                onClick={handleCheck}
+                onChange={handleCheck}
               />
               Remember me
             </label>
