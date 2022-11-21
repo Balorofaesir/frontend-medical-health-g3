@@ -28,13 +28,20 @@ const Login = () => {
     );
   }, []);
 
-  const validate = () => {
-    getUsers.forEach((element) => element);
+  const validate = (users, userInfo) => {
+    users.map((idx) => {
+      if (idx.username === userInfo.user || idx.email === userInfo.user) {
+        if (idx.password === userInfo.password) {
+          return alert("melo");
+        }
+      }
+      return alert("nada");
+    });
   };
 
-  console.log(validate());
   const handleSubmit = (e) => {
     e.preventDefault();
+    validate(getUsers, user);
   };
 
   return (
