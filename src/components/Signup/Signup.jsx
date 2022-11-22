@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const Signup = () => {
   const [user, setUser] = useState({
     username: '',
@@ -19,6 +21,15 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const sendData = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    };
+
+    fetch(`${API_URL}/users`, sendData);
   };
 
   return (
