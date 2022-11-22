@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react";
-import "./BookAppointment.css";
+import { useEffect, useState } from 'react';
+import './BookAppointment.css';
 
 const BookAppointment = () => {
   const [departments, setDepartments] = useState([]);
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/departments")
+    fetch('http://localhost:8080/api/departments')
       .then((response) => response.json())
       .then((data) => setDepartments(data));
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/doctors")
+    fetch('http://localhost:8080/api/doctors')
       .then((response) => response.json())
       .then((data) => setDoctors(data));
   }, []);
 
   const [user, setUser] = useState({
-    name: "",
-    email: "",
-    date: "",
-    department: "",
-    doctor: "",
-    message: "",
+    name: '',
+    email: '',
+    date: '',
+    department: '',
+    doctor: '',
+    message: '',
   });
 
   const handleInput = (e) => {
@@ -33,8 +33,17 @@ const BookAppointment = () => {
     });
   };
 
-  const sendData = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
+
+    const sendData = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    };
+    fetch('http://localhost:8080/api/users', sendData);
   };
 
   return (
@@ -43,7 +52,7 @@ const BookAppointment = () => {
       <p className="container__paragraph">
         Fillup the form to make an appointment with the doctor
       </p>
-      <form className="form" onSubmit={sendData}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
           name="name"
           type="text"
