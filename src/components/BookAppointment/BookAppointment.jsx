@@ -95,7 +95,7 @@ const BookAppointment = () => {
             Doctor
           </option>
           {doctors.map((doctor) => (
-            <option value={doctor.name} key={doctor} className="form__opt">
+            <option value={doctor} key={doctor} className="form__opt">
               {doctor}
             </option>
           ))}
