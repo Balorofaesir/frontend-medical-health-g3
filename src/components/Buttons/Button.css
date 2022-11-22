@@ -4,10 +4,13 @@ body {
 
 .container {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row nowrap;
 }
 .btn__container {
-  width: 30%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 70%;
   margin: 4em auto 0 auto;
 }
 
@@ -19,4 +22,5 @@ body {
   font-size: 25px;
   color: white;
   margin: 0.5em;
+  text-align: center;
 }
