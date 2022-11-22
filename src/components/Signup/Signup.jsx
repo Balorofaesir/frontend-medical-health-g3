@@ -1,18 +1,38 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Signup.css';
 
 const Signup = () => {
+  const [user, setUser] = useState({
+    username: '',
+    email: '',
+    password: '',
+    conditions: false,
+  });
+
+  const handleChange = ({ target }) => {
+    setUser({
+      ...user,
+      [target.name]: target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="container">
-      <form className="signupForm__container">
+      <form className="signupForm__container" onSubmit={handleSubmit}>
         <h1 className="signupForm__title">Register</h1>
         <label htmlFor="user" className="signupForm__label">
           Username
           <input
             type="text"
-            name="user"
+            name="username"
             className="signupForm__input"
             placeholder="Username"
+            onChange={handleChange}
             required
           />
         </label>
@@ -23,6 +43,7 @@ const Signup = () => {
             name="email"
             className="signupForm__input"
             placeholder="Enter your email"
+            onChange={handleChange}
             required
           />
         </label>
@@ -33,6 +54,7 @@ const Signup = () => {
             name="password"
             className="signupForm__input"
             placeholder="Enter your password"
+            onChange={handleChange}
             required
           />
         </label>
@@ -43,6 +65,8 @@ const Signup = () => {
                 type="checkbox"
                 name="conditions"
                 className="signupForm__inputOpt"
+                onChange={handleChange}
+                required
               />
               I agree with the
               <Link to="/conditions" className="signupForm__link--conditions">
