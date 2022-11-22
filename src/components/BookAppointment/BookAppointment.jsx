@@ -1,18 +1,20 @@
 import { useEffect, useState } from 'react';
 import './BookAppointment.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const BookAppointment = () => {
   const [departments, setDepartments] = useState([]);
   const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/departments')
+    fetch(`${API_URL}/departments`)
       .then((response) => response.json())
       .then((data) => setDepartments(data));
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/doctors')
+    fetch(`${API_URL}/doctors`)
       .then((response) => response.json())
       .then((data) => setDoctors(data));
   }, []);
