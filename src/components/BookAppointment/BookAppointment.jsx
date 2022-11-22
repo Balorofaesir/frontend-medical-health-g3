@@ -45,7 +45,7 @@ const BookAppointment = () => {
       },
       body: JSON.stringify(user),
     };
-    fetch('http://localhost:8080/api/users', sendData);
+    fetch(`${API_URL}/users`, sendData);
   };
 
   return (
