@@ -19,11 +19,7 @@ const FindADoctor = () => {
   }
   function handleClick() {
     if (Physio === 'dato1' && doctors === 'dato1') {
-      navegat('/DoctorJuan');
-    } else if (Physio === 'dato1' && doctors === 'dato2') {
-      navegat('/DoctorAndres');
-    } else if (Physio === 'dato1' && doctors === 'dato3') {
-      navegat('/DoctorMiguel');
+      navegat('/DoctorProfile');
     }
   }
   return (
