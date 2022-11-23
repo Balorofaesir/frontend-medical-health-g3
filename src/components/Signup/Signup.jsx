@@ -9,8 +9,9 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
-    conditions: false,
   });
+
+  const [checked, setChecked] = useState(false);
 
   const navigate = useNavigate();
 
@@ -19,6 +20,11 @@ const Signup = () => {
       ...user,
       [target.name]: target.value,
     });
+  };
+
+  const handleCheck = (e) => {
+    e.preventDefault();
+    setChecked(!checked);
   };
 
   const handleSubmit = (e) => {
@@ -79,7 +85,7 @@ const Signup = () => {
                 type="checkbox"
                 name="conditions"
                 className="signupForm__inputOpt"
-                onChange={handleChange}
+                onClick={handleCheck}
                 required
               />
               I agree with the
