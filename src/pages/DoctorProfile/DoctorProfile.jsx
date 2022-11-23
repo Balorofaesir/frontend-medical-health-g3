@@ -1,12 +1,12 @@
-import './DoctorMiguel.css';
+import './DoctorProfile.css';
 import image from './assets/portrait-beautiful-mature-woman-doctor-260nw-1680655153.webp';
 
-const DoctorMiguel = () => (
+const DoctorAndres = () => (
   <div className="cont5">
     <div className="cont5__image">
       <img className="image" src={image} alt="doct" />
     </div>
-    <h1 className="doctor3">Dr. Miguel</h1>
+    <h1 className="doctor1">Dr. Andres</h1>
     <div className="cont5__section1">
       <h1>Qualifications</h1>
       <p className="p1">Master of scince</p>
@@ -47,4 +47,4 @@ const DoctorMiguel = () => (
   </div>
 );
 
-export default DoctorMiguel;
+export default DoctorAndres;
