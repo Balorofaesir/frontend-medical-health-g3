@@ -1,10 +1,17 @@
-import "./App.css";
-import Login from "./components/Login/Login";
+import { useNavigate } from 'react-router-dom';
+import './App.css';
 
 const App = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="App">
-      <Login />
+      <button type="submit" value="signup" onClick={() => navigate('/signup')}>
+        Sign up
+      </button>
+      <button type="submit" value="login" onClick={() => navigate('/login')}>
+        Login
+      </button>
     </div>
   );
 };

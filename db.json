@@ -35,6 +35,20 @@
       "age": 78,
       "email": "theocedillo@gmail.com",
       "password": "cuong0Ah"
+    },
+    {
+      "username": "daniel453",
+      "email": "mons@gmail.com",
+      "password": "123456",
+      "conditions": "on",
+      "id": 3
+    },
+    {
+      "username": "danielm56",
+      "email": "monsal@gmail.com",
+      "password": "12345",
+      "conditions": "on",
+      "id": 4
     }
   ]
 }
