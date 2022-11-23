@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -11,6 +11,8 @@ const Signup = () => {
     password: '',
     conditions: false,
   });
+
+  const navigate = useNavigate();
 
   const handleChange = ({ target }) => {
     setUser({
@@ -30,6 +32,7 @@ const Signup = () => {
     };
 
     fetch(`${API_URL}/users`, sendData);
+    navigate('/profile');
   };
 
   return (

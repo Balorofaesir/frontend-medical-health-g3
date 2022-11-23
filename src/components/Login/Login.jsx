@@ -1,12 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import "./Logins.css";
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import './Logins.css';
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Login = () => {
   const [user, setUSer] = useState({
-    user: "",
-    password: "",
+    user: '',
+    password: '',
   });
+
+  const navigate = useNavigate();
 
   const [checked, setChecked] = useState(false);
   const [getUsers, setGetUsers] = useState({});
@@ -23,7 +27,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/users").then((response) =>
+    fetch(`${API_URL}/users`).then((response) =>
       response.json().then((data) => setGetUsers(data))
     );
   }, []);
@@ -32,12 +36,12 @@ const Login = () => {
     users.map((idx) => {
       if (idx.username === userInfo.user || idx.email === userInfo.user) {
         if (idx.password === userInfo.password) {
-          return alert("has accedido");
+          return navigate('/profile');
         }
       } else {
-        return alert("datos erroneos");
+        return navigate('/');
       }
-      return console.log("se ha finalizado");
+      return console.log('se ha finalizado');
     });
   };
 
