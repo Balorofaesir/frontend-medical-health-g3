@@ -3,7 +3,7 @@
   color: white;
   padding: 10px;
   padding-right: 20px;
-  height: 150px;
+  height: 180px;
 }
 
 .butt{
@@ -94,6 +94,7 @@
     display: flex;
     align-content: flex-start;
     padding: 100px;
+    width: 1440px;
   }
 
   .cont2__section1 {
