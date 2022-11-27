@@ -8,6 +8,7 @@ import CartPage from './pages/Cart';
 import NotFound from './pages/NotFound404';
 import DoctorProfile from './pages/DoctorProfile/DoctorProfile';
 import FindDr from './pages/FindDoctor/FindADoctor';
+import Calendar from './pages/Calendar';
 
 const App = () => {
   const [open, setOPen] = useState(false);
@@ -22,9 +23,10 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="DoctorProfile" element={<DoctorProfile />} />
-        <Route path="FindDr" element={<FindDr />} />
+        <Route path="doctorProfile" element={<DoctorProfile />} />
+        <Route path="findDr" element={<FindDr />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="calendar" element={<Calendar />} />
       </Routes>
       <Footer />
     </div>
