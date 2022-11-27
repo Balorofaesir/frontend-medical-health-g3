@@ -1,0 +1,10 @@
+.book{
+  background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url('../components/Buttons/assets/Doctor-doctora.jpg');
+  background-color: black;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  /* padding: 10px;
+  padding-right: 100px; */
+}
