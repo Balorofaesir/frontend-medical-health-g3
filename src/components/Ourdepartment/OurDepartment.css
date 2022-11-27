@@ -1,0 +1,111 @@
+.cont6{
+  padding: 10px;
+  background-color:  rgb(230, 245, 248);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+}
+
+.cont6__elements{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 1000;
+}
+
+.cont6__title{
+  text-align: center;
+  justify-content: center;
+  font-weight: 800;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.OurDep{
+  color: #6bdceb;
+  font-size: 12px;
+}
+
+.icons{
+  background-color: #67d1df;
+  color: white;
+  font-size: 2rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cont6__orthopedics{
+  background-color: white;
+  height: 200px;
+  width: 330px;
+  padding: 10px;
+  margin-bottom: 20px;
+
+}
+
+.h1{
+font-size: 18px;
+}
+
+.paragraf{
+  line-height: 25px;
+  filter: opacity(0.7);
+}
+
+.read{
+  font-size: 14px;
+  font-weight: 550;
+}
+
+.cont6__cardiology{
+  background-color: white;
+  height: 200px;
+  width: 330px;
+  padding: 10px;
+  margin-bottom: 20px;
+
+}
+
+.cont6__ophthalmology{
+  background-color: white;
+  height: 200px;
+  width: 330px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.cont6__button{
+  text-align: center;
+}
+
+.button{
+  border: none;
+  background-color: #62cfdd;
+  color: white;
+  height: 35px;
+  width: 150px;
+}
+
+@media (min-width: 1440px) {
+
+ .cont6{
+   height: 800;
+ }
+  .cont6__elements{
+    display: flex;
+    flex-direction:row;
+  }
+
+}
+
+
+
+
+
+
+

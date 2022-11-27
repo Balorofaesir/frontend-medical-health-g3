@@ -13,7 +13,7 @@ const Footer = () => (
     <div className="cont01">
       <img src={Mebid} alt="mebid" />
       <p>Need more information please contact us
-        or book an appointmen
+        or book an appointment
       </p>
       <button className="butt" type="button">Contact us &rarr; </button>
     </div>

@@ -53,9 +53,9 @@ const BookAppointment = () => {
 
   return (
     <div className="container">
-      <h1 className="container__title">Book apointment</h1>
+      <h1 className="container__title">Book appointment</h1>
       <p className="container__paragraph">
-        Fillup the form to make an appointment with the doctor
+        Fill up the form to make an appointment with the doctor
       </p>
       <form className="form" onSubmit={sendData}>
         <input
