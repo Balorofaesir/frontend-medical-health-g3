@@ -49,9 +49,9 @@ const BookAppointment = () => {
   };
 
   return (
-    <div className="container">
-      <h1 className="container__title">Book apointment</h1>
-      <p className="container__paragraph">
+    <div className="containerBappoiment">
+      <h1 className="containerBappoiment__title">Book apointment</h1>
+      <p className="containerBappoiment__paragraph">
         Fillup the form to make an appointment with the doctor
       </p>
       <form className="form" onSubmit={handleSubmit}>

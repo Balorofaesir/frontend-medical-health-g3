@@ -1,20 +1,17 @@
-body {
-  background-color: black;
-}
 
-.container {
+.containerBappoiment {
   background-color: white;
-  width: 37%;
+  max-width: 600px;
   text-align: left;
   margin: 0;
 }
 
-.container__title {
+.containerBappoiment__title {
   margin: 0 1em;
   padding-top: 0.8em;
 }
 
-.container__paragraph {
+.containerBappoiment__paragraph {
   font-size: 18px;
   font-weight: 600;
   color: grey;
@@ -74,7 +71,7 @@ body {
 }
 
 @media (max-width: 375px) {
-  .container {
+  .containerBappoiment {
     width: 20em;
   }
 }
