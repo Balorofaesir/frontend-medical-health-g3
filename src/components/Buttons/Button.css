@@ -1,10 +1,28 @@
-body {
-  background-color: black;
+.container1__sect1{
+  color: white;
 }
 
-.container {
+.title1{
+  color: #67d1df;
+}
+
+.title2{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.paragraf{
+  filter: opacity(0.9);
+}
+
+.container1__sect2{
+display: flex;
+
+}
+
+.container1 {
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: column;
 }
 .btn__container {
   width: 30%;
