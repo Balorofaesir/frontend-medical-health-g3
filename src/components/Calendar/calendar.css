@@ -1,0 +1,22 @@
+.rbc-toolbar{
+display: flex;
+background-color: rgba(62,182,214,255);
+color: white;
+}
+.rbc-toolbar button{
+  color: white !important;
+}
+.rbc-event-content{
+  height:6vmax !important;
+  width: 12vmax !important;
+  background-color: rgba(62,182,214,255);
+}
+.rbc-toolbar button:active, .rbc-toolbar button.rbc-active{
+  color: black !important;
+}
+.rbc-toolbar button:hover, .rbc-toolbar button.rbc-active{
+  color: black !important;
+}
+.rbc-toolbar button:focus , .rbc-toolbar button.rbc-active{
+  color: black !important;
+}
