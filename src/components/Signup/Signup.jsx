@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import './Signup.css';
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import "./Signup.css";
 
 const API_URL = process.env.REACT_APP_API_URL;
 
 const Signup = () => {
   const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
 
   const [checked, setChecked] = useState(false);
@@ -22,23 +22,22 @@ const Signup = () => {
     });
   };
 
-  const handleCheck = (e) => {
-    e.preventDefault();
+  const handleCheck = () => {
     setChecked(!checked);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const sendData = {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-type': 'application/json',
+        "Content-type": "application/json",
       },
       body: JSON.stringify(user),
     };
 
     fetch(`${API_URL}/users`, sendData);
-    navigate('/profile');
+    navigate("/profile");
   };
 
   return (

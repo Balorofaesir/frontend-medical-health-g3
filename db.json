@@ -49,6 +49,12 @@
       "password": "12345",
       "conditions": "on",
       "id": 4
+    },
+    {
+      "username": "daniel45",
+      "email": "monsq@gmail.com",
+      "password": "sadjkas",
+      "id": 5
     }
   ]
 }

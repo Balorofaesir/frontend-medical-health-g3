@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Logins.css';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Logins.css";
 
 const Login = () => {
   const [user, setUSer] = useState({
-    user: '',
-    password: '',
+    user: "",
+    password: "",
   });
 
   const [checked, setChecked] = useState(false);
