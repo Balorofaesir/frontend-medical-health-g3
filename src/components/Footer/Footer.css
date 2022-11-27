@@ -1,9 +1,8 @@
 .cont01{
-  background-color: #1867dd;
+  background-color: rgb(0, 82, 185);
   color: white;
   padding: 10px;
-  padding-right: 20px;
-  height: 180px;
+  width: 100%;
 }
 
 .butt{
@@ -16,6 +15,7 @@
   padding: 10px;
   background-color: rgb(0, 0, 0);
   color: white;
+  width: 100%;
 }
 .cont2__section1 h1 {
   font-size: 20px;
@@ -88,13 +88,11 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 1440px;
   }
   .cont2 {
     display: flex;
     align-content: flex-start;
-    padding: 100px;
-    width: 1440px;
+    width: 100%;
   }
 
   .cont2__section1 {
