@@ -1,0 +1,60 @@
+{
+  "departments": [
+    "Orthopedic",
+    "Dental service",
+    "Neurology",
+    "Emergency department",
+    "Diagnosis department",
+    "Therapy deparment"
+  ],
+  "doctors": [
+    "Dr. Perry Barkley",
+    "Dr. Crystal Fitzhugh",
+    "Dr. Helen Scheffler",
+    "Dr. Gail Perrish",
+    "Dr. Charles Gordon",
+    "Dr. Mattie Delgado",
+    "Dr. Verna Leto",
+    "Dr. Annie Murrow"
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Hattie M.",
+      "lastname": "Nelson",
+      "username": "hmnelson",
+      "age": 68,
+      "email": "hattiemnelson@gustr.com",
+      "password": "jeipiso1Ei"
+    },
+    {
+      "id": 2,
+      "name": "Theo",
+      "lastname": "Cedillo Noriega",
+      "username": "beill1943",
+      "age": 78,
+      "email": "theocedillo@gmail.com",
+      "password": "cuong0Ah"
+    },
+    {
+      "username": "daniel453",
+      "email": "mons@gmail.com",
+      "password": "123456",
+      "conditions": "on",
+      "id": 3
+    },
+    {
+      "username": "danielm56",
+      "email": "monsal@gmail.com",
+      "password": "12345",
+      "conditions": "on",
+      "id": 4
+    },
+    {
+      "username": "daniel45",
+      "email": "monsq@gmail.com",
+      "password": "sadjkas",
+      "id": 5
+    }
+  ]
+}
