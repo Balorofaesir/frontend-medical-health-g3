@@ -11,7 +11,6 @@ import FindDr from './pages/FindDoctor/FindADoctor';
 
 const App = () => {
   const [open, setOPen] = useState(false);
-
   const toggle = () => {
     setOPen(!open);
   };
@@ -31,5 +30,4 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
