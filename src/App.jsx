@@ -9,6 +9,8 @@ import NotFound from './pages/NotFound404';
 import DoctorProfile from './pages/DoctorProfile/DoctorProfile';
 import FindDr from './pages/FindDoctor/FindADoctor';
 import Calendar from './pages/Calendar';
+import Signup from './pages/Signup/Signup';
+import Login from './pages/Login/Login';
 
 const App = () => {
   const [open, setOPen] = useState(false);
@@ -27,6 +29,8 @@ const App = () => {
         <Route path="/findDr" element={<FindDr />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/sign-up" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />
     </div>

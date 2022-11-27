@@ -1,14 +1,31 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './BookAppointment.css';
 
-const BookAppointment = () => {
-  const departments = ['Diagnostics', 'Dermatology', 'Urgency'];
+const API_URL = process.env.REACT_APP_API_URL;
 
-  const doctors = ['Rosario', 'Valentina', 'Juan'];
+const BookAppointment = () => {
+  const [departments, setDepartments] = useState([]);
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_URL}/departments`)
+      .then((response) => response.json())
+      .then((data) => setDepartments(data));
+  }, []);
+
+  useEffect(() => {
+    fetch(`${API_URL}/doctors`)
+      .then((response) => response.json())
+      .then((data) => setDoctors(data));
+  }, []);
 
   const [user, setUser] = useState({
     name: '',
     email: '',
+    date: '',
+    department: '',
+    doctor: '',
+    message: '',
   });
 
   const handleInput = (e) => {
@@ -18,46 +35,26 @@ const BookAppointment = () => {
     });
   };
 
-  const [department, setDepartment] = useState('');
-  const [doctor, setDoctor] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSelectOpt1 = (e) => {
-    setDepartment(e.target.value);
-  };
-
-  const handleSelectOpt2 = (e) => {
-    setDoctor(e.target.value);
-  };
-
-  const handleTextarea = (e) => {
-    setMessage(e.target.value);
-  };
-
-  const data = {
-    ...user,
-    department,
-    doctor,
-    message,
-  };
-
-  const subm = (dat) => {
-    const info = JSON.stringify(dat);
-    alert(info);
-  };
-
-  const sendData = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    subm(data);
+
+    const sendData = {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    };
+    fetch(`${API_URL}/users`, sendData);
   };
 
   return (
-    <div className="container">
-      <h1 className="container__title">Book appointment</h1>
-      <p className="container__paragraph">
-        Fill up the form to make an appointment with the doctor
+    <div className="containerBappoiment">
+      <h1 className="containerBappoiment__title">Book apointment</h1>
+      <p className="containerBappoiment__paragraph">
+        Fillup the form to make an appointment with the doctor
       </p>
-      <form className="form" onSubmit={sendData}>
+      <form className="form" onSubmit={handleSubmit}>
         <input
           name="name"
           type="text"
@@ -79,35 +76,46 @@ const BookAppointment = () => {
           placeholder="Booking date &nbsp;"
           onChange={handleInput}
         />
-        <select className="form__select" onClick={handleSelectOpt1}>
-          <option value="" hidden className="form__opt--disabled">
+        <select
+          name="department"
+          className="form__select"
+          defaultValue="default"
+          onClick={handleInput}
+        >
+          <option
+            value="default"
+            disabled
+            hidden
+            className="form__opt--disabled"
+          >
             Department
           </option>
-          {departments.map((item) => (
-            <option
-              name={department}
-              value={item}
-              key={item}
-              className="form__opt"
-            >
-              {item}
+          {departments.map((department) => (
+            <option value={department} key={department} className="form__opt">
+              {department}
             </option>
           ))}
         </select>
-        <select className="form__select" onClick={handleSelectOpt2}>
-          <option value="" hidden className="form__opt--disabled">
+        <select
+          className="form__select"
+          defaultValue="default"
+          name="doctor"
+          onClick={handleInput}
+        >
+          <option value="default" hidden disabled>
             Doctor
           </option>
-          {doctors.map((item) => (
-            <option name={doctor} value={item} key={item} className="form__opt">
-              {item}
+          {doctors.map((doctor) => (
+            <option value={doctor} key={doctor} className="form__opt">
+              {doctor}
             </option>
           ))}
         </select>
         <textarea
+          name="message"
           className="form__message"
           placeholder="Your message"
-          onChange={handleTextarea}
+          onChange={handleInput}
         />
         <button type="submit" className="form__btn">
           Book appointment →
