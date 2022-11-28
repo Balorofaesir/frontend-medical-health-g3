@@ -9,9 +9,18 @@ h2{
     filter: opacity(0.5);
 }
 
-.type{
+.categority{
     height: 40px;
 
+}
+
+.doctors{
+  height: 40px;
+
+}
+
+.type{
+  height: 40px;
 }
 .cont3__section1{
     background-color: rgb(180, 220, 226);
@@ -32,13 +41,13 @@ h2{
 }
 
 .cont3__section3__2{
-    
+
     max-width: 350px;
 }
 
 .cont3__button{
     margin-top: 20px;
-    
+
 }
 .submit{
     background-color: #2eaccf;
@@ -46,7 +55,7 @@ h2{
     width: 100px;
     height: 50px;
     border: none;
-    
+
 }
 
 @media (min-width: 1440px) {
