@@ -1,17 +1,17 @@
 
-.container {
+.containerBappoiment {
   background-color: white;
-  max-width: 500px;
+  max-width: 600px;
   text-align: left;
   margin: 0;
 }
 
-.container__title {
+.containerBappoiment__title {
   margin: 0 1em;
   padding-top: 0.8em;
 }
 
-.container__paragraph {
+.containerBappoiment__paragraph {
   font-size: 18px;
   font-weight: 600;
   color: grey;
@@ -42,6 +42,15 @@
   margin-bottom: 0.5em;
   border: 1px solid gray;
   background-color: white;
+  color: gray;
+}
+
+.form__select:checked {
+  color: black;
+}
+
+.form__opt--disabled {
+  color: gray;
 }
 
 .form__message {
@@ -59,4 +68,10 @@
   padding: 1em;
   border: none;
   margin-bottom: 2em;
+}
+
+@media (max-width: 375px) {
+  .containerBappoiment {
+    width: 20em;
+  }
 }
