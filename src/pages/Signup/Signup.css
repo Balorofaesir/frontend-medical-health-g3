@@ -1,5 +1,7 @@
-.signupForm__container__global {
-  background-color: white;
+.signupForm__globalContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .signupForm__container {
@@ -7,8 +9,7 @@
   flex-flow: column nowrap;
   font-size: 17px;
   color: #565656;
-  align-items: center;
-  justify-content: center;
+  width: 40%;
 }
 
 .signupForm__title {
@@ -66,5 +67,12 @@
   text-align: center;
   border: none;
   font-size: 17px;
-  width: 22%;
+  width: 35%;
 }
+
+@media (max-width: 700px) {
+  .signupForm__btn {
+    width: 100%;
+  }
+}
+

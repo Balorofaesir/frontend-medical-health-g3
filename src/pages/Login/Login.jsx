@@ -27,8 +27,9 @@ const Login = () => {
   };
 
   return (
-    <div><NamesPages />
-      <div className="loginloginForm__container__global">
+    <div>
+      <NamesPages />
+      <div className="loginForm__globalContainer">
         <form className="loginForm__container" onSubmit={handleSubmit}>
           <h1 className="loginForm__title">Login</h1>
           <label htmlFor="user" className="loginForm__label">

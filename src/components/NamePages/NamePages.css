@@ -2,8 +2,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: aliceblue;
   height: 300px;
   width: 100%;
   font-size: 50px;
+  background-image: url("../Buttons/assets/Doctor-doctora.jpg");
+  background-size: cover;
+}
+
+.NamePages__url {
+  color: white;
+  font-weight: 700;
+}
+
+.NamePages__path {
+  color: white;
+  font-size: 20px;
+  position: relative;
+  top: 2.5em;
+  left: -6.3em;
 }
