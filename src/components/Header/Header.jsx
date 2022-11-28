@@ -85,7 +85,7 @@ const Header = ({ toggle, open }) => {
 
       <div className="navegationBar">
         {open && (
-          <section>
+          <section className="">
             <ul>
               <button className="Home__button" type="button" onClick={ClickHome}>Home</button>
               <p> About</p>
