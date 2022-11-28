@@ -42,8 +42,9 @@ const Signup = () => {
   };
 
   return (
-    <div><NamesPages />
-      <div className="signupForm__container__global">
+    <div>
+      <NamesPages />
+      <div className="signupForm__globalContainer">
         <form className="signupForm__container" onSubmit={handleSubmit}>
           <h1 className="signupForm__title">Register</h1>
           <label htmlFor="user" className="signupForm__label">
