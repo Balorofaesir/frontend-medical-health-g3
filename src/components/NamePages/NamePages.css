@@ -5,6 +5,8 @@
   height: 300px;
   width: 100%;
   font-size: 50px;
+  background-image: url("../Buttons/assets/Doctor-doctora.jpg");
+  background-size: cover;
 }
 
 .NamePages__url {

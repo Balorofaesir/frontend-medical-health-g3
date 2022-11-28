@@ -31,6 +31,21 @@
   align-items:center;
   gap: 10px;
 }
+.Home__button{
+  background-color: transparent;
+  border: 0px;
+  padding: 0%;
+  font: 16px Poppins, sans-serif;
+  font-weight: 600;
+}
+.Home__button__white{
+  background-color: transparent;
+  border: 0px;
+  padding: 0%;
+  font: 16px Poppins, sans-serif;
+  font-weight: 600;
+  color: white;
+}
 .miniContainer2{
   display: none;
   flex-direction:row ;
@@ -63,6 +78,9 @@ align-self: flex-end;
 .miniContainer3__img1__image{
   width: 30px;
   height: 30px;
+}
+.hiddenBar{
+  display: none;
 }
 @media (min-width: 1440px) {
   .miniContainer2{
