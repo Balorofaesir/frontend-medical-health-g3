@@ -25,15 +25,17 @@ const Button = ({ handleClick }) => (
         </Link>
         <p className="btn__paragraph">Urgent care</p>
       </div>
-      <Link
-        to="../BookAppointment/BookAppointment.jsx"
-        className="btn__container"
-        value="urgent"
-        onClick={handleClick}
-      >
-        <img src={primary} alt="button to use service" className="btn__img" />
-      </Link>
-      <p className="btn__paragraph">Primary care</p>
+      <div className="container1__sect2__1">
+        <Link
+          to="../BookAppointment/BookAppointment.jsx"
+          className="btn__container"
+          value="urgent"
+          onClick={handleClick}
+        >
+          <img src={primary} alt="button to use service" className="btn__img" />
+        </Link>
+        <p className="btn__paragraph">Primary care</p>
+      </div>
     </div>
   </div>
 );
