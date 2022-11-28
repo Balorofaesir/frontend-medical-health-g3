@@ -1,5 +1,7 @@
-.loginForm__container__global {
-  background-color: white;
+.loginForm__globalContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .loginForm__container {
@@ -7,11 +9,11 @@
   flex-flow: column nowrap;
   font-size: 17px;
   color: #565656;
-  align-items: center;
-  justify-content: center;
+  width: 40%;
 }
 
 .loginForm__title {
+  font-size: 1.56em;
   color: black;
 }
 
@@ -29,11 +31,10 @@
   font-size: 17px;
 }
 
-
 .options__container {
   margin: 0.5em 0 0.5em;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   gap: 5px;
 }
@@ -43,6 +44,7 @@
   border-radius: 0.4em;
   width: 1.2em;
   height: 1.2em;
+  margin-top: -0.3em;
 }
 
 .loginForm__link {
@@ -58,6 +60,7 @@
   text-align: center;
   border: none;
   font-size: 17px;
+  width: 35%;
 }
 
 .loginForm__link--signup {
@@ -65,3 +68,13 @@
   text-decoration-line: none;
   margin: 1.3em 0;
 }
+
+@media (max-width: 700px) {
+  .options__container {
+    flex-direction: column;
+  }
+  .loginForm__btn {
+    width: 100%;
+  }
+}
+
