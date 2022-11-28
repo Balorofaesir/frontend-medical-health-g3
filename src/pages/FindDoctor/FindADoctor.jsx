@@ -1,27 +1,55 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-self-compare */
 /* eslint-disable react/jsx-no-undef */
+// import { element } from 'prop-types';
+// import { element } from 'prop-types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './FindADoctor.css';
 
+const categority = [
+  {
+    name: 'Physioterapy',
+    doctors: ['Dr. Perry Barkley', 'Dr. Crystal Fitzhugh'],
+  },
+  {
+    name: 'Orthopedic',
+    doctors: ['Dr. Helen Scheffler', 'Dr. Gail Perrish'],
+  },
+  {
+    name: 'Neurology',
+    doctors: ['Dr. Charles Gordon', 'Dr. Mattie Delgado'],
+  },
+  {
+    name: 'Therapy',
+    doctors: ['Dr. Verna Leto', 'Dr. Annie Murrow'],
+  },
+];
+
 const FindADoctor = () => {
-  // eslint-disable-next-line no-unused-vars
-  const navegat = useNavigate();
-  const [Physio, setphysio] = useState('');
-  const [doctors, setDoctors] = useState('');
-  function handlePhysio(even) {
-    const { value } = even.target;
-    setphysio(value);
+  const navigate = useNavigate();
+  const [idDoctors, setIdDoctors] = useState(-1);
+  // const [doc, setDoc] = useState(categority);
+  const [specialty, setSpecialty] = useState('');
+  const [doctorName, setDoctorName] = useState('');
+  // console.log('hola', doc);
+
+  const handleDoctors = (option) => {
+    console.log(option);
+    setIdDoctors(option);
+  };
+
+  function handleClick() {
+    if (specialty && doctorName) {
+      navigate(`/DoctorProfile/${categority[specialty].doctors[doctorName]}`);
+    }
+    // const characters = doc.map((i) => {
+    //   if (categority[0] === i.doctors[0]) {
+    //     navigate('/DoctorProfile');
+    //   }
+    // });
   }
 
-  function handleDoctors(even) {
-    const { value } = even.target;
-    setDoctors(value);
-  }
-  function handleClick() {
-    if (Physio === 'dato1' && doctors === 'dato1') {
-      navegat('/DoctorProfile');
-    }
-  }
   return (
     <div className="cont3">
       <div className="cont3__section1">
@@ -35,24 +63,35 @@ const FindADoctor = () => {
         <div className="cont3__section3__1">
           <h2>Specialty</h2>
           <select
-            className="type"
-            id="type"
-            onChange={handlePhysio}
+            className="categority"
+            id="selcategority"
+            // onChange={handleDoctors}
+            onChange={(e) => {
+              handleDoctors(e.target.value);
+              setSpecialty(e.target.value);
+            }}
           >
-            <option value="dato">Especiality</option>
-            <option value="dato1">Physioterapy</option>
-            <option value="dato2">Orthopedic</option>
-            <option value="dato3">Neurology</option>
+            <option value={+1}>----Select one option----</option>
+            {categority.map((element, i) => (
+              <option key={element.name} value={i}> {element.name}</option>
+            ))}
           </select>
           <select
-            className="type"
-            id="type"
-            onChange={handleDoctors}
+            className="doctors"
+            id="seldoctors"
+            // onChange={handleDoctors}
+            onChange={(e) => setDoctorName(e.target.value)}
           >
-            <option value="dato0">Doctors</option>
-            <option value="dato1">Dr. Juan</option>
-            <option value="dato2">Dr. Andres</option>
-            <option value="dato3">Dr. Miguel</option>
+            <option value={+1}>----doctors----</option>
+            {
+              idDoctors > -1
+              && (
+                categority[idDoctors].doctors.map((element, i) => (
+                  <option key={element} value={i}> {element}</option>
+                ))
+              )
+            }
+
           </select>
           <h2>location</h2>
           <select
