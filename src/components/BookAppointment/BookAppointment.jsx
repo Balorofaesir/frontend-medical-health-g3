@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
+import {
+  selectDepartment,
+  setDepartments,
+} from '../../features/departments/departmentSlice';
 import './BookAppointment.css';
 
-const API_URL = process.env.REACT_APP_API_URL;
-
 const BookAppointment = () => {
-  const [departments, setDepartments] = useState([]);
-  const [doctors, setDoctors] = useState([]);
+  const { doctors } = useSelector(selectDoctor);
+  const { departments } = useSelector(selectDepartment);
+  const dispatch = useDispatch();
+  /* const [departments, setDepartments] = useState([]); */
 
   useEffect(() => {
-    fetch(`${API_URL}/departments`)
-      .then((response) => response.json())
-      .then((data) => setDepartments(data));
-  }, []);
+    dispatch(setDepartments());
+  }, [dispatch]);
 
   useEffect(() => {
-    fetch(`${API_URL}/doctors`)
-      .then((response) => response.json())
-      .then((data) => setDoctors(data));
-  }, []);
+    dispatch(setDoctors());
+  }, [dispatch]);
 
   const [user, setUser] = useState({
     name: '',
@@ -38,19 +40,19 @@ const BookAppointment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const sendData = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    };
-    fetch(`${API_URL}/users`, sendData);
+    /*   const sendData = { */
+    /*     method: 'POST', */
+    /*     headers: { */
+    /*       'Content-type': 'application/json', */
+    /*     }, */
+    /*     body: JSON.stringify(user), */
+    /*   }; */
+    /*   fetch(`${API_URL}/users`, sendData); */
   };
 
   return (
     <div className="containerBappoiment">
-      <h1 className="containerBappoiment__title">Book apointment</h1>
+      <h1 className="containerBappoiment__title">Book appointment</h1>
       <p className="containerBappoiment__paragraph">
         Fillup the form to make an appointment with the doctor
       </p>
@@ -106,7 +108,7 @@ const BookAppointment = () => {
             Doctor
           </option>
           {doctors.map((doctor) => (
-            <option value={doctor} key={doctor} className="form__opt">
+            <option value={doctor.id} key={doctor.id} className="form__opt">
               {doctor}
             </option>
           ))}
