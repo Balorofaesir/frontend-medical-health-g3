@@ -1,5 +1,4 @@
-
-.headerBlackContainer{
+.headerBlackContainer {
   background-color: black;
   display: flex;
   flex-direction: row;
@@ -7,7 +6,7 @@
   justify-content: space-around;
   font-weight: 600;
 }
-.miniHeaderBlackContainer{
+.miniHeaderBlackContainer {
   justify-content: center;
   display: flex;
   flex-direction: row;
@@ -15,30 +14,41 @@
   flex-wrap: wrap;
   color: white;
 }
-.headerSmallerContainer{
+.headerSmallerContainer {
   background-color: white;
   display: flex;
-  flex-direction:row ;
+  flex-direction: row;
   justify-content: space-around;
   margin: 10px;
   font-weight: 600;
 }
-.miniContainer{
+.miniContainer {
   display: flex;
-  flex-direction:row ;
+  flex-direction: row;
   max-height: 50px;
   max-width: 50px;
-  align-items:center;
+  align-items: center;
   gap: 10px;
 }
-.Home__button{
+.miniContainer__logoLink {
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  color: black;
+}
+.miniContainer__logoText {
+  font-weight: 700;
+  font-size: 21px;
+  margin: 16px 0 0 5px;
+}
+.Home__button {
   background-color: transparent;
   border: 0px;
   padding: 0%;
   font: 16px Poppins, sans-serif;
   font-weight: 600;
 }
-.Home__button__white{
+.Home__button__white {
   background-color: transparent;
   border: 0px;
   padding: 0%;
@@ -46,55 +56,55 @@
   font-weight: 600;
   color: white;
 }
-.miniContainer2{
+.miniContainer2 {
   display: none;
-  flex-direction:row ;
-  align-items:center;
+  flex-direction: row;
+  align-items: center;
   gap: 10px;
 }
-.miniContainer3{
+.miniContainer3 {
   display: flex;
-  flex-direction:row ;
+  flex-direction: row;
   max-height: 50px;
   max-width: 50px;
-  align-items:center;
+  align-items: center;
   gap: 10px;
 }
-.miniContainer4{
+.miniContainer4 {
   display: none;
 }
 
-.miniContainer3__dots{
-margin:0px;
-font-size: 35px;
-align-self: flex-end;
+.miniContainer3__dots {
+  margin: 0px;
+  font-size: 35px;
+  align-self: flex-end;
 }
-.navegationBar{
+.navegationBar {
   background-color: white;
   display: flex;
   justify-content: center;
   color: black;
 }
-.miniContainer3__img1__image{
+.miniContainer3__img1__image {
   width: 30px;
   height: 30px;
 }
-.hiddenBar{
+.hiddenBar {
   display: none;
 }
 @media (min-width: 1440px) {
-  .miniContainer2{
+  .miniContainer2 {
     display: flex;
-    flex-direction:row ;
-    align-items:center;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
   }
-  .miniContainer3{
+  .miniContainer3 {
     display: none;
   }
-  .miniContainer4{
+  .miniContainer4 {
     display: flex;
-    align-items:center;
+    align-items: center;
     justify-content: center;
     gap: 10px;
   }
