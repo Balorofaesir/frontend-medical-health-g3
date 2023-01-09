@@ -21,18 +21,18 @@ const departmentSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase('departments/getDepartments/pending', (state) => {
+      .addCase(setDepartments.pending, (state) => {
         const newState = { ...state };
         newState.loading = true;
         return newState;
       })
-      .addCase('departments/getDepartments/fulfilled', (state, action) => {
+      .addCase(setDepartments.fulfilled, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.departments = action.payload;
         return newState;
       })
-      .addCase('departments/getDepartments/rejected', (state, action) => {
+      .addCase(setDepartments.rejected, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.error = action.payload;

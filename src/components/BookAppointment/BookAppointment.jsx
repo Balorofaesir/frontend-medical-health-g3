@@ -6,12 +6,12 @@ import {
   setDepartments,
 } from '../../features/departments/departmentSlice';
 import './BookAppointment.css';
+import { makeAppointment } from '../../features/appointments/appointmentSlice';
 
 const BookAppointment = () => {
   const { doctors } = useSelector(selectDoctor);
   const { departments } = useSelector(selectDepartment);
   const dispatch = useDispatch();
-  /* const [departments, setDepartments] = useState([]); */
 
   useEffect(() => {
     dispatch(setDepartments());
@@ -39,15 +39,7 @@ const BookAppointment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    /*   const sendData = { */
-    /*     method: 'POST', */
-    /*     headers: { */
-    /*       'Content-type': 'application/json', */
-    /*     }, */
-    /*     body: JSON.stringify(user), */
-    /*   }; */
-    /*   fetch(`${API_URL}/users`, sendData); */
+    dispatch(makeAppointment(user));
   };
 
   return (
@@ -82,7 +74,7 @@ const BookAppointment = () => {
           name="department"
           className="form__select"
           defaultValue="default"
-          onClick={handleInput}
+          onChange={handleInput}
         >
           <option
             value="default"
@@ -93,8 +85,12 @@ const BookAppointment = () => {
             Department
           </option>
           {departments.map((department) => (
-            <option value={department} key={department} className="form__opt">
-              {department}
+            <option
+              value={department.department}
+              key={department.id}
+              className="form__opt"
+            >
+              {department.department}
             </option>
           ))}
         </select>
@@ -102,14 +98,14 @@ const BookAppointment = () => {
           className="form__select"
           defaultValue="default"
           name="doctor"
-          onClick={handleInput}
+          onChange={handleInput}
         >
           <option value="default" hidden disabled>
             Doctor
           </option>
           {doctors.map((doctor) => (
-            <option value={doctor.id} key={doctor.id} className="form__opt">
-              {doctor}
+            <option value={doctor.doctor} key={doctor.id} className="form__opt">
+              {doctor.doctor}
             </option>
           ))}
         </select>

@@ -18,18 +18,18 @@ const doctorSlice = createSlice({
   initialState,
   extraReducers: (builder) => {
     builder
-      .addCase('doctors/getDoctors/pending', (state) => {
+      .addCase(setDoctors.pending, (state) => {
         const newState = { ...state };
         newState.loading = true;
         return newState;
       })
-      .addCase('doctors/getDoctors/fulfilled', (state, action) => {
+      .addCase(setDoctors.fulfilled, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.doctors = action.payload;
         return newState;
       })
-      .addCase('doctors/getDoctors/rejected', (state, action) => {
+      .addCase(setDoctors.rejected, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.error = action.payload;
