@@ -1,0 +1,39 @@
+.appointment__globalContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.appointment__introParagraph {
+  text-align: center;
+  color: #3eb6d6;
+  font-weight: 600;
+}
+
+.appointment__formContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 8em;
+}
+
+.form__fieldset {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  color: gray;
+  font-size: 16px;
+}
+
+.form__title {
+  text-align: center;
+  font-size: 40px;
+  font-weight: 600;
+  color: black;
+}
+
+.form__label {
+  margin-bottom: 1em;
+}
+
+.form__input {
+  width: 100%;
+}
