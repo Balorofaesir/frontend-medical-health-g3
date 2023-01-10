@@ -1,21 +1,98 @@
 {
   "departments": [
-    "Orthopedic",
-    "Dental service",
-    "Neurology",
-    "Emergency department",
-    "Diagnosis department",
-    "Therapy deparment"
+    {
+      "id": 1,
+      "department": "Orthopedic"
+    },
+    {
+      "id": 2,
+      "department": "Dental service"
+    },
+    {
+      "id": 3,
+      "department": "Neurology"
+    },
+    {
+      "id": 4,
+      "department": "Emergency department"
+    },
+    {
+      "id": 5,
+      "department": "Diagnosis department"
+    },
+    {
+      "id": 6,
+      "department": "Therapy department"
+    }
   ],
   "doctors": [
-    "Dr. Perry Barkley",
-    "Dr. Crystal Fitzhugh",
-    "Dr. Helen Scheffler",
-    "Dr. Gail Perrish",
-    "Dr. Charles Gordon",
-    "Dr. Mattie Delgado",
-    "Dr. Verna Leto",
-    "Dr. Annie Murrow"
+    {
+      "id": 1,
+      "doctor": "Dr. Perry Barkley"
+    },
+    {
+      "id": 2,
+      "doctor": "Dr. Crystal Fitzhugh"
+    },
+    {
+      "id": 3,
+      "doctor": "Dr. Helen Scheffler"
+    },
+    {
+      "id": 4,
+      "doctor": "Dr. Gail Perrish"
+    },
+    {
+      "id": 5,
+      "doctor": "Dr. Charles Gordon"
+    },
+    {
+      "id": 6,
+      "doctor": "Dr. Mattie Delgado"
+    },
+    {
+      "id": 7,
+      "doctor": "Dr. Verna Leto"
+    },
+    {
+      "id": 8,
+      "doctor": "Dr. Annie Murrow"
+    }
+  ],
+  "appointments": [
+    {
+      "name": "daniel monsalv",
+      "email": "mon@cor.com",
+      "date": "1993-10-28",
+      "department": "Orthopedic",
+      "doctor": "Dr. Crystal Fitzhugh",
+      "message": "hola",
+      "id": 11,
+      "phoneNumber": "345",
+      "nationality": "Colombia",
+      "residence": "",
+      "sex": "male",
+      "hospital": "",
+      "dateAppointment": "2022-12-30"
+    },
+    {
+      "name": "daniel",
+      "email": "mon@com.com",
+      "date": "2021-11-30",
+      "department": "Dental service",
+      "doctor": "Dr. Crystal Fitzhugh",
+      "message": "jol",
+      "id": 12
+    },
+    {
+      "name": "daniel",
+      "email": "monsa@cor.com",
+      "date": "2021-10-30",
+      "department": "Dental service",
+      "doctor": "Dr. Crystal Fitzhugh",
+      "message": "dsahsd",
+      "id": 13
+    }
   ],
   "users": [
     {
