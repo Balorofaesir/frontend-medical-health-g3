@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { getAppointment } from '../../features/appointments/appointmentSlice';
+import {
+  getAppointment,
+  makeAppointment,
+} from '../../features/appointments/appointmentSlice';
+import './Appointment.css';
 
 const Appointments = () => {
   const { id } = useParams();
@@ -14,18 +18,16 @@ const Appointments = () => {
     dispatch(getAppointment(id));
   }, [dispatch]);
 
+  const countries = ['Canada', 'Colombia', 'USA', 'Mexico'];
+
   const [appointment, setAppointment] = useState({
-    name,
-    email,
+    id,
     phoneNumber: 0,
     nationality: '',
-    date,
     residence: '',
-    department,
-    doctor,
+    sex: '',
     hospital: '',
-    appointmentDate: '',
-    message,
+    dateAppointment: '',
   });
 
   const handleInput = (e) => {
@@ -35,104 +37,159 @@ const Appointments = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(makeAppointment(appointment));
+  };
+
   return (
-    <div>
-      <p>If you need to appointment</p>
-      <form>
-        <fieldset>
-          <legend>Patient Information</legend>
-          <label htmlFor="name">
+    <div className="appointment__globalContainer">
+      <p className="appointment__introParagraph">If you need to appointment</p>
+      <form onSubmit={handleSubmit} className="appointment__formContainer">
+        <fieldset className="form__fieldset">
+          <legend className="form__title">Patient Information</legend>
+          <label htmlFor="name" className="form__label">
             Patient name
             <input
               type="text"
               id="name"
               name="name"
-              value={name}
+              className="form__input"
+              defaultValue={name}
               onChange={handleInput}
             />
           </label>
-          <label htmlFor="email">
+          <label htmlFor="email" className="form__label">
             Email address
             <input
               type="email"
               id="email"
               name="email"
-              value={email}
+              className="form__input"
+              defaultValue={email}
               onChange={handleInput}
             />
           </label>
-          <label htmlFor="phoneNumber">
+          <label htmlFor="phoneNumber" className="form__label">
             Phone number
             <input
               type="text"
               id="phoneNumber"
+              className="form__input"
               name="phoneNumber"
               onChange={handleInput}
             />
           </label>
-          <label htmlFor="nationality">
+          <label htmlFor="nationality" className="form__label">
             Nationality
-            <select name="nationality" id="nationality" onChange={handleInput}>
-              <option value="canada">Canada</option>
+            <select
+              name="nationality"
+              id="nationality"
+              className="form__input"
+              onChange={handleInput}
+            >
+              {countries.map((country) => (
+                <option value={country} key={country}>
+                  {country}
+                </option>
+              ))}
             </select>
           </label>
-          <label htmlFor="birth">
+          <label htmlFor="birth" className="form__label">
             Date of birth
             <input
               type="date"
               id="birth"
               name="date"
-              value={date}
+              className="form__input"
+              defaultValue={date}
               onChange={handleInput}
             />
           </label>
-          <label htmlFor="residence">
+          <label htmlFor="residence" className="form__label">
             Country of residence
-            <select name="residence" id="residence" onChange={handleInput}>
-              <option value="canada">Canada</option>
+            <select
+              name="residence"
+              id="residence"
+              className="form__input"
+              onChange={handleInput}
+            >
+              {countries.map((country) => (
+                <option value={country} key={country}>
+                  {country}
+                </option>
+              ))}
             </select>
           </label>
           <span>
-            <label htmlFor="female">
+            <label htmlFor="male">
               Male
-              <input type="checkbox" name="male" id="male" value="male" />
+              <input
+                type="checkbox"
+                name="sex"
+                id="male"
+                value="male"
+                onChange={handleInput}
+              />
             </label>
             <label htmlFor="female">
               Female
-              <input type="checkbox" name="female" id="female" value="female" />
+              <input
+                type="checkbox"
+                name="sex"
+                id="female"
+                value="female"
+                onChange={handleInput}
+              />
             </label>
           </span>
         </fieldset>
-        <fieldset>
-          <legend>Appointment Information</legend>
-          <label htmlFor="department">
+        <fieldset className="form__fieldset">
+          <legend className="form__title">Appointment Information</legend>
+          <label htmlFor="department" className="form__label">
             Speciality
-            <select name="department" id="department" onChange={handleInput}>
-              <option value="department">{department}</option>
+            <select
+              name="department"
+              id="department"
+              className="form__input"
+              onChange={handleInput}
+            >
+              <option defaultValue="department">{department}</option>
             </select>
           </label>
-          <label htmlFor="doctor">
+          <label htmlFor="doctor" className="form__label">
             Preferred doctor
-            <select name="doctor" id="doctor" onChange={handleInput}>
-              <option value="doctor">{doctor}</option>
+            <select
+              name="doctor"
+              id="doctor"
+              className="form__input"
+              onChange={handleInput}
+            >
+              <option defaultValue="doctor">{doctor}</option>
             </select>
           </label>
-          <label htmlFor="hospital">
+          <label htmlFor="hospital" className="form__label">
             At the following hospital
-            <select name="hospital" id="hospital" onChange={handleInput}>
+            <select
+              name="hospital"
+              id="hospital"
+              className="form__input"
+              onChange={handleInput}
+            >
               <option value="hospital">hospital</option>
             </select>
           </label>
-          <label htmlFor="dateAppointment">
+          <label htmlFor="dateAppointment" className="form__label">
             Date of appointment
             <input
               type="date"
               name="dateAppointment"
+              className="form__input"
               id="dateAppointment"
               onChange={handleInput}
             />
           </label>
-          <label htmlFor="message">
+          <label htmlFor="message" className="form__label">
             Reason of consultation
             <textarea defaultValue={message} name="message" />
           </label>
