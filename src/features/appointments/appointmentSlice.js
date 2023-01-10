@@ -1,5 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import sendAppointment from './appointmentAPI';
+import sendAppointment, {
+  setAppointment,
+  confirmAppointment,
+} from './appointmentAPI';
 
 const initialState = {
   appointment: [],
@@ -7,10 +10,28 @@ const initialState = {
   error: null,
 };
 
-export const makeAppointment = createAsyncThunk(
+export const createAppointment = createAsyncThunk(
   'appointment/createAppointment',
   async (values) => {
     const response = await sendAppointment(values);
+
+    return response;
+  }
+);
+
+export const getAppointment = createAsyncThunk(
+  'appointment/getAppointment',
+  async (id) => {
+    const response = await setAppointment(id);
+
+    return response;
+  }
+);
+
+export const makeAppointment = createAsyncThunk(
+  'appointment/setAppointment',
+  async (values) => {
+    const response = await confirmAppointment(values);
 
     return response;
   }
@@ -33,6 +54,38 @@ const appointmentSlice = createSlice({
         return newState;
       })
       .addCase(makeAppointment.rejected, (state, action) => {
+        const newState = { ...state };
+        newState.loading = false;
+        newState.error = action.payload;
+      })
+      .addCase(getAppointment.pending, (state) => {
+        const newState = { ...state };
+        newState.loading = true;
+        return newState;
+      })
+      .addCase(getAppointment.fulfilled, (state, action) => {
+        const newState = { ...state };
+        newState.loading = false;
+        newState.appointment = action.payload;
+        return newState;
+      })
+      .addCase(getAppointment.rejected, (state, action) => {
+        const newState = { ...state };
+        newState.loading = false;
+        newState.error = action.payload;
+      })
+      .addCase(createAppointment.pending, (state) => {
+        const newState = { ...state };
+        newState.loading = true;
+        return newState;
+      })
+      .addCase(createAppointment.fulfilled, (state, action) => {
+        const newState = { ...state };
+        newState.loading = false;
+        newState.appointment = action.payload;
+        return newState;
+      })
+      .addCase(createAppointment.rejected, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.error = action.payload;

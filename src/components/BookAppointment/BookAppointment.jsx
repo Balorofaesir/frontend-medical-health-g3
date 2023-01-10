@@ -6,7 +6,7 @@ import {
   setDepartments,
 } from '../../features/departments/departmentSlice';
 import './BookAppointment.css';
-import { makeAppointment } from '../../features/appointments/appointmentSlice';
+import { createAppointment } from '../../features/appointments/appointmentSlice';
 
 const BookAppointment = () => {
   const { doctors } = useSelector(selectDoctor);
@@ -39,7 +39,7 @@ const BookAppointment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(makeAppointment(user));
+    dispatch(createAppointment(user));
   };
 
   return (
