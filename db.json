@@ -1,21 +1,83 @@
 {
   "departments": [
-    "Orthopedic",
-    "Dental service",
-    "Neurology",
-    "Emergency department",
-    "Diagnosis department",
-    "Therapy deparment"
+    {
+      "id": 1,
+      "department": "Orthopedic"
+    },
+    {
+      "id": 2,
+      "department": "Dental service"
+    },
+    {
+      "id": 3,
+      "department": "Neurology"
+    },
+    {
+      "id": 4,
+      "department": "Emergency department"
+    },
+    {
+      "id": 5,
+      "department": "Diagnosis department"
+    },
+    {
+      "id": 6,
+      "department": "Therapy department"
+    }
   ],
   "doctors": [
-    "Dr. Perry Barkley",
-    "Dr. Crystal Fitzhugh",
-    "Dr. Helen Scheffler",
-    "Dr. Gail Perrish",
-    "Dr. Charles Gordon",
-    "Dr. Mattie Delgado",
-    "Dr. Verna Leto",
-    "Dr. Annie Murrow"
+    {
+      "id": 1,
+      "doctor": "Dr. Perry Barkley"
+    },
+    {
+      "id": 2,
+      "doctor": "Dr. Crystal Fitzhugh"
+    },
+    {
+      "id": 3,
+      "doctor": "Dr. Helen Scheffler"
+    },
+    {
+      "id": 4,
+      "doctor": "Dr. Gail Perrish"
+    },
+    {
+      "id": 5,
+      "doctor": "Dr. Charles Gordon"
+    },
+    {
+      "id": 6,
+      "doctor": "Dr. Mattie Delgado"
+    },
+    {
+      "id": 7,
+      "doctor": "Dr. Verna Leto"
+    },
+    {
+      "id": 8,
+      "doctor": "Dr. Annie Murrow"
+    }
+  ],
+  "appointments": [
+    {
+      "name": "daniel",
+      "email": "mon@cor.com",
+      "date": "1993-10-28",
+      "department": "Orthopedic",
+      "doctor": "Dr. Crystal Fitzhugh",
+      "message": "hola",
+      "id": 11
+    },
+    {
+      "name": "daniel",
+      "email": "mon@com.com",
+      "date": "2021-11-30",
+      "department": "Dental service",
+      "doctor": "Dr. Crystal Fitzhugh",
+      "message": "jol",
+      "id": 12
+    }
   ],
   "users": [
     {
@@ -25,7 +87,8 @@
       "username": "hmnelson",
       "age": 68,
       "email": "hattiemnelson@gustr.com",
-      "password": "jeipiso1Ei"
+      "password": "jeipiso1Ei",
+      "cart": []
     },
     {
       "id": 2,
@@ -34,26 +97,117 @@
       "username": "beill1943",
       "age": 78,
       "email": "theocedillo@gmail.com",
-      "password": "cuong0Ah"
+      "password": "cuong0Ah",
+      "cart": []
     },
     {
       "username": "daniel453",
       "email": "mons@gmail.com",
       "password": "123456",
       "conditions": "on",
-      "id": 3
+      "id": 3,
+      "cart": []
     },
     {
       "username": "danielm56",
       "email": "monsal@gmail.com",
       "password": "12345",
       "conditions": "on",
-      "id": 4
+      "id": 4,
+      "cart": []
     },
     {
       "username": "daniel45",
       "email": "monsq@gmail.com",
       "password": "sadjkas",
+      "id": 5,
+      "cart": []
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "price": 109.95,
+      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "rating": {
+        "rate": 3.9,
+        "count": 120
+      }
+    },
+    {
+      "id": 2,
+      "title": "Mens Casual Premium Slim Fit T-Shirts ",
+      "price": 22.3,
+      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "rating": {
+        "rate": 4.1,
+        "count": 259
+      }
+    },
+    {
+      "id": 3,
+      "title": "Mens Cotton Jacket",
+      "price": 55.99,
+      "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "rating": {
+        "rate": 4.7,
+        "count": 500
+      }
+    },
+    {
+      "id": 4,
+      "title": "Mens Casual Slim Fit",
+      "price": 15.99,
+      "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "rating": {
+        "rate": 2.1,
+        "count": 430
+      }
+    }
+  ],
+  "carts": [
+    {
+      "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
+      "price": 109.95,
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+      "quantity": "3",
+      "id": 1
+    },
+    {
+      "title": "Mens Casual Premium Slim Fit T-Shirts ",
+      "price": 22.3,
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+      "quantity": "12",
+      "id": 2
+    },
+    {
+      "title": "Mens Casual Slim Fit",
+      "price": 15.99,
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "quantity": "112",
+      "id": 3
+    },
+    {
+      "title": "Mens Casual Slim Fit",
+      "price": 15.99,
+      "image": "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+      "quantity": "112",
+      "id": 4
+    },
+    {
+      "title": "Mens Cotton Jacket",
+      "price": 55.99,
+      "image": "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+      "quantity": "12",
       "id": 5
     }
   ]

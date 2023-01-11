@@ -4,7 +4,10 @@ import { BsTelephone } from 'react-icons/bs';
 import { AiOutlineMail } from 'react-icons/ai';
 import { GoLocation } from 'react-icons/go';
 import {
-  FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
 } from 'react-icons/fa';
 import Mebid from './assets/mebid.png';
 
@@ -12,17 +15,17 @@ const Footer = () => (
   <div className="cont_main">
     <div className="cont01">
       <img src={Mebid} alt="mebid" />
-      <p>Need more information please contact us
-        or book an appointment
-      </p>
-      <button className="butt" type="button">Contact us &rarr; </button>
+      <p>Need more information please contact us or book an appointment</p>
+      <button className="butt" type="button">
+        Contact us &rarr;{' '}
+      </button>
     </div>
     <div className="cont2">
-      <div className="cont2__section1">
+      <div className="cont2__section1" id="about">
         <h1>About</h1>
         <p>
-          Vestibulum ac diam sit amet quam vehicula elementum sed sit amet. Nulla
-          porttitor accumsan.
+          Vestibulum ac diam sit amet quam vehicula elementum sed sit amet.
+          Nulla porttitor accumsan.
         </p>
         <div className="cont2__icon1">
           <p className="cont2__icon1__icon">
@@ -48,9 +51,6 @@ const Footer = () => (
         <ul className="cont2__list">
           <li className="l1__1">
             <span>Orthopedic</span>
-          </li>
-          <li className="l1__1">
-            <span>Orthopedic</span>{' '}
           </li>
           <li className="l1__1">
             <span>Dental service</span>
@@ -101,15 +101,22 @@ const Footer = () => (
         </p>
         <hr />
         <div className="cont2__reds">
-          <div className="cont2__reds__icon"><FaFacebookF /></div>
-          <div className="cont2__reds__icon"><FaTwitter /></div>
-          <div className="cont2__reds__icon"><FaInstagram /></div>
-          <div className="cont2__reds__icon"><FaLinkedinIn /></div>
+          <div className="cont2__reds__icon">
+            <FaFacebookF />
+          </div>
+          <div className="cont2__reds__icon">
+            <FaTwitter />
+          </div>
+          <div className="cont2__reds__icon">
+            <FaInstagram />
+          </div>
+          <div className="cont2__reds__icon">
+            <FaLinkedinIn />
+          </div>
         </div>
       </div>
     </div>
   </div>
-
 );
 
 export default Footer;

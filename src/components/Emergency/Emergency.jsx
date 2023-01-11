@@ -3,8 +3,7 @@ import './Emergency.css';
 import imgPhon from './assets/icono-de-la-línea-directa-del-teléfono-en-círculo-128428651.jpg';
 
 const Emergency = () => (
-
-  <div className="cont1">
+  <div className="cont1" id="urgency">
     <div className="cont1__section1">
       <div className="cont1__img">
         <img src={imgPhon} alt="imagenPhone" />
@@ -33,7 +32,6 @@ const Emergency = () => (
       </div>
     </div>
   </div>
-
 );
 
 export default Emergency;

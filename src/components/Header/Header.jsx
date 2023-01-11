@@ -1,6 +1,6 @@
 import Types from 'prop-types';
 import './header.css';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsTelephonePlus, BsTelephone } from 'react-icons/bs';
 import { BiWorld } from 'react-icons/bi';
@@ -34,7 +34,11 @@ const Header = ({ toggle, open }) => {
           <p>
             <GiPlagueDoctorProfile /> patients & visitors
           </p>
-          <button className="Home__button__white" type="button" onClick={ClickFindDr}>
+          <button
+            className="Home__button__white"
+            type="button"
+            onClick={ClickFindDr}
+          >
             <AiOutlineSearch /> find a doctor
           </button>
         </div>
@@ -49,15 +53,23 @@ const Header = ({ toggle, open }) => {
       </section>
       <section className="headerSmallerContainer">
         <div className="miniContainer">
-          <img src={mebid} alt=" " />
-          <p>MEBID</p>
+          <Link to="/" className="miniContainer__logoLink">
+            <img src={mebid} alt="logo" />
+            <p className="miniContainer__logoText">MEBID</p>
+          </Link>
         </div>
         <section className="miniContainer2">
-          <button className="Home__button" type="button" onClick={ClickHome}>Home</button>
+          <button className="Home__button" type="button" onClick={ClickHome}>
+            Home
+          </button>
           <p> About</p>
           <p>Pages</p>
-          <button className="Home__button" type="button" onClick={ClickLogin}>Login</button>
-          <button className="Home__button" type="button" onClick={ClickCart}>Shop</button>
+          <button className="Home__button" type="button" onClick={ClickLogin}>
+            Login
+          </button>
+          <button className="Home__button" type="button" onClick={ClickCart}>
+            Shop
+          </button>
           <p>Blog</p>
         </section>
         <section className="miniContainer4">
@@ -87,11 +99,29 @@ const Header = ({ toggle, open }) => {
         {open && (
           <section className="">
             <ul>
-              <button className="Home__button" type="button" onClick={ClickHome}>Home</button>
+              <button
+                className="Home__button"
+                type="button"
+                onClick={ClickHome}
+              >
+                Home
+              </button>
               <p> About</p>
               <p>Pages</p>
-              <button className="Home__button" type="button" onClick={ClickLogin}>Login</button>
-              <button className="Home__button" type="button" onClick={ClickCart}>Shop</button>
+              <button
+                className="Home__button"
+                type="button"
+                onClick={ClickLogin}
+              >
+                Login
+              </button>
+              <button
+                className="Home__button"
+                type="button"
+                onClick={ClickCart}
+              >
+                Shop
+              </button>
               <p>Blog</p>
             </ul>
             <div>
