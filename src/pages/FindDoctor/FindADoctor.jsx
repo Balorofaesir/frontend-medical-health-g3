@@ -3,9 +3,14 @@
 /* eslint-disable react/jsx-no-undef */
 // import { element } from 'prop-types';
 // import { element } from 'prop-types';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect , useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setDoctors, selectDoctor } from '../../features/doctors/doctorSlice';
 import './FindADoctor.css';
+
+
+
 
 const categority = [
   {
@@ -25,9 +30,16 @@ const categority = [
     doctors: ['Dr. Verna Leto', 'Dr. Annie Murrow'],
   },
 ];
-
 const FindADoctor = () => {
+
+const { doctors } = useSelector(selectDoctor);
+const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log(doctors)
+
+  useEffect(() => {
+    dispatch(setDoctors());
+  }, [dispatch]);
   const [idDoctors, setIdDoctors] = useState(-1);
   // const [doc, setDoc] = useState(categority);
   const [specialty, setSpecialty] = useState('');

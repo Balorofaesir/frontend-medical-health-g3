@@ -1,7 +1,7 @@
 const API_URL = "https://top-25-grupo-3333.onrender.com/api";
 
-function sendAppointment(values) {
-  return fetch(`${API_URL}/appointments`, {
+function sendUser(values) {
+  return fetch(`${API_URL}/Users`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -11,16 +11,16 @@ function sendAppointment(values) {
   }).then((res) => res.json());
 }
 
-export function setAppointment(id) {
-  return fetch(`${API_URL}/appointments/${id}`).then((res) => res.json());
+export function setUser(id) {
+  return fetch(`${API_URL}/Users/${id}`).then((res) => res.json());
 }
 
-export function setAppointments() {
-  return fetch(`${API_URL}/appointments`).then((res) => res.json());
+export function setUsers() {
+  return fetch(`${API_URL}/Users`).then((res) => res.json());
 }
 
-export function confirmAppointment(values) {
-  return fetch(`${API_URL}/appointments/${values.id}`, {
+export function confirmUser(values) {
+  return fetch(`${API_URL}/Users/${values.id}`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',
@@ -30,4 +30,4 @@ export function confirmAppointment(values) {
   }).then((res) => res.json());
 }
 
-export default sendAppointment;
+export default sendUser;
