@@ -15,6 +15,10 @@ export function setAppointment(id) {
   return fetch(`${API_URL}/appointments/${id}`).then((res) => res.json());
 }
 
+export function getAppointments() {
+  return fetch(`${API_URL}/appointments`).then((response) => response.json());
+}
+
 export function confirmAppointment(values) {
   return fetch(`${API_URL}/appointments/${values.id}`, {
     method: 'PATCH',

@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
 import {
   selectDepartment,
   setDepartments,
 } from '../../features/departments/departmentSlice';
 import './BookAppointment.css';
-import { createAppointment } from '../../features/appointments/appointmentSlice';
+import {
+  createAppointment,
+  setAppointments,
+} from '../../features/appointments/appointmentSlice';
 
 const BookAppointment = () => {
   const { doctors } = useSelector(selectDoctor);
   const { departments } = useSelector(selectDepartment);
+  const data = useSelector((state) => state.appointment.appointment);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(setDepartments());
@@ -20,6 +26,14 @@ const BookAppointment = () => {
   useEffect(() => {
     dispatch(setDoctors());
   }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(setAppointments());
+  }, [dispatch]);
+
+  const value = data.map((item) => item.id);
+  const almostId = value.slice(value.length - 1);
+  const id = Number(almostId) + 1;
 
   const [user, setUser] = useState({
     name: '',
@@ -40,6 +54,7 @@ const BookAppointment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(createAppointment(user));
+    navigate(`/appointment/${id}`);
   };
 
   return (
@@ -52,21 +67,21 @@ const BookAppointment = () => {
         <input
           name="name"
           type="text"
-          className="form__input"
+          className="appointmentForm__input"
           placeholder="Full name"
           onChange={handleInput}
         />
         <input
           name="email"
           type="email"
-          className="form__input"
+          className="appointmentForm__input"
           placeholder="Email address"
           onChange={handleInput}
         />
         <input
           name="date"
           type="date"
-          className="form__input form__input--date"
+          className="appointmentForm__input appointmentForm__input--date"
           placeholder="Booking date &nbsp;"
           onChange={handleInput}
         />

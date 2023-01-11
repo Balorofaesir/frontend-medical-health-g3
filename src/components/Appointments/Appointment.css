@@ -10,30 +10,38 @@
 }
 
 .appointment__formContainer {
-  display: flex;
-  flex-direction: column;
   margin: 0 8em;
+  font-size: 15px;
 }
 
 .form__fieldset {
   border: none;
   display: flex;
-  flex-direction: row;
-  color: gray;
+  flex-direction: column;
+  color: #565656;
   font-size: 16px;
 }
 
 .form__title {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 600;
   color: black;
 }
 
+.formSpan__group {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
 .form__label {
-  margin-bottom: 1em;
+  margin: 0 2em 1em;
+  width: 100%;
 }
 
 .form__input {
   width: 100%;
+  padding: 0.8em;
+  color: #565656;
 }

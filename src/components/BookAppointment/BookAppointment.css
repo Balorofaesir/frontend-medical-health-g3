@@ -1,4 +1,3 @@
-
 .containerBappoiment {
   background-color: white;
   max-width: 600px;
@@ -24,7 +23,7 @@
   margin: 0 2em;
 }
 
-.form__input {
+.appointmentForm__input {
   font-size: 20px;
   padding: 0.8em;
   margin-bottom: 0.5em;
