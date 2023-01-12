@@ -1,11 +1,17 @@
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Logins.css';
 import NamesPages from '../../components/NamePages/NamePages';
+import { createLogin} from '../../features/login/loginSlice';
+
+
 
 const Login = () => {
+  const dispatch = useDispatch();
+
   const [user, setUSer] = useState({
-    user: '',
+    email: '',
     password: '',
   });
 
@@ -24,6 +30,7 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createLogin(user))
   };
 
   return (
@@ -36,8 +43,8 @@ const Login = () => {
             Username or email
             <input
               type="text"
-              name="user"
-              value={user.user}
+              name="email"
+              value={user.email}
               className="loginForm__input"
               placeholder="Username or email"
               onChange={handleChange}
@@ -80,7 +87,7 @@ const Login = () => {
           <button type="submit" className="loginForm__btn">
             Login →
           </button>
-          <Link to="/signup" className="loginForm__link--signup">
+          <Link to="/sign-up" className="loginForm__link--signup">
             Don&apos;t have an account? Register now
           </Link>
         </form>
