@@ -1,23 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import {
-  getAppointment,
-  makeAppointment,
-} from '../../features/appointments/appointmentSlice';
-import {
-  selectDepartment,
-  setDepartments,
-} from '../../features/departments/departmentSlice';
+import { makeAppointment } from '../../features/appointments/appointmentSlice';
 import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
 import './Appointment.css';
 
 const Appointments = () => {
-  const { id } = useParams();
-  const { name, email, department, doctor, date, message } = useSelector(
-    (state) => state.appointment.appointment
-  );
-  const { departments } = useSelector(selectDepartment);
   const { doctors } = useSelector(selectDoctor);
   const dispatch = useDispatch();
   const country = ['Canada', 'Colombia', 'USA', 'Mexico'];
@@ -28,20 +15,21 @@ const Appointments = () => {
     'Hospital General de México',
   ];
 
-  useEffect(() => {
-    dispatch(getAppointment(id));
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(setDepartments());
-  }, [dispatch]);
+  const getLocalStorage = window.localStorage.getItem('appointment');
+  const data = JSON.parse(getLocalStorage);
+  const { user, email, doctor, specialty, reasonForConsultation, date } = data;
 
   useEffect(() => {
     dispatch(setDoctors());
   }, dispatch);
 
   const [appointment, setAppointment] = useState({
-    id,
+    user,
+    email,
+    doctor,
+    specialty,
+    reasonForConsultation,
+    date,
     phoneNumber: 0,
     nationality: '',
     residence: '',
@@ -73,10 +61,10 @@ const Appointments = () => {
               Patient name
               <input
                 type="text"
-                id="name"
-                name="name"
+                id="user"
+                name="user"
                 className="form__input"
-                defaultValue={name}
+                defaultValue={user}
                 onChange={handleInput}
               />
             </label>
@@ -108,9 +96,13 @@ const Appointments = () => {
               <select
                 name="nationality"
                 id="nationality"
-                className="form__input"
+                defaultValue="default"
+                className="form__input--select"
                 onChange={handleInput}
               >
+                <option value="default" hidden disabled>
+                  Select your country
+                </option>
                 {country.map((countries) => (
                   <option value={countries} key={countries}>
                     {countries}
@@ -136,9 +128,13 @@ const Appointments = () => {
               <select
                 name="residence"
                 id="residence"
-                className="form__input"
+                defaultValue="default"
+                className="form__input--select"
                 onChange={handleInput}
               >
+                <option value="default" hidden disabled>
+                  Select your country
+                </option>
                 {country.map((countries) => (
                   <option value={countries} key={countries}>
                     {countries}
@@ -149,27 +145,30 @@ const Appointments = () => {
           </span>
           <span>
             <label htmlFor="male">
-              Male
               <input
                 type="checkbox"
                 name="sex"
+                className="form__labelSex"
                 id="male"
                 value="male"
                 onChange={handleInput}
               />
+              Male
             </label>
             <label htmlFor="female">
-              Female
               <input
                 type="checkbox"
                 name="sex"
+                className="form__labelSex"
                 id="female"
                 value="female"
                 onChange={handleInput}
               />
+              Female
             </label>
           </span>
         </fieldset>
+
         <fieldset className="form__fieldset">
           <legend className="form__title">Appointment Information</legend>
           <span className="formSpan__group">
@@ -178,18 +177,21 @@ const Appointments = () => {
               <select
                 name="department"
                 id="department"
-                className="form__input"
+                className="form__input--select"
+                defaultValue={specialty}
                 onChange={handleInput}
               >
-                <option selected hidden>
-                  {department}
-                </option>
-                {departments.map((departmentOpt) => (
-                  <option
-                    value={departmentOpt.department}
-                    key={departmentOpt.id}
-                  >
-                    {departmentOpt.department}
+                {/* <option 
+                selected 
+                hidden 
+                defaultValue={specialty} 
+                key={specialty} 
+                > 
+                {specialty} 
+                </option> */}
+                {doctors.map((specialtyOpt) => (
+                  <option value={specialtyOpt.specialty} key={specialtyOpt._id}>
+                    {specialtyOpt.specialty}
                   </option>
                 ))}
               </select>
@@ -199,15 +201,15 @@ const Appointments = () => {
               <select
                 name="doctor"
                 id="doctor"
-                className="form__input"
+                className="form__input--select"
                 onChange={handleInput}
               >
-                <option selected hidden>
+                <option selected hidden defaultValue={doctor} key={doctor}>
                   {doctor}
                 </option>
                 {doctors.map((doctorOpt) => (
-                  <option value={doctorOpt.doctor} key={doctorOpt.id}>
-                    {doctorOpt.doctor}
+                  <option value={doctorOpt.name} key={doctorOpt._id}>
+                    {doctorOpt.name}
                   </option>
                 ))}
               </select>
@@ -219,7 +221,7 @@ const Appointments = () => {
               <select
                 name="hospital"
                 id="hospital"
-                className="form__input"
+                className="form__input--select"
                 onChange={handleInput}
               >
                 {hospital.map((hospitals) => (
@@ -238,14 +240,20 @@ const Appointments = () => {
               />
             </label>
           </span>
-          <span className="formSpan__group">
-            <label htmlFor="message" className="form__label">
-              Reason of consultation
-              <textarea defaultValue={message} name="message" />
-            </label>
-          </span>
+          <label htmlFor="message" className="form__label--message">
+            Reason of consultation
+            <textarea
+              defaultValue={reasonForConsultation}
+              name="reasonForConsultation"
+              cols="180"
+              rows="5"
+              className="form__textMessage"
+            />
+          </label>
         </fieldset>
-        <button type="submit">Submit →</button>
+        <button type="submit" className="form__button">
+          Submit →
+        </button>
       </form>
     </div>
   );

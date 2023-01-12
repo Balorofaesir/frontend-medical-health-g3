@@ -45,3 +45,35 @@
   padding: 0.8em;
   color: #565656;
 }
+
+.form__input--select {
+  width: 103.3%;
+  padding: 0.8em;
+  color: #565656;
+}
+
+.form__labelSex {
+  margin-left: 3em;
+}
+
+.form__label--message {
+  display: flex;
+  flex-direction: row;
+  margin-left: 2em;
+}
+
+.form__textMessage {
+  margin-top: 2em;
+  margin-left: -13.4em;
+  resize: none;
+}
+
+.form__button {
+  margin-left: 3em;
+  padding: 1em 2em;
+  margin-bottom: 3em;
+  background-color: #3eb6d6;
+  color: white;
+  font-size: 15px;
+  border: none;
+}

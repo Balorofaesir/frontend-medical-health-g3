@@ -1,41 +1,41 @@
-.containerBappoiment {
+.containerBappointment {
   background-color: white;
   max-width: 600px;
   text-align: left;
   margin: 0;
 }
 
-.containerBappoiment__title {
+.containerBappointment__title {
   margin: 0 1em;
   padding-top: 0.8em;
 }
 
-.containerBappoiment__paragraph {
+.containerBappointment__paragraph {
   font-size: 18px;
   font-weight: 600;
   color: grey;
   margin: 0.5em 1.8em 1.5em 1.8em;
 }
 
-.form {
+.formBappointment {
   display: flex;
   flex-direction: column;
   margin: 0 2em;
 }
 
-.appointmentForm__input {
+.formBappointment__input {
   font-size: 20px;
   padding: 0.8em;
   margin-bottom: 0.5em;
   border: 1px solid gray;
 }
 
-.form__input--date:before {
+.formBappointment__input--date:before {
   content: attr(placeholder);
   color: gray;
 }
 
-.form__select {
+.formBappointment__select {
   font-size: 20px;
   padding: 0.8em;
   margin-bottom: 0.5em;
@@ -44,15 +44,15 @@
   color: gray;
 }
 
-.form__select:checked {
+.formBappointment__select:checked {
   color: black;
 }
 
-.form__opt--disabled {
+.formBappointment__opt--disabled {
   color: gray;
 }
 
-.form__message {
+.formBappointment__message {
   font-size: 20px;
   padding: 0.8em;
   margin-bottom: 0.5em;
@@ -60,7 +60,7 @@
   background-color: white;
 }
 
-.form__btn {
+.formBappointment__btn {
   background-color: #3eb6d6;
   color: white;
   font-size: 20px;
