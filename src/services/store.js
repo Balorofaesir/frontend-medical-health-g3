@@ -4,6 +4,7 @@ import departmentReducer from '../features/departments/departmentSlice';
 import appointmentReducer from '../features/appointments/appointmentSlice';
 import productReducer from '../features/products/productSlice';
 import cartReducer from '../features/cart/cartSlice';
+import loginReducer from '../features/login/loginSlice';
 
 
 const store = configureStore({
@@ -13,6 +14,7 @@ const store = configureStore({
     appointment: appointmentReducer,
     product: productReducer,
     cart: cartReducer,
+    login: loginReducer,
   },
 });
 
