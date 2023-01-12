@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/Home';
 import CartPage from './pages/Cart';
+import ProductPage from './pages/products';
 import NotFound from './pages/NotFound404';
 import DoctorProfile from './pages/DoctorProfile/DoctorProfile';
 import FindDr from './pages/FindDoctor/FindADoctor';
@@ -29,6 +30,7 @@ const App = () => {
           <Route path="urgency" element={<Emergency />} />
         </Route>
         <Route path="/cart" element={<CartPage />} />
+        <Route path="/products" element={<ProductPage />} />
         <Route path="/doctorProfile" element={<DoctorProfile />}>
           <Route path=":doctorName" />
         </Route>

@@ -181,13 +181,13 @@ const Appointments = () => {
                 defaultValue={specialty}
                 onChange={handleInput}
               >
-                {/* <option 
-                selected 
-                hidden 
-                defaultValue={specialty} 
-                key={specialty} 
-                > 
-                {specialty} 
+                {/* <option
+                selected
+                hidden
+                defaultValue={specialty}
+                key={specialty}
+                >
+                {specialty}
                 </option> */}
                 {doctors.map((specialtyOpt) => (
                   <option value={specialtyOpt.specialty} key={specialtyOpt._id}>

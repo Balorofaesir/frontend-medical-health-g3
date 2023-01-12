@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.9.1",
     "moment": "^2.29.4",
     "prop-type": "^0.0.1",
     "prop-types": "^15.8.1",
@@ -11,9 +10,7 @@
     "react-big-calendar": "^1.5.2",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
-    "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.3",
-    "react-router-hash-link": "^2.4.3",
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
@@ -22,15 +19,12 @@
     "@testing-library/user-event": "^13.5.0",
     "eslint": "^8.27.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.10",
     "eslint-plugin-react-hooks": "^4.6.0",
     "json-server": "^0.17.1",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.8.1",
     "react-scripts": "5.0.1"
   },
   "scripts": {
