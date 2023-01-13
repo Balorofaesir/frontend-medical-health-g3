@@ -29,14 +29,14 @@ const loginSlice = createSlice({
       .addCase(createLogin.fulfilled, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
-        newState.appointment = action.payload;
+        newState.login = action.payload;
         return newState;
       })
       .addCase(createLogin.rejected, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.error = action.payload;
-      })
+      });
   },
 });
 

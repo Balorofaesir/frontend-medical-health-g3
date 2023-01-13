@@ -47,7 +47,13 @@ const Appointments = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(makeAppointment(appointment));
+    try {
+      dispatch(makeAppointment(appointment));
+      window.localStorage.removeItem('token');
+      setAppointment('');
+    } catch (err) {
+      throw new Error(err);
+    }
   };
 
   return (

@@ -1,4 +1,5 @@
 const API_URL = process.env.REACT_APP_API_URL;
+const token = window.localStorage.getItem('token');
 
 function sendAppointment(values) {
   return fetch(`${API_URL}/api/citas`, {
@@ -20,11 +21,12 @@ export function getAppointments() {
 }
 
 export function confirmAppointment(values) {
-  return fetch(`${API_URL}/api/citas/${values}`, {
+  return fetch(`${API_URL}/api/citas/`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-type': 'application/json',
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(values),
   }).then((res) => res.json());
