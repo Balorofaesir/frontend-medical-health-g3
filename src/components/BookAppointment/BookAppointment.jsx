@@ -1,33 +1,33 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
-import {
-  selectDepartment,
-  setDepartments,
-} from '../../features/departments/departmentSlice';
 import './BookAppointment.css';
-import { createAppointment } from '../../features/appointments/appointmentSlice';
 
 const BookAppointment = () => {
   const { doctors } = useSelector(selectDoctor);
-  const { departments } = useSelector(selectDepartment);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(setDepartments());
-  }, [dispatch]);
+  const setLocalStorage = (value) => {
+    try {
+      window.localStorage.setItem('appointment', JSON.stringify(value));
+    } catch (err) {
+      throw new Error(err);
+    }
+  };
 
   useEffect(() => {
     dispatch(setDoctors());
   }, [dispatch]);
 
   const [user, setUser] = useState({
-    name: '',
+    user: '',
     email: '',
     date: '',
-    department: '',
+    specialty: '',
     doctor: '',
-    message: '',
+    reasonForConsultation: '',
   });
 
   const handleInput = (e) => {
@@ -39,40 +39,41 @@ const BookAppointment = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createAppointment(user));
+    setLocalStorage(user);
+    navigate(`/appointment/`);
   };
 
   return (
-    <div className="containerBappoiment">
-      <h1 className="containerBappoiment__title">Book appointment</h1>
-      <p className="containerBappoiment__paragraph">
+    <div className="containerBappointment">
+      <h1 className="containerBappointment__title">Book appointment</h1>
+      <p className="containerBappointment__paragraph">
         Fillup the form to make an appointment with the doctor
       </p>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="formBappointment" onSubmit={handleSubmit}>
         <input
-          name="name"
+          name="user"
           type="text"
-          className="form__input"
+          className="formBappointment__input"
           placeholder="Full name"
           onChange={handleInput}
         />
         <input
           name="email"
           type="email"
-          className="form__input"
+          className="formBappointment__input"
           placeholder="Email address"
           onChange={handleInput}
         />
         <input
           name="date"
           type="date"
-          className="form__input form__input--date"
+          className="formBappointment__input formBappointment__input--date"
           placeholder="Booking date &nbsp;"
           onChange={handleInput}
         />
         <select
-          name="department"
-          className="form__select"
+          name="specialty"
+          className="formBappointment__select"
           defaultValue="default"
           onChange={handleInput}
         >
@@ -80,22 +81,22 @@ const BookAppointment = () => {
             value="default"
             disabled
             hidden
-            className="form__opt--disabled"
+            className="formBappointment__opt--disabled"
           >
             Department
           </option>
-          {departments.map((department) => (
+          {doctors.map((department) => (
             <option
-              value={department.department}
-              key={department.id}
-              className="form__opt"
+              value={department.specialty}
+              key={department._id}
+              className="formBappointment__opt"
             >
-              {department.department}
+              {department.specialty}
             </option>
           ))}
         </select>
         <select
-          className="form__select"
+          className="formBappointment__select"
           defaultValue="default"
           name="doctor"
           onChange={handleInput}
@@ -104,18 +105,22 @@ const BookAppointment = () => {
             Doctor
           </option>
           {doctors.map((doctor) => (
-            <option value={doctor.doctor} key={doctor.id} className="form__opt">
-              {doctor.doctor}
+            <option
+              value={doctor.name}
+              key={doctor._id}
+              className="formBappointment__opt"
+            >
+              {doctor.name}
             </option>
           ))}
         </select>
         <textarea
-          name="message"
-          className="form__message"
+          name="reasonForConsultation"
+          className="formBappointment__message"
           placeholder="Your message"
           onChange={handleInput}
         />
-        <button type="submit" className="form__btn">
+        <button type="submit" className="formBappointment__btn">
           Book appointment →
         </button>
       </form>
