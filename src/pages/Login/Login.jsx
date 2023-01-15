@@ -8,8 +8,10 @@ import LoginModal from './LoginModal';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const infoUser = useSelector((state) => state.login.login);
-  window.localStorage.setItem('token', infoUser.token);
+  const infoUser = useSelector((state) => state.login);
+  window.localStorage.setItem('token', infoUser.login.token);
+
+  /* const navigate = useNavigate(); */
 
   const [user, setUser] = useState({
     email: '',
@@ -34,15 +36,19 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(createLogin(user));
+      /* if (res === res.rejected) { */
+      /*   throw new Error('User not found'); */
+      /* } */
       setUser({
         email: '',
         password: '',
       });
+      /* navigate('/profile'); */
     } catch (err) {
       setErrorMessage(true);
       setTimeout(() => {
         setErrorMessage(false);
-      }, 5000);
+      }, 3000);
       throw new Error(err);
     }
   };
