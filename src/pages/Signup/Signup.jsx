@@ -3,8 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import './Signup.css';
 import NamesPages from '../../components/NamePages/NamePages';
 
-const API_URL = process.env.REACT_APP_API_URL;
-
 const Signup = () => {
   const [user, setUser] = useState({
     username: '',
@@ -29,16 +27,6 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const sendData = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    };
-    // esta función es asincronica
-    fetch(`${API_URL}/users`, sendData);
-    navigate('/profile');
   };
 
   return (
