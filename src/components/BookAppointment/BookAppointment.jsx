@@ -5,7 +5,7 @@ import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
 import './BookAppointment.css';
 
 const BookAppointment = () => {
-  const { doctors } = useSelector(selectDoctor);
+  const doctors = useSelector(selectDoctor);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
