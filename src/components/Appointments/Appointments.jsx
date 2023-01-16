@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { makeAppointment } from '../../features/appointments/appointmentSlice';
 import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
+import Modal from '../Modal/Modal';
 import './Appointment.css';
 
 const Appointments = () => {
@@ -58,6 +59,7 @@ const Appointments = () => {
 
   return (
     <div className="appointment__globalContainer">
+      <Modal text="Need to login" />
       <p className="appointment__introParagraph">If you need to appointment</p>
       <form onSubmit={handleSubmit} className="appointment__formContainer">
         <fieldset className="form__fieldset">

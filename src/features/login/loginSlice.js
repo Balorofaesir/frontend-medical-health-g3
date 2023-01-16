@@ -3,7 +3,7 @@ import sendLogin from './loginAPI';
 
 const initialState = {
   login: [],
-  loading: false,
+  status: 'idle',
   error: null,
 };
 
@@ -23,24 +23,27 @@ const loginSlice = createSlice({
     builder
       .addCase(createLogin.pending, (state) => {
         const newState = { ...state };
-        newState.loading = true;
+        newState.status = 'loading';
         newState.error = false;
         return newState;
       })
       .addCase(createLogin.fulfilled, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'succeeded';
         newState.login = action.payload;
-        newState.error = false;
         return newState;
       })
-      .addCase(createLogin.rejected, (state) => {
+      .addCase(createLogin.rejected, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
-        newState.error = true;
+        newState.status = 'failed';
+        newState.error = action.payload;
         return newState;
       });
   },
 });
+
+export const selectLogin = (state) => state.login.login;
+export const selectToken = (state) => state.login.login.token;
+export const selectStatus = (state) => state.login.status;
 
 export default loginSlice.reducer;
