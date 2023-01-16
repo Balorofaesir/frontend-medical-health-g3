@@ -4,12 +4,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { getDoctor } from '../../features/doctors/doctorSlice';
 
-const DoctorAndres = () => {
+const DoctorProfile = () => {
   const params = useParams();
-  const data = useSelector((state) => state.doctor.doctor);
+  const  data  = useSelector((state) => state.doctor.doctor);
 
   // const  data  = useSelector(selectDoctor);
-  console.log('params:', data.name);
+  console.log('params:', data);
   console.log('RESULT:', params._id);
   const dispatch = useDispatch();
   // const navigate = useNavigate();
@@ -17,7 +17,10 @@ const DoctorAndres = () => {
     dispatch(getDoctor(params._id));
   }, [dispatch]);
 
+  if (!data) return (<h1 className="doctor1">is loading</h1>);
+
   return (
+    <div>{ data?.name &&
     <div className="cont5">
       <div className="cont5__image">
         <img className="image" src={data.image} alt="doct" />
@@ -27,7 +30,7 @@ const DoctorAndres = () => {
         <h1>Qualifications</h1>
         <div>
           {data.qualifications.map((data1) => (
-            <p className="p1">- {data1}</p>
+            <p key={data1} className="p1">- {data1}</p>
           ))}
         </div>
       </div>
@@ -35,13 +38,13 @@ const DoctorAndres = () => {
         <h1>memberships</h1>
         <div>
           {data.memberships.map((data1) => (
-            <p className="p1">- {data1}</p>
+            <p key={data1} className="p1">- {data1}</p>
           ))}
         </div>
       </div>
       <div className="cont5__section3">
         <h1>Introduction</h1>
-        <p>{data.introduction}</p>
+        <div className='cont5__section3--p'><p>{data.introduction}</p></div>
         <ul>
           <li>Member of the royal college of surgeons of USA</li>
           <li>Member of the general dental council USA</li>
@@ -51,12 +54,13 @@ const DoctorAndres = () => {
         <h1>Skills</h1>
         <div>
           {data.skills.map((data1) => (
-            <p className="p1">- {data1}</p>
+            <p key={data1} className="p1">- {data1}</p>
           ))}
         </div>
       </div>
+    </div>}
     </div>
   );
 };
 
-export default DoctorAndres;
+export default DoctorProfile;
