@@ -1,17 +1,22 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Logins.css';
 import NamesPages from '../../components/NamePages/NamePages';
-import { createLogin } from '../../features/login/loginSlice';
-import LoginModal from './LoginModal';
+import {
+  createLogin,
+  selectStatus,
+  selectToken,
+} from '../../features/login/loginSlice';
+import Modal from '../../components/Modal/Modal';
+import Loading from '../../components/Loading/Loading';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const infoUser = useSelector((state) => state.login);
-  window.localStorage.setItem('token', infoUser.login.token);
-
-  /* const navigate = useNavigate(); */
+  const token = useSelector(selectToken);
+  window.localStorage.setItem('token', token);
+  const status = useSelector(selectStatus);
+  const navigate = useNavigate();
 
   const [user, setUser] = useState({
     email: '',
@@ -20,6 +25,22 @@ const Login = () => {
 
   const [checked, setChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (status === 'loading') {
+      setLoading(true);
+    } else if (status === 'succeeded') {
+      setLoading(false);
+      navigate('/');
+    } else if (status === 'failed') {
+      setLoading(false);
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 2000);
+    }
+  }, [status]);
 
   const handleChange = (e) => {
     setUser({
@@ -36,9 +57,6 @@ const Login = () => {
     e.preventDefault();
     try {
       dispatch(createLogin(user));
-      /* if (res === res.rejected) { */
-      /*   throw new Error('User not found'); */
-      /* } */
       setUser({
         email: '',
         password: '',
@@ -48,14 +66,15 @@ const Login = () => {
       setErrorMessage(true);
       setTimeout(() => {
         setErrorMessage(false);
-      }, 3000);
+      }, 2000);
       throw new Error(err);
     }
   };
 
   return (
     <div>
-      {errorMessage === true ? <LoginModal /> : null}
+      {loading === true ? <Loading /> : null}
+      {errorMessage === true ? <Modal text="Wrong Credentials" /> : null}
       <NamesPages />
       <div className="loginForm__globalContainer">
         <form className="loginForm__container" onSubmit={handleSubmit}>
