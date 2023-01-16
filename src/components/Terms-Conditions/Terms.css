@@ -1,0 +1,57 @@
+.termsOfService__global {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.termsOfService__container {
+  max-width: 40em;
+  overflow-y: auto;
+  height: 55vh;
+  padding: 3.75em 1.87em;
+  background: white;
+  border-radius: 0.25rem;
+  text-align: center;
+  font-size: 14px;
+}
+
+.termsOfService__container::-webkit-scrollbar {
+  width: 5px;
+  background-color: gray;
+}
+
+.termsOfService__container::-webkit-scrollbar-thumb {
+  background-color: #3eb6d6;
+}
+
+.termsOfService__subtitle {
+  font-weight: 700;
+}
+
+.termsOfService__agree--title span {
+  color: #3eb6d6;
+}
+
+.termsOfService__btn {
+  justify-content: space-between;
+  height: 3em;
+  width: calc(40% - 0.3em);
+  margin-left: 1em;
+  border: 0;
+  border-radius: 6px;
+  font-size: 19px;
+  font-weight: 600;
+  transition: 0.3s linear;
+  background-color: #3eb6d6;
+  color: white;
+}
+
+.termsOfService__btn:hover {
+  opacity: 0.6;
+}

@@ -1,9 +1,14 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './Signup.css';
 import NamesPages from '../../components/NamePages/NamePages';
+import Terms from '../../components/Terms-Conditions/Terms';
+import { openModal } from '../../features/modal/loginmodalSlice';
 
 const Signup = () => {
+  const { isOpen } = useSelector((state) => state.modal);
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     username: '',
     email: '',
@@ -12,7 +17,7 @@ const Signup = () => {
 
   const [checked, setChecked] = useState(false);
 
-  const navigate = useNavigate();
+  /* const navigate = useNavigate(); */
 
   const handleChange = ({ target }) => {
     setUser({
@@ -31,6 +36,7 @@ const Signup = () => {
 
   return (
     <div>
+      {isOpen && <Terms />}
       <NamesPages />
       <div className="signupForm__globalContainer">
         <form className="signupForm__container" onSubmit={handleSubmit}>
@@ -79,9 +85,13 @@ const Signup = () => {
                   required
                 />
                 I agree with the
-                <Link to="/conditions" className="signupForm__link--conditions">
+                <button
+                  onClick={() => dispatch(openModal())}
+                  type="button"
+                  className="signupForm__terms--conditions"
+                >
                   Terms & Conditions
-                </Link>
+                </button>
               </label>
             </span>
           </div>
