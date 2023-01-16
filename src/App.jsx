@@ -14,6 +14,7 @@ import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
+import Profile from './components/Profile/Profile';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -37,9 +38,10 @@ const App = () => {
         <Route path="/findDr" element={<FindDr />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/calendar" element={<Calendar />} />
-        <Route path="appointment/:id" element={<Appointments />} />
+        <Route path="appointment" element={<Appointments />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        <Route path="profile" element={<Profile />} />
       </Routes>
       <Footer />
     </div>

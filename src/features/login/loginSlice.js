@@ -24,19 +24,22 @@ const loginSlice = createSlice({
       .addCase(createLogin.pending, (state) => {
         const newState = { ...state };
         newState.loading = true;
+        newState.error = false;
         return newState;
       })
       .addCase(createLogin.fulfilled, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
-        newState.appointment = action.payload;
+        newState.login = action.payload;
+        newState.error = false;
         return newState;
       })
-      .addCase(createLogin.rejected, (state, action) => {
+      .addCase(createLogin.rejected, (state) => {
         const newState = { ...state };
         newState.loading = false;
-        newState.error = action.payload;
-      })
+        newState.error = true;
+        return newState;
+      });
   },
 });
 

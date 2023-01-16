@@ -1,24 +1,28 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Logins.css';
 import NamesPages from '../../components/NamePages/NamePages';
-import { createLogin} from '../../features/login/loginSlice';
-
-
+import { createLogin } from '../../features/login/loginSlice';
+import LoginModal from './LoginModal';
 
 const Login = () => {
   const dispatch = useDispatch();
+  const infoUser = useSelector((state) => state.login);
+  window.localStorage.setItem('token', infoUser.login.token);
 
-  const [user, setUSer] = useState({
+  /* const navigate = useNavigate(); */
+
+  const [user, setUser] = useState({
     email: '',
     password: '',
   });
 
   const [checked, setChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(false);
 
   const handleChange = (e) => {
-    setUSer({
+    setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
@@ -30,11 +34,28 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createLogin(user))
+    try {
+      dispatch(createLogin(user));
+      /* if (res === res.rejected) { */
+      /*   throw new Error('User not found'); */
+      /* } */
+      setUser({
+        email: '',
+        password: '',
+      });
+      /* navigate('/profile'); */
+    } catch (err) {
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 3000);
+      throw new Error(err);
+    }
   };
 
   return (
     <div>
+      {errorMessage === true ? <LoginModal /> : null}
       <NamesPages />
       <div className="loginForm__globalContainer">
         <form className="loginForm__container" onSubmit={handleSubmit}>
