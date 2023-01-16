@@ -97,8 +97,7 @@ const Header = ({ toggle, open }) => {
 
       <div className="navegationBar">
         {open && (
-          <section className="">
-            <ul>
+          <section className="navegationBarList">
               <button
                 className="Home__button"
                 type="button"
@@ -123,7 +122,6 @@ const Header = ({ toggle, open }) => {
                 Shop
               </button>
               <p>Blog</p>
-            </ul>
             <div>
               <img src="" alt="" />
               <img src="" alt="" />

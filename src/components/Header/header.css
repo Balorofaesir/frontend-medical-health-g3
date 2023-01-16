@@ -14,6 +14,14 @@
   flex-wrap: wrap;
   color: white;
 }
+.navegationBarList{
+display: flex;
+flex-direction: column;
+}
+.navegationBarList p{
+  justify-self: center;
+  justify-content: center;
+}
 .headerSmallerContainer {
   background-color: white;
   display: flex;
@@ -47,6 +55,7 @@
   padding: 0%;
   font: 16px Poppins, sans-serif;
   font-weight: 600;
+  margin: 16px;
 }
 .Home__button__white {
   background-color: transparent;
@@ -84,6 +93,7 @@
   display: flex;
   justify-content: center;
   color: black;
+  text-align: center;
 }
 .miniContainer3__img1__image {
   width: 30px;
@@ -107,5 +117,8 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+  }
+  .navegationBar{
+    display: none;
   }
 }

@@ -11,7 +11,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(setProducts());
   }, [dispatch]);
-
+console.log(products)
   const handleClick = (product, par2) => {
     dispatch(makeCartList({
       title: product.title,
