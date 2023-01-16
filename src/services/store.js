@@ -4,8 +4,8 @@ import departmentReducer from '../features/departments/departmentSlice';
 import appointmentReducer from '../features/appointments/appointmentSlice';
 import productReducer from '../features/products/productSlice';
 import cartReducer from '../features/cart/cartSlice';
-import userReducer from '../features/users/usersSlice';
-
+import loginReducer from '../features/login/loginSlice';
+import modalReducer from '../features/modal/loginmodalSlice';
 
 const store = configureStore({
   reducer: {
@@ -14,7 +14,8 @@ const store = configureStore({
     appointment: appointmentReducer,
     product: productReducer,
     cart: cartReducer,
-    user: userReducer,
+    login: loginReducer,
+    modal: modalReducer,
   },
 });
 

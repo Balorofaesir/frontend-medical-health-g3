@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import sendAppointment, {
   setAppointment,
   confirmAppointment,
+  getAppointments,
 } from './appointmentAPI';
 
 const initialState = {
@@ -23,6 +24,15 @@ export const getAppointment = createAsyncThunk(
   'appointment/getAppointment',
   async (id) => {
     const response = await setAppointment(id);
+
+    return response;
+  }
+);
+
+export const setAppointments = createAsyncThunk(
+  'appointment/getAppointments',
+  async () => {
+    const response = await getAppointments();
 
     return response;
   }
@@ -86,6 +96,22 @@ const appointmentSlice = createSlice({
         return newState;
       })
       .addCase(createAppointment.rejected, (state, action) => {
+        const newState = { ...state };
+        newState.loading = false;
+        newState.error = action.payload;
+      })
+      .addCase(setAppointments.pending, (state) => {
+        const newState = { ...state };
+        newState.loading = true;
+        return newState;
+      })
+      .addCase(setAppointments.fulfilled, (state, action) => {
+        const newState = { ...state };
+        newState.loading = false;
+        newState.appointment = action.payload;
+        return newState;
+      })
+      .addCase(setAppointments.rejected, (state, action) => {
         const newState = { ...state };
         newState.loading = false;
         newState.error = action.payload;
