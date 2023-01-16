@@ -129,11 +129,11 @@ const Appointments = () => {
             </label>
           </span>
           <span className="formSpan__group">
-            <label htmlFor="birth" className="form__label">
-            Appointment Date
+            <label htmlFor="date" className="form__label">
+            Appointment date
               <input
                 type="date"
-                id="birth"
+                id="date"
                 name="date"
                 className="form__input"
                 defaultValue={date}
