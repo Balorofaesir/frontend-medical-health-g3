@@ -5,6 +5,9 @@ const initialState = {
   login: [],
   status: 'idle',
   error: null,
+  isAuth: false,
+  token: null,
+  profile: null,
 };
 
 export const createLogin = createAsyncThunk(

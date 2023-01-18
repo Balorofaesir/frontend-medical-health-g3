@@ -37,7 +37,7 @@ const doctorSlice = createSlice({
   },
 });
 
-export const selectDoctor = (state) => state.doctor;
+export const selectDoctor = (state) => state.doctor.doctors;
 
 export const setData = () => {};
 export default doctorSlice.reducer;

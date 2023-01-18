@@ -15,6 +15,7 @@ import Login from './pages/Login/Login';
 import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
 import Profile from './components/Profile/Profile';
+import ProfilePage from './pages/profile';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="profile" element={<Profile />} />
+        <Route path='profile-page' element={<ProfilePage />} />
       </Routes>
       <Footer />
     </div>

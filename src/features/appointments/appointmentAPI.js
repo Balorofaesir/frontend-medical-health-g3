@@ -21,7 +21,7 @@ export function getAppointments() {
 }
 
 export function confirmAppointment(values) {
-  return fetch(`${API_URL}/api/citas/`, {
+  return fetch(`${API_URL}/api/citas`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',

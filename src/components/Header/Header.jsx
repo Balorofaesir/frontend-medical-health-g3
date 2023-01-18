@@ -23,6 +23,9 @@ const Header = ({ toggle, open }) => {
   function ClickCart() {
     navegat('/cart');
   }
+  function ClickProfile() {
+    navegat('/profile-page');
+  }
 
   return (
     <section>
@@ -69,6 +72,9 @@ const Header = ({ toggle, open }) => {
           </button>
           <button className="Home__button" type="button" onClick={ClickCart}>
             Shop
+          </button>
+          <button className="Home__button" type="button" onClick={ClickProfile}>
+            profile
           </button>
           <p>Blog</p>
         </section>
