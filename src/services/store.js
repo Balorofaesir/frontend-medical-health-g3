@@ -6,6 +6,7 @@ import productReducer from '../features/products/productSlice';
 import cartReducer from '../features/cart/cartSlice';
 import loginReducer from '../features/login/loginSlice';
 import modalReducer from '../features/modal/loginmodalSlice';
+import authReducer from '../features/auth/authSlice'
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     cart: cartReducer,
     login: loginReducer,
     modal: modalReducer,
+    auth: authReducer,
   },
 });
 

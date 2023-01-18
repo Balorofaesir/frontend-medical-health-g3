@@ -37,7 +37,7 @@ const Signup = () => {
       body: JSON.stringify(user),
     };
     // esta función es asincronica
-    fetch(`${API_URL}/users`, sendData);
+    fetch(`${API_URL}/api/users`, sendData);
     navigate('/profile');
   };
 
