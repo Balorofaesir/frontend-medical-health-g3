@@ -1,14 +1,13 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-function sendUser(values) {
-  return fetch(`${API_URL}/Users`, {
+async function sendUser(userData) {
+  const res = await fetch(`${API_URL}/api/users`, {
     method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify(values),
-  }).then((res) => res.json());
+    headers: new Headers({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify(userData)
+  });
+  if (res.ok) return res.json();
+  throw new Error('Email already taken!');
 }
 
 export function setUser(id) {
@@ -29,5 +28,4 @@ export function confirmUser(values) {
     body: JSON.stringify(values),
   }).then((res) => res.json());
 }
-
-export default sendUser;
+export default  sendUser
