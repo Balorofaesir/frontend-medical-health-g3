@@ -18,6 +18,7 @@ import Login from './pages/Login/Login';
 import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
 import Profile from './pages/Profile/Profile';
+// import Payments from './pages/Payment';
 // import { selectAuth,
   // setAuthUser
 // } from './features/auth/authSlice';
@@ -57,6 +58,7 @@ const App = () => {
         <Route path="appointment" element={<Appointments />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/payments" element={<Payments />} /> */}
         <Route
           path="profile"
           element={

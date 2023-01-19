@@ -1,8 +1,9 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-const getToken = () => localStorage.getItem('token');
+
 
 async function getMyProfile() {
+  const getToken = () => localStorage.getItem('token');
   const res = await fetch(`${API_URL}/api/users/me`, {
     headers: { Authorization: `Bearer ${getToken()}` },
   });
