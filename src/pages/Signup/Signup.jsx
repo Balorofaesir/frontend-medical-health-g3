@@ -1,60 +1,76 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import Modal from '../Modal/Modal';
+
 import './Signup.css';
 import NamesPages from '../../components/NamePages/NamePages';
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { createUser } from '../../features/users/usersSlice'
 
 const Signup = () => {
-  const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { firstName, lastName, password, email } = e.target;
+
+    try {
+      const action = createUser({
+        firstName: firstName.value,
+        lastName: lastName.value,
+        email: email.value,
+        password: password.value,
+      });
+      const { payload } = await dispatch(action);
+      const {token} = payload
+      window.localStorage.setItem('token', token)
+
+      localStorage.setItem('auth', JSON.stringify(payload));
+      navigate('/home');
+    } catch (err) {
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 200);
+      throw new Error(err);
+    }
+  };
+
 
   const [checked, setChecked] = useState(false);
 
-  const navigate = useNavigate();
-
-  const handleChange = ({ target }) => {
-    setUser({
-      ...user,
-      [target.name]: target.value,
-    });
-  };
 
   const handleCheck = () => {
     setChecked(!checked);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const sendData = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    };
-    // esta función es asincronica
-    fetch(`${API_URL}/users`, sendData);
-    navigate('/profile');
-  };
-
   return (
     <div>
+      {errorMessage === true ? <Modal text="Wrong Credentials" /> : null}
       <NamesPages />
       <div className="signupForm__globalContainer">
         <form className="signupForm__container" onSubmit={handleSubmit}>
           <h1 className="signupForm__title">Register</h1>
-          <label htmlFor="user" className="signupForm__label">
-            Username
+          <label htmlFor="firstName" className="signupForm__label">
+          firstName
             <input
               type="text"
-              name="username"
+              name="firstName"
               className="signupForm__input"
-              placeholder="Username"
-              onChange={handleChange}
+              placeholder="firstName"
+              required
+            />
+          </label>
+          <label htmlFor="lastName" className="signupForm__label">
+          lastName
+            <input
+              type="text"
+              name="lastName"
+              className="signupForm__input"
+              placeholder="lastName"
               required
             />
           </label>
@@ -65,7 +81,6 @@ const Signup = () => {
               name="email"
               className="signupForm__input"
               placeholder="Enter your email"
-              onChange={handleChange}
               required
             />
           </label>
@@ -76,7 +91,6 @@ const Signup = () => {
               name="password"
               className="signupForm__input"
               placeholder="Enter your password"
-              onChange={handleChange}
               required
             />
           </label>
