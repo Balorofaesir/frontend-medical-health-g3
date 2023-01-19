@@ -35,7 +35,6 @@ const Appointments = () => {
     residence: '',
     sex: '',
     hospital: '',
-    dateAppointment: '',
   });
 
   const handleInput = (e) => {
@@ -122,15 +121,14 @@ const Appointments = () => {
             </label>
           </span>
           <span className="formSpan__group">
-            <label htmlFor="date" className="form__label">
-              Appointment date
+            <label htmlFor="birth" className="form__label">
+              Date of birth
               <input
                 type="date"
-                id="date"
-                name="date"
+                id="birth"
+                name="birth"
                 className="form__input"
-                key={date}
-                defaultValue={date}
+                key="birth"
                 onChange={handleInput}
               />
             </label>
@@ -237,6 +235,8 @@ const Appointments = () => {
                 name="dateAppointment"
                 className="form__input"
                 id="dateAppointment"
+                key={date}
+                defaultValue={date}
                 onChange={handleInput}
               />
             </label>

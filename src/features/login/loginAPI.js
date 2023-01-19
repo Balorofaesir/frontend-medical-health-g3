@@ -22,4 +22,21 @@ async function sendLogin(values) {
   }
 }
 
+export async function validateUser(token) {
+  try {
+    const response = await fetch(
+      `http://localhost:8080/auth/local/activate/:${token}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error! status: ${response.status}`);
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (err) {
+    throw new Error(err);
+  }
+}
+
 export default sendLogin;

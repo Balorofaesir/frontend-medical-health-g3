@@ -3,6 +3,7 @@ import { getcarts, sendCartList } from './cartAPI';
 
 const initialState = {
   carts: [],
+  total: 0,
   loading: false,
   error: null,
 };
@@ -19,7 +20,7 @@ export const makeCartList = createAsyncThunk(
     const response = await sendCartList(values);
 
     return response;
-  },
+  }
 );
 
 const cartSlice = createSlice({
