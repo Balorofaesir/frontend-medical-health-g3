@@ -1,10 +1,10 @@
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
- align-items: center;
+  align-items: center;
 }
 
-.profile_container{
+.profile_container {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,7 +13,7 @@
   max-width: 300px;
   padding: 10px;
 }
-.profile_container1{
+.profile_container1 {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -21,12 +21,24 @@
 
   width: 320px;
   text-align: left;
-
 }
 
-
-.profile_container--containers{
+.profile_container--containers {
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+.profile__elementName {
+  text-transform: capitalize;
+  font-weight: 700;
+}
+
+.profile__elementName--element {
+  font-weight: 400;
+  margin-left: 0.3em;
+}
+
+.email {
+  text-transform: none;
 }

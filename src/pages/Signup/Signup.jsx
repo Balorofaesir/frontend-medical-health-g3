@@ -1,15 +1,24 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
-import './Signup.css';
 import NamesPages from '../../components/NamePages/NamePages';
+import Terms from '../../components/Terms/Terms';
+import './Signup.css';
 import { createUser } from '../../features/users/usersSlice';
+import { openModal } from '../../features/modal/loginmodalSlice';
 
 const Signup = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { isOpen } = useSelector((state) => state.modal);
   const [errorMessage, setErrorMessage] = useState(false);
+
+  const [checked, setChecked] = useState(false);
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,38 +48,33 @@ const Signup = () => {
     }
   };
 
-  const [checked, setChecked] = useState(false);
-
   const gender = ['Male', 'Female', 'Other'];
-
-  const handleCheck = () => {
-    setChecked(!checked);
-  };
 
   return (
     <div>
       {errorMessage === true ? <Modal text="Wrong Credentials" /> : null}
+      {isOpen && <Terms />}
       <NamesPages />
       <div className="signupForm__globalContainer">
         <form className="signupForm__container" onSubmit={handleSubmit}>
           <h1 className="signupForm__title">Register</h1>
           <label htmlFor="firstName" className="signupForm__label">
-            firstName
+            First Name
             <input
               type="text"
               name="firstName"
               className="signupForm__input"
-              placeholder="firstName"
+              placeholder="First Name"
               required
             />
           </label>
           <label htmlFor="lastName" className="signupForm__label">
-            lastName
+            Last Name
             <input
               type="text"
               name="lastName"
               className="signupForm__input"
-              placeholder="lastName"
+              placeholder="Last Name"
               required
             />
           </label>
@@ -95,11 +99,11 @@ const Signup = () => {
             />
           </label>
           <label htmlFor="gender" className="signupForm__label">
-            gender
+            Sex
             <select
               name="gender"
               id="gender"
-              className="form__input--select"
+              className="signupForm__input signupForm__input--select"
               required
               // onChange={handleInput}
             >
@@ -112,12 +116,12 @@ const Signup = () => {
           </label>
 
           <label htmlFor="password" className="signupForm__label">
-            birthday
+            Birthday
             <input
               type="date"
               name="birthday"
-              className="signupForm__input"
-              placeholder="birthday"
+              className="signupForm__input signupForm__input--date"
+              placeholder="Birthday"
               required
             />
           </label>
@@ -133,15 +137,25 @@ const Signup = () => {
                   required
                 />
                 I agree with the
-                <Link to="/conditions" className="signupForm__link--conditions">
+                <button
+                  onClick={() => dispatch(openModal())}
+                  type="button"
+                  className="signupForm__terms--conditions"
+                >
                   Terms & Conditions
-                </Link>
+                </button>
               </label>
             </span>
           </div>
-          <button type="submit" className="signupForm__btn">
-            Register now →
-          </button>
+          {checked === true ? (
+            <button type="submit" className="signupForm__btn">
+              Register now →
+            </button>
+          ) : (
+            <button type="submit" className="signupForm__btn" disabled>
+              Register now →
+            </button>
+          )}
           <Link to="/login" className="signupForm__link--login">
             Already have an account? Login
           </Link>
