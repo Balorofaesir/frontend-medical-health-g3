@@ -91,8 +91,8 @@ const Login = () => {
               </label>
             </span>
             <span className="loginForm__span">
-              <Link to="/" className="loginForm__link">
-                Forgot password?
+              <Link to="/sign-up" className="loginForm__link">
+                no user yet? Sign up here
               </Link>
             </span>
           </div>

@@ -50,7 +50,7 @@ const BookAppointment = () => {
         Fillup the form to make an appointment with the doctor
       </p>
       <form className="formBappointment" onSubmit={handleSubmit}>
-        <input
+        {/* <input
           name="user"
           type="text"
           className="formBappointment__input"
@@ -63,7 +63,7 @@ const BookAppointment = () => {
           className="formBappointment__input"
           placeholder="Email address"
           onChange={handleInput}
-        />
+        /> */}
         <input
           name="date"
           type="date"

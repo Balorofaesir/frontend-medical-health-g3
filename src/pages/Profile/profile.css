@@ -1,0 +1,32 @@
+.profile{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+}
+
+.profile_container{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  border: 1px solid grey;
+  max-width: 300px;
+  padding: 10px;
+}
+.profile_container1{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+
+  width: 320px;
+  text-align: left;
+
+}
+
+
+.profile_container--containers{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}

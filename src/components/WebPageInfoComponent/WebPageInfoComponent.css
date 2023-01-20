@@ -1,7 +1,7 @@
 .comp2FatherCont{
   display: flex;
-  flex-direction: row;
-  justify-content:space-evenly;
+  flex-direction:row;
+  justify-content:space-around;
   gap:25px;
   flex-wrap: wrap;
 }
@@ -13,6 +13,7 @@
 
 }
 .comp2Cont{
-  background-color: beige;
-  border: 25px solid beige;
+  background-color: white;
+  border: 25px solid white;
+  width: 188.08px;
 }

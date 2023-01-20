@@ -1,11 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+
 import './Articles.css';
 import image from './assets/portrait-beautiful-mature-woman-doctor-260nw-1680655153.webp';
 
-const Article = () => {
-  const navigate = useNavigate();
-
-  return (
+const Article = () =>  (
     <div className="cont">
       <div className="cont__text">
         <h1> Who we are</h1>
@@ -25,13 +22,7 @@ const Article = () => {
           magna juso lacini aget consectetur sed convallis at tellus.
         </p>
       </div>
-      <div className="cont__button">
-        <button type="button" onClick={() => navigate('#about')}>
-          About us
-        </button>
-      </div>
     </div>
   );
-};
 
 export default Article;

@@ -119,6 +119,10 @@
 .Products__Container--products--minicont{
   display: flex;
   flex-direction: row;
+}
+.Products__Container--products--name{
+  overflow-y:auto;
+  font-size: larger;
 
 }
 .Products__Container{

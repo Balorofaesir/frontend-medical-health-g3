@@ -10,8 +10,9 @@
 .cont6__elements{
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  height: 1000;
+  align-content: center;
 }
 
 .cont6__title{
