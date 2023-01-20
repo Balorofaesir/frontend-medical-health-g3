@@ -4,8 +4,9 @@ import NamesPages from '../components/NamePages/NamePages';
 import { setProducts, selectProduct } from '../features/products/productSlice';
 import { makeCartUser } from '../features/cart/cartSlice';
 // import { selectAuth } from '../features/auth/authSlice';
+import './Products.css';
 
-const HomePage = () => {
+const Products = () => {
   // const { profile } = useSelector(selectAuth);
   const { products } = useSelector(selectProduct);
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ const HomePage = () => {
           image: product.image,
           quantity: par2,
         },
-      },)
+      })
     );
   };
 
@@ -37,11 +38,13 @@ const HomePage = () => {
               <img
                 className="Products__Container--products--img"
                 src={data.image}
-                alt=""
+                alt={data.description}
               />
             </div>
-            <div className='Products__Container--products--name'>{data.title}</div>
-            <div>Price: {data.price}</div>
+            <div className="Products__Container--products--name">
+              <h6 className="productsContainer__title">{data.title}</h6>
+            </div>
+            <div>Price: $ {data.price}</div>
             <span className="Products__Container--products--minicont">
               <p>quantity</p>
               <input
@@ -52,6 +55,7 @@ const HomePage = () => {
             </span>
             <button
               type="button"
+              className="productsContainer__buttonAdd"
               onClick={() => {
                 const x = document.getElementById(data.id).value;
                 handleClick(data, x);
@@ -66,4 +70,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Products;

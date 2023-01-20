@@ -1,5 +1,6 @@
-.book{
-  background-image:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)), url('../components/Buttons/assets/Doctor-doctora.jpg');
+.book {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+    url('../components/Buttons/assets/Doctor-doctora.jpg');
   background-size: cover;
   display: flex;
   flex-direction: row;
@@ -7,4 +8,8 @@
   padding: 20px;
   gap: 40px;
   justify-content: center;
+}
+
+.book-two {
+  background-position: center 518px;
 }
