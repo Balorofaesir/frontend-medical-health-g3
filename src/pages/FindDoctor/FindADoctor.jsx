@@ -1,10 +1,6 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable no-self-compare */
-/* eslint-disable react/jsx-no-undef */
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-
 
 import { setDoctors, selectDoctor } from '../../features/doctors/doctorSlice';
 import './FindADoctor.css';
@@ -22,11 +18,11 @@ const FindADoctor = () => {
   // };
 
   function handleClick(data) {
-     navigate(`/Doctor/${data}`);
+    navigate(`/Doctor/${data}`);
   }
   function handleAppoiment() {
-    navigate(`/appointment/`)
- }
+    navigate(`/appointment/`);
+  }
 
   return (
     <section className="findDr_Main">
@@ -42,6 +38,7 @@ const FindADoctor = () => {
           </div>
           <div>Specialty: {data.specialty}</div>
           <button
+            className="findDr__button"
             type="button"
             onClick={() => {
               handleClick(data._id);
@@ -49,7 +46,13 @@ const FindADoctor = () => {
           >
             Professional details
           </button>
-          <button onClick={handleAppoiment} type="button">schedule an appointment</button>
+          <button
+            className="findDr__button"
+            onClick={handleAppoiment}
+            type="button"
+          >
+            Schedule an appointment
+          </button>
         </section>
       ))}
     </section>

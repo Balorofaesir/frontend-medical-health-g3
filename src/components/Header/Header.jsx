@@ -26,7 +26,6 @@ const Header = ({ toggle, open }) => {
   //   fetchProfile()
   // }, [])
 
-
   const handleLogout = () => {
     localStorage.removeItem('auth');
     localStorage.removeItem('token');
@@ -95,7 +94,13 @@ const Header = ({ toggle, open }) => {
             Home
           </button>
           {/* <p> About</p> */}
-          <button className="Home__button" type="button" onClick={ClickProducts}>Products</button>
+          <button
+            className="Home__button"
+            type="button"
+            onClick={ClickProducts}
+          >
+            Products
+          </button>
           {!isAuth ? (
             <button className="Home__button" type="button" onClick={ClickLogin}>
               Login
@@ -124,13 +129,17 @@ const Header = ({ toggle, open }) => {
             Cart
           </button>
           <p>Blog</p>
+          <button
+            className="Home__button"
+            onClick={handleAppoiment}
+            type="button"
+          >
+            Appointment
+          </button>
         </section>
         <section className="miniContainer4">
           <img src="" alt="" />
           <img src="" alt="" />
-          <button onClick={handleAppoiment} type="button">
-            Appointment
-          </button>
         </section>
         <div className="miniContainer3">
           <p className="miniContainer3__dots">...</p>
@@ -157,7 +166,13 @@ const Header = ({ toggle, open }) => {
               Home
             </button>
             {/* <p> About</p> */}
-            <button className="Home__button" type="button" onClick={ClickProducts}>Products</button>
+            <button
+              className="Home__button"
+              type="button"
+              onClick={ClickProducts}
+            >
+              Products
+            </button>
 
             {!isAuth ? (
               <button

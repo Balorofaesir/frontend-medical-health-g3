@@ -34,8 +34,8 @@ const Login = () => {
         password: password.value,
       });
       const { payload } = await dispatch(action);
-      const {token} = payload
-      window.localStorage.setItem('token', token)
+      const { token } = payload;
+      window.localStorage.setItem('token', token);
 
       localStorage.setItem('auth', JSON.stringify(payload));
       navigate('/profile');
@@ -43,7 +43,7 @@ const Login = () => {
       setErrorMessage(true);
       setTimeout(() => {
         setErrorMessage(false);
-      }, 200);
+      }, 1000);
       throw new Error(err);
     }
   };
@@ -54,27 +54,27 @@ const Login = () => {
       <NamesPages />
       <div className="loginForm__globalContainer">
         <form onSubmit={handleSubmit} className="loginForm__container">
-        <h1 className="loginForm__title">Login</h1>
-        <label htmlFor="user" className="loginForm__label">
-         login
-         <input
-            className="loginForm__input"
-            type="email"
-            name="email"
-            placeholder="email"
-            required
-          />
-        </label>
-        <label htmlFor="password" className="loginForm__label">
+          <h1 className="loginForm__title">Login</h1>
+          <label htmlFor="user" className="loginForm__label">
+            login
+            <input
+              className="loginForm__input"
+              type="email"
+              name="email"
+              placeholder="email"
+              required
+            />
+          </label>
+          <label htmlFor="password" className="loginForm__label">
             Password
-          <input
-            className="loginForm__input"
-            type="password"
-            name="password"
-            placeholder="password"
-            required
-          />
-        </label>
+            <input
+              className="loginForm__input"
+              type="password"
+              name="password"
+              placeholder="password"
+              required
+            />
+          </label>
           <div className="options__container">
             <span className="loginForm__span">
               <label htmlFor="remember" className="loginForm__labelOpt">
