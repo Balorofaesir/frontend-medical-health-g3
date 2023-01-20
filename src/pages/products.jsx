@@ -13,7 +13,7 @@ const HomePage = () => {
   useEffect(() => {
     dispatch(setProducts());
   }, [dispatch]);
-  console.log(products);
+  // console.log(products);
   const handleClick = (product, par2) => {
     dispatch(
       makeCartUser({
@@ -40,7 +40,7 @@ const HomePage = () => {
                 alt=""
               />
             </div>
-            <div>{data.title}</div>
+            <div className='Products__Container--products--name'>{data.title}</div>
             <div>Price: {data.price}</div>
             <span className="Products__Container--products--minicont">
               <p>quantity</p>

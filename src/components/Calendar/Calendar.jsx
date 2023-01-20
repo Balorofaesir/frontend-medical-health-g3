@@ -12,9 +12,9 @@ class MyCalendar extends Component {
   state = {
     events: [
       {
-        start: moment().toDate(),
+        start: (moment().toDate()),
         end: moment()
-          .add(1, 'days')
+          .add(0, 'days')
           .toDate(),
         title: 'Some title',
       },

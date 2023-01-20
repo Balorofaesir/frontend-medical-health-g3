@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 
+
 import { setDoctors, selectDoctor } from '../../features/doctors/doctorSlice';
 import './FindADoctor.css';
 
@@ -21,9 +22,11 @@ const FindADoctor = () => {
   // };
 
   function handleClick(data) {
-     navigate(`/DoctorProfile/${data}`);
-
+     navigate(`/Doctor/${data}`);
   }
+  function handleAppoiment() {
+    navigate(`/appointment/`)
+ }
 
   return (
     <section className="findDr_Main">
@@ -41,13 +44,12 @@ const FindADoctor = () => {
           <button
             type="button"
             onClick={() => {
-              const x = document.getElementById(data.id).value;
-              handleClick(data, x);
+              handleClick(data._id);
             }}
           >
             Professional details
           </button>
-          <button type="button">schedule an appointment</button>
+          <button onClick={handleAppoiment} type="button">schedule an appointment</button>
         </section>
       ))}
     </section>

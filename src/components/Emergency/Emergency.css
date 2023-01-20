@@ -1,9 +1,13 @@
 .cont1{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0px;
   background-color: #1867dd;
   color: white;
-  padding: 10px;
-  margin: 10px;
-  max-width: 350px;
+  width: 450px;
+  height: 520px;
+
 }
 
 .cont1 img{
@@ -14,7 +18,7 @@
 }
 
 h1, h2 {
-  font-size: 14px;
+  font-size: 18px;
   filter: opacity(0.9);
 }
 

@@ -1,6 +1,7 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { useState,
+import {
+  useState,
   // useEffect
 } from 'react';
 // import { useSelector, useDispatch } from 'react-redux';
@@ -20,7 +21,7 @@ import Appointments from './components/Appointments/Appointments';
 import Profile from './pages/Profile/Profile';
 // import Payments from './pages/Payment';
 // import { selectAuth,
-  // setAuthUser
+// setAuthUser
 // } from './features/auth/authSlice';
 // import useLocalStorage from './hooks/useLocalStorage';
 import RequireAuth from './features/auth/RequireAuth';
@@ -49,20 +50,34 @@ const App = () => {
         <Route path="/" element={<HomePage />}>
           <Route path="urgency" element={<Emergency />} />
         </Route>
-        <Route path="/cart" element={<CartPage />} />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth roles={['USER']}>
+              <CartPage />
+            </RequireAuth>
+          }
+        />
         <Route path="/products" element={<ProductPage />} />
         <Route path="doctor/:_id" element={<DoctorProfile />} />
         <Route path="/findDr" element={<FindDr />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/calendar" element={<Calendar />} />
-        <Route path="appointment" element={<Appointments />} />
+        <Route
+          path="appointment"
+          element={
+            <RequireAuth roles={['USER']}>
+              <Appointments />{' '}
+            </RequireAuth>
+          }
+        />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/payments" element={<Payments />} /> */}
         <Route
           path="profile"
           element={
-            <RequireAuth roles={["ADMIN","USER"]}>
+            <RequireAuth roles={['ADMIN', 'USER']}>
               <Profile />
             </RequireAuth>
           }

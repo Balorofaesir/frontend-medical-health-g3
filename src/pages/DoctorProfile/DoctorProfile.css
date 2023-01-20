@@ -31,7 +31,7 @@ max-width: 800px;
 .cont5__section3{
   display: flex;
   flex-direction: column;
-
+align-items: center;
 }
 .p1 {
     filter: opacity(0.6);

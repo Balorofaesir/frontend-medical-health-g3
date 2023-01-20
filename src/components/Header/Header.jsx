@@ -26,6 +26,7 @@ const Header = ({ toggle, open }) => {
   //   fetchProfile()
   // }, [])
 
+
   const handleLogout = () => {
     localStorage.removeItem('auth');
     localStorage.removeItem('token');
@@ -38,14 +39,20 @@ const Header = ({ toggle, open }) => {
   const ClickFindDr = () => {
     navegat('/FindDr');
   };
-  const ClickCart = () => {
+  const ClickProducts = () => {
     navegat('/products');
+  };
+  const ClickCart = () => {
+    navegat('/cart');
   };
   const ClickProfile = () => {
     navegat('/profile');
   };
   const ClickLogin = () => {
-    navegat('/profile');
+    navegat('/login');
+  };
+  const handleAppoiment = () => {
+    navegat(`/appointment`);
   };
 
   return (
@@ -87,8 +94,8 @@ const Header = ({ toggle, open }) => {
           <button className="Home__button" type="button" onClick={ClickHome}>
             Home
           </button>
-          <p> About</p>
-          <p>Pages</p>
+          {/* <p> About</p> */}
+          <button className="Home__button" type="button" onClick={ClickProducts}>Products</button>
           {!isAuth ? (
             <button className="Home__button" type="button" onClick={ClickLogin}>
               Login
@@ -114,14 +121,16 @@ const Header = ({ toggle, open }) => {
             </button>
           )}
           <button className="Home__button" type="button" onClick={ClickCart}>
-            Shop
+            Cart
           </button>
           <p>Blog</p>
         </section>
         <section className="miniContainer4">
           <img src="" alt="" />
           <img src="" alt="" />
-          <button type="button">Appointment</button>
+          <button onClick={handleAppoiment} type="button">
+            Appointment
+          </button>
         </section>
         <div className="miniContainer3">
           <p className="miniContainer3__dots">...</p>
@@ -147,8 +156,8 @@ const Header = ({ toggle, open }) => {
             <button className="Home__button" type="button" onClick={ClickHome}>
               Home
             </button>
-            <p> About</p>
-            <p>Pages</p>
+            {/* <p> About</p> */}
+            <button className="Home__button" type="button" onClick={ClickProducts}>Products</button>
 
             {!isAuth ? (
               <button
@@ -179,7 +188,7 @@ const Header = ({ toggle, open }) => {
               </button>
             )}
             <button className="Home__button" type="button" onClick={ClickCart}>
-              Shop
+              Cart
             </button>
             <p>Blog</p>
             <div>

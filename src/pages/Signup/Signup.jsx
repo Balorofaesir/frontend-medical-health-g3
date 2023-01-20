@@ -2,10 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../Modal/Modal';
-
 import './Signup.css';
 import NamesPages from '../../components/NamePages/NamePages';
-import { createUser } from '../../features/users/usersSlice'
+import { createUser } from '../../features/users/usersSlice';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -15,21 +14,22 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { firstName, lastName, password, email } = e.target;
+    const { firstName, lastName, password, email, birthday, gender } = e.target;
 
     try {
       const action = createUser({
-        firstName: firstName.value,
-        lastName: lastName.value,
-        email: email.value,
+        firstName: firstName.value.toUpperCase(),
+        lastName: lastName.value.toUpperCase(),
+        email: email.value.toLowerCase(),
         password: password.value,
+        birthday: birthday.value,
+        gender: gender.value,
       });
       const { payload } = await dispatch(action);
-      const {token} = payload
-      window.localStorage.setItem('token', token)
-
+      const { token } = payload;
+      window.localStorage.setItem('token', token);
       localStorage.setItem('auth', JSON.stringify(payload));
-      navigate('/home');
+      navigate('/');
     } catch (err) {
       setErrorMessage(true);
       setTimeout(() => {
@@ -39,9 +39,9 @@ const Signup = () => {
     }
   };
 
-
   const [checked, setChecked] = useState(false);
 
+  const gender = ['Male', 'Female', 'Other'];
 
   const handleCheck = () => {
     setChecked(!checked);
@@ -55,7 +55,7 @@ const Signup = () => {
         <form className="signupForm__container" onSubmit={handleSubmit}>
           <h1 className="signupForm__title">Register</h1>
           <label htmlFor="firstName" className="signupForm__label">
-          firstName
+            firstName
             <input
               type="text"
               name="firstName"
@@ -65,7 +65,7 @@ const Signup = () => {
             />
           </label>
           <label htmlFor="lastName" className="signupForm__label">
-          lastName
+            lastName
             <input
               type="text"
               name="lastName"
@@ -94,6 +94,34 @@ const Signup = () => {
               required
             />
           </label>
+          <label htmlFor="gender" className="signupForm__label">
+            gender
+            <select
+              name="gender"
+              id="gender"
+              className="form__input--select"
+              required
+              // onChange={handleInput}
+            >
+              {gender.map((data) => (
+                <option key={data} value={data}>
+                  {data}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label htmlFor="password" className="signupForm__label">
+            birthday
+            <input
+              type="date"
+              name="birthday"
+              className="signupForm__input"
+              placeholder="birthday"
+              required
+            />
+          </label>
+
           <div className="signupOptions__container">
             <span className="signupForm__span">
               <label htmlFor="conditions" className="signupForm__labelOpt">
