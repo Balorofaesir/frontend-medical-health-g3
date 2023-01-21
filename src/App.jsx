@@ -15,6 +15,7 @@ import Login from './pages/Login/Login';
 import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
 import Profile from './components/Profile/Profile';
+import Activate from './pages/Activate/Activate';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="profile" element={<Profile />} />
+        <Route path="activate/:token" element={<Activate />} />
       </Routes>
       <Footer />
     </div>

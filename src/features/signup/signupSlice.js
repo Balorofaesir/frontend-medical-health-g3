@@ -16,6 +16,15 @@ export const createUser = createAsyncThunk(
   }
 );
 
+export const verifyUser = createAsyncThunk(
+  'login/validateUser',
+  async (values) => {
+    const response = await sendUser(values);
+
+    return response;
+  }
+);
+
 const loginSlice = createSlice({
   name: 'signup',
   initialState,
@@ -34,6 +43,23 @@ const loginSlice = createSlice({
         return newState;
       })
       .addCase(createUser.rejected, (state, action) => {
+        const newState = { ...state };
+        newState.status = 'failed';
+        newState.error = action.payload;
+        return newState;
+      })
+      .addCase(verifyUser.pending, (state) => {
+        const newState = { ...state };
+        newState.status = 'loading';
+        return newState;
+      })
+      .addCase(verifyUser.fulfilled, (state, action) => {
+        const newState = { ...state };
+        newState.status = 'succeeded';
+        newState.login = action.payload;
+        return newState;
+      })
+      .addCase(verifyUser.rejected, (state, action) => {
         const newState = { ...state };
         newState.status = 'failed';
         newState.error = action.payload;

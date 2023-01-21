@@ -21,4 +21,19 @@ async function sendUser(values) {
   }
 }
 
+export async function validateUser(token) {
+  try {
+    const response = await fetch(
+      `http://localhost:8080/auth/local/activate/${token}`
+    );
+    if (!response.ok) {
+      throw new Error(`Error: ${response.status}`);
+    }
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 export default sendUser;

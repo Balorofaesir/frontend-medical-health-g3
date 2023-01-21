@@ -1,0 +1,26 @@
+.verifyAccount__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 7em;
+}
+
+.verifyAccount__title {
+  text-align: center;
+  font-size: 25px;
+}
+
+.verifyAccount__mebid {
+  color: #3ba6d6;
+}
+
+.verifyAccount__button {
+  width: 60%;
+  background-color: #3ba6d6;
+  margin: 0 auto;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 0.3em;
+  border: none;
+}
