@@ -1,7 +1,7 @@
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useSelector } from 'react-redux';
-import Checkout from '../../components/Checkout/checkout'
+import Checkout from '../../components/checkout/checkout'
 
 
 const stripePromise = loadStripe('pk_test_51MF1FLIZSTomfzNxuUMmwuqeHcBVN91SDeKA41JgafquANphGNXTItQUjBJBS29zIBruRYN1JeEIdEAG3UihDp3100eELLO47e')
