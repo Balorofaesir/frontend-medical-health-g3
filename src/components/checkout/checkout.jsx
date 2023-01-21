@@ -15,6 +15,7 @@ console.log(total)
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    const API_URL = process.env.REACT_APP_API_URL;
     const { error, paymentMethod} = await stripe.createPaymentMethod({
       type: 'card',
       card: elements.getElement(CardElement)
@@ -38,7 +39,7 @@ console.log(total)
         amount: Math.floor(200 * 100) // total.toFixed(2)
       })
     }
-    const response = await fetch('http://localhost:8080/api/payment', options)
+    const response = await fetch(`${API_URL}/api/payments`, options)
     const data = await response.json()
     console.log(`hola ${data}` )
     return data;

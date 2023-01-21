@@ -24,7 +24,7 @@ const BookAppointment = () => {
   const [user, setUser] = useState({
     user: '',
     email: '',
-    date: '',
+    dateAppointment: '',
     specialty: '',
     doctor: '',
     reasonForConsultation: '',
@@ -50,23 +50,9 @@ const BookAppointment = () => {
         Fillup the form to make an appointment with the doctor
       </p>
       <form className="formBappointment" onSubmit={handleSubmit}>
-        {/* <input
-          name="user"
-          type="text"
-          className="formBappointment__input"
-          placeholder="Full name"
-          onChange={handleInput}
-        />
         <input
-          name="email"
-          type="email"
-          className="formBappointment__input"
-          placeholder="Email address"
-          onChange={handleInput}
-        /> */}
-        <input
-          name="date"
-          type="date"
+          name="dateAppointment"
+          type="datetime-local"
           className="formBappointment__input formBappointment__input--date"
           placeholder="Booking date &nbsp;"
           onChange={handleInput}
@@ -106,7 +92,7 @@ const BookAppointment = () => {
           </option>
           {doctors.map((doctor) => (
             <option
-              value={doctor.name}
+              value={doctor._id}
               key={doctor._id}
               className="formBappointment__opt"
             >
