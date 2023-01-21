@@ -1,4 +1,3 @@
-/* import { useEffect, useState, useRef } from 'react'; */
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { GiCancel } from 'react-icons/gi';
@@ -12,9 +11,11 @@ import {
 } from '../../features/danielCart/danielCartSlice';
 import './compCart.css';
 
+
 const CompCart = () => {
   /* const { carts } = useSelector(selectCart); */
   const { cart, total } = useSelector((state) => state.danielCart);
+  localStorage.setItem("total", total);
   const dispatch = useDispatch();
   /* const ref = useRef(null); */
   /**/
@@ -136,7 +137,7 @@ const CompCart = () => {
         </div>
         <div className="CompCart__Container2__Cart__Line">
           <p>total</p>
-          <span>{total.toFixed(2)}</span>
+          <span>{total.toFixed(3)}</span>
         </div>
         <div className="CompCart__Container2__Cart__Line">
           <p>payable Total</p>

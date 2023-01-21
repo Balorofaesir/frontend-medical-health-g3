@@ -16,7 +16,7 @@ import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
 import Profile from './components/Profile/Profile';
 import Activate from './components/Activate/Activate';
-/* import Payment from './pages/Payment/Payment'; */
+import Payment from './pages/Payment/Payment';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -45,7 +45,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="profile" element={<Profile />} />
         <Route path="activate/:token" element={<Activate />} />
-        {/* <Route path="payment" element={<Payment />} /> */}
+        <Route path="payment" element={<Payment />} />
       </Routes>
       <Footer />
     </div>
