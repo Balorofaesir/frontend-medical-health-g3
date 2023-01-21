@@ -133,9 +133,13 @@ const Signup = () => {
                   required
                 />
                 I agree with the
-                <Link to="/conditions" className="signupForm__link--conditions">
+                <button
+                  // onClick={() => dispatch(openModal())}
+                  type="button"
+                  className="signupForm__terms--conditions"
+                >
                   Terms & Conditions
-                </Link>
+                </button>
               </label>
             </span>
           </div>

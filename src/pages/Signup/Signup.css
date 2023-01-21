@@ -47,10 +47,14 @@
   height: 1.2em;
 }
 
-.signupForm__link--conditions {
+.signupForm__terms--conditions {
   color: #3eb6d6;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18px;
+  border: none;
+  background-color: white;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .signupForm__link--login {
@@ -75,4 +79,3 @@
     width: 100%;
   }
 }
-

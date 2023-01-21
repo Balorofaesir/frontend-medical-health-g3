@@ -6,7 +6,7 @@ import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
 import './Appointment.css';
 
 const Appointments = () => {
-  const { doctors } = useSelector(selectDoctor);
+  const doctors = useSelector(selectDoctor);
   const dispatch = useDispatch();
 
 
@@ -15,7 +15,6 @@ const Appointments = () => {
   const { user, email, doctor, specialty, reasonForConsultation, date } = data;
 
   useEffect(() => {
-
     dispatch(setDoctors());
   }, [dispatch]);
 
@@ -26,13 +25,11 @@ const Appointments = () => {
     specialty,
     reasonForConsultation,
     date,
-
     phoneNumber: 0,
     nationality: '',
     residence: '',
     sex: '',
     hospital: '',
-    dateAppointment: '',
   });
 
   const handleInput = (e) => {
@@ -79,14 +76,6 @@ const Appointments = () => {
                 defaultValue={specialty}
                 onChange={handleInput}
               >
-                {/* <option
-                selected
-                hidden
-                defaultValue={specialty}
-                key={specialty}
-                >
-                {specialty}
-                </option> */}
                 {doctors.map((specialtyOpt) => (
                   <option value={specialtyOpt.specialty} key={specialtyOpt._id}>
                     {specialtyOpt.specialty}
@@ -99,12 +88,10 @@ const Appointments = () => {
               <select
                 name="doctor"
                 id="doctor"
+                defaultValue={doctor}
                 className="form__input--select"
                 onChange={handleInput}
               >
-                <option selected hidden defaultValue={doctor} key={doctor}>
-                  {doctor}
-                </option>
                 {doctors.map((doctorOpt) => (
                   <option value={doctorOpt._id} key={doctorOpt._id}>
                     {doctorOpt.name}

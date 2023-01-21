@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import sendLogin from './loginAPI';
+import sendLogin, { validateUser } from './loginAPI';
 
 const initialState = {
   login: [],
@@ -11,6 +11,15 @@ export const createLogin = createAsyncThunk(
   'login/createLogin',
   async (values) => {
     const response = await sendLogin(values);
+
+    return response;
+  }
+);
+
+export const activateUser = createAsyncThunk(
+  'signup/validateUser',
+  async (token) => {
+    const response = await validateUser(token);
 
     return response;
   }
@@ -34,6 +43,23 @@ const loginSlice = createSlice({
         return newState;
       })
       .addCase(createLogin.rejected, (state, action) => {
+        const newState = { ...state };
+        newState.status = 'failed';
+        newState.error = action.payload;
+        return newState;
+      })
+      .addCase(activateUser.pending, (state) => {
+        const newState = { ...state };
+        newState.status = 'loading';
+        return newState;
+      })
+      .addCase(activateUser.fulfilled, (state, action) => {
+        const newState = { ...state };
+        newState.status = 'succeeded';
+        newState.login = action.payload;
+        return newState;
+      })
+      .addCase(activateUser.rejected, (state, action) => {
         const newState = { ...state };
         newState.status = 'failed';
         newState.error = action.payload;

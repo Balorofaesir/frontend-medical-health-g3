@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import './Modal.css';
 
-const LoginModal = ({ text }) => (
+const Modal = ({ text }) => (
   <aside className="loginModal__container">
     <div className="loginModal">
       <h4>{text}</h4>
@@ -9,8 +9,8 @@ const LoginModal = ({ text }) => (
   </aside>
 );
 
-export default LoginModal;
+export default Modal;
 
-LoginModal.propTypes = {
+Modal.propTypes = {
   text: PropTypes.string.isRequired,
 };
