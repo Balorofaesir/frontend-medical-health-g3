@@ -134,7 +134,7 @@ const Signup = () => {
                 />
                 I agree with the
                 <button
-                  onClick={() => dispatch(openModal())}
+                  // onClick={() => dispatch(openModal())}
                   type="button"
                   className="signupForm__terms--conditions"
                 >

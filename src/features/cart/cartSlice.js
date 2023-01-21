@@ -6,7 +6,6 @@ const initialState = {
   total: 0,
   loading: false,
   error: null,
-  total: 0,
 };
 
 export const setCarts = createAsyncThunk('carts/getcarts', async () => {

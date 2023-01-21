@@ -1,53 +1,58 @@
-// import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
-// import { useAppContext } from "../../services/index"
+import { useSelector } from 'react-redux';
 
-// const CheckoutForm = () => {
-//   const stripe = useStripe();
-//   const elements = useElements();
-//   const { state } = useAppContext();
+const Checkout = () => {
+const elements = useElements();
+const stripe = useStripe();
+const { total } = useSelector((state) => state.danielCart);
+console.log(total)
 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
 
-//     const { error, paymentMethod } = await stripe.createPaymentMethod({
-//       type: 'card',
-//       card: elements.getElement(CardElement)
-//     })
 
-//     if (error) {
-//       console.log(error);
-//       return
-//     }
 
-//     const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmaXJzdE5hbWUiOiJDYW1pbG8iLCJsYXN0TmFtZSI6Ik1PUkVOTyIsImVtYWlsIjoiY3Jpc3RpYW4ubW9yZW5vQG1ha2VpdHJlYWwuY2FtcCIsImF2YXRhciI6IiIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNjcxMDQxNDYzLCJleHAiOjE2NzEwNzc0NjN9.-33g6TwL8lvZSrAd7tv1T4NeDh9Or9YMWmky1lGUIDE'
 
-//     const options = {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//         Authorization: `Bearer ${token}`
-//       },
-//       body: JSON.stringify({
-//         paymentMethod,
-//         amount: Math.floor(state.total * 100), // state.total -> $100 -> 10_000 cents
-//       })
-//     }
+  const handleSubmit = async (event) => {
+    event.preventDefault()
 
-//     const response = await fetch('http://localhost:8080/api/payments/', options)
-//     const data = await response.json()
-//     console.log("🚀 ~ file: CheckoutForm.jsx:36 ~ handleSubmit ~ data", data)
+    const { error, paymentMethod} = await stripe.createPaymentMethod({
+      type: 'card',
+      card: elements.getElement(CardElement)
+    })
 
-//     elements.getElement(CardElement).clear();
+    console.log(paymentMethod)
 
-//   }
+    if (error) {
+      throw new Error(error);
 
-//   return(
-//     <form onSubmit={handleSubmit}>
-//       <CardElement />
-//       <button type="submit">Pay</button>
-//     </form>
-//   )
-// }
+    }
+    // const Total = localStorage.getItem('total')
+    // cons
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        paymentMethod,
+        amount: Math.floor(200 * 100) // total.toFixed(2)
+      })
+    }
+    const response = await fetch('http://localhost:8080/api/payment', options)
+    const data = await response.json()
+    console.log(`hola ${data}` )
+    return data;
 
-// export default CheckoutForm
+    // elements.getElement(CardElement).clear();
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+    <CardElement />
+    <button type="submit">Pay</button>
+  </form>
+  )
+
+};
+
+export default Checkout;

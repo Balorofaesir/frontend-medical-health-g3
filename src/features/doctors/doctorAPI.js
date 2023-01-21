@@ -1,6 +1,6 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-async function getDoctors() {
+export async function getDoctors() {
   try {
     const response = await fetch(`${API_URL}api/doctors`);
     if (!response.ok) {
@@ -15,5 +15,3 @@ async function getDoctors() {
 export function getEspecificDoctor(id) {
   return fetch(`${API_URL}/api/doctors/${id}`).then((response) => response.json());
 }
-
-export default getDoctors;
