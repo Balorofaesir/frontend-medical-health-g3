@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getcarts, sendCartList } from './cartAPI';
+import { getcarts, sendCartList, confirmCart } from './cartAPI';
 
 const initialState = {
   carts: [],
   total: 0,
   loading: false,
   error: null,
+  total: 0,
 };
 
 export const setCarts = createAsyncThunk('carts/getcarts', async () => {
@@ -23,6 +24,16 @@ export const makeCartList = createAsyncThunk(
   }
 );
 
+export const makeCartUser = createAsyncThunk(
+  'cartList/createcartList',
+  async (values) => {
+    const response = await confirmCart(values);
+
+    return response;
+  },
+);
+
+
 const cartSlice = createSlice({
   name: 'carts',
   initialState,
@@ -37,6 +48,7 @@ const cartSlice = createSlice({
         const newState = { ...state };
         newState.loading = false;
         newState.carts = action.payload;
+        newState.total = ((acc, curr) => acc + curr.price, 0)
         return newState;
       })
       .addCase(setCarts.rejected, (state, action) => {

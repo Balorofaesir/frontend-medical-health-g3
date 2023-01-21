@@ -1,6 +1,10 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import {
+  useState,
+  // useEffect
+} from 'react';
+// import { useSelector, useDispatch } from 'react-redux';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomePage from './pages/Home';
@@ -14,15 +18,30 @@ import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
-import Profile from './components/Profile/Profile';
-import Activate from './components/Activate/Activate';
+import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
+// import Payments from './pages/Payment';
+// import { selectAuth,
+// setAuthUser
+// } from './features/auth/authSlice';
+// import useLocalStorage from './hooks/useLocalStorage';
+import RequireAuth from './features/auth/RequireAuth';
 
 const App = () => {
   const [open, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!open);
   };
+  // const dispatch = useDispatch();
+  // const storedValue = window.localStorage.getItem('auth');
+  // const { isAuth } = useSelector(selectAuth);
+
+  // useEffect(() => {
+  //   if (!isAuth ) {
+  //     dispatch((storedValue));
+  //   }
+  // }, [storedValue, isAuth, dispatch]);
+
   return (
     <div className="App">
       <header>
@@ -32,20 +51,39 @@ const App = () => {
         <Route path="/" element={<HomePage />}>
           <Route path="urgency" element={<Emergency />} />
         </Route>
-        <Route path="/cart" element={<CartPage />} />
+        <Route
+          path="/cart"
+          element={
+            <RequireAuth roles={['USER']}>
+              <CartPage />
+            </RequireAuth>
+          }
+        />
         <Route path="/products" element={<ProductPage />} />
-        <Route path="/doctorProfile" element={<DoctorProfile />}>
-          <Route path=":doctorName" />
-        </Route>
+        <Route path="doctor/:_id" element={<DoctorProfile />} />
         <Route path="/findDr" element={<FindDr />} />
         <Route path="/*" element={<NotFound />} />
         <Route path="/calendar" element={<Calendar />} />
-        <Route path="appointment" element={<Appointments />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="profile" element={<Profile />} />
-        <Route path="activate/:token" element={<Activate />} />
+        <Route
+          path="appointment"
+          element={
+            <RequireAuth roles={['USER']}>
+              <Appointments />{' '}
+            </RequireAuth>
+          }
+        />
         <Route path="payment" element={<Payment />} />
+        <Route path="/sign-up" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        {/* <Route path="/payments" element={<Payments />} /> */}
+        <Route
+          path="profile"
+          element={
+            <RequireAuth roles={['ADMIN', 'USER']}>
+              <Profile />
+            </RequireAuth>
+          }
+        />
       </Routes>
       <Footer />
     </div>

@@ -1,54 +1,76 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import Modal from '../Modal/Modal';
 import './Signup.css';
 import NamesPages from '../../components/NamePages/NamePages';
-import Terms from '../../components/Terms-Conditions/Terms';
-import { openModal } from '../../features/modal/loginmodalSlice';
+import { createUser } from '../../features/users/usersSlice';
 
 const Signup = () => {
-  const { isOpen } = useSelector((state) => state.modal);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [user, setUser] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const { firstName, lastName, password, email, birthday, gender } = e.target;
+
+    try {
+      const action = createUser({
+        firstName: firstName.value.toUpperCase(),
+        lastName: lastName.value.toUpperCase(),
+        email: email.value.toLowerCase(),
+        password: password.value,
+        birthday: birthday.value,
+        gender: gender.value,
+      });
+      const { payload } = await dispatch(action);
+      const { token } = payload;
+      window.localStorage.setItem('token', token);
+      localStorage.setItem('auth', JSON.stringify(payload));
+      navigate('/');
+    } catch (err) {
+      setErrorMessage(true);
+      setTimeout(() => {
+        setErrorMessage(false);
+      }, 200);
+      throw new Error(err);
+    }
+  };
 
   const [checked, setChecked] = useState(false);
 
-  /* const navigate = useNavigate(); */
-
-  const handleChange = ({ target }) => {
-    setUser({
-      ...user,
-      [target.name]: target.value,
-    });
-  };
+  const gender = ['Male', 'Female', 'Other'];
 
   const handleCheck = () => {
     setChecked(!checked);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <div>
-      {isOpen && <Terms />}
+      {errorMessage === true ? <Modal text="Wrong Credentials" /> : null}
       <NamesPages />
       <div className="signupForm__globalContainer">
         <form className="signupForm__container" onSubmit={handleSubmit}>
           <h1 className="signupForm__title">Register</h1>
-          <label htmlFor="user" className="signupForm__label">
-            Username
+          <label htmlFor="firstName" className="signupForm__label">
+            firstName
             <input
               type="text"
-              name="username"
+              name="firstName"
               className="signupForm__input"
-              placeholder="Username"
-              onChange={handleChange}
+              placeholder="firstName"
+              required
+            />
+          </label>
+          <label htmlFor="lastName" className="signupForm__label">
+            lastName
+            <input
+              type="text"
+              name="lastName"
+              className="signupForm__input"
+              placeholder="lastName"
               required
             />
           </label>
@@ -59,7 +81,6 @@ const Signup = () => {
               name="email"
               className="signupForm__input"
               placeholder="Enter your email"
-              onChange={handleChange}
               required
             />
           </label>
@@ -70,10 +91,37 @@ const Signup = () => {
               name="password"
               className="signupForm__input"
               placeholder="Enter your password"
-              onChange={handleChange}
               required
             />
           </label>
+          <label htmlFor="gender" className="signupForm__label">
+            gender
+            <select
+              name="gender"
+              id="gender"
+              className="form__input--select"
+              required
+              // onChange={handleInput}
+            >
+              {gender.map((data) => (
+                <option key={data} value={data}>
+                  {data}
+                </option>
+              ))}
+            </select>
+          </label>
+
+          <label htmlFor="password" className="signupForm__label">
+            birthday
+            <input
+              type="date"
+              name="birthday"
+              className="signupForm__input"
+              placeholder="birthday"
+              required
+            />
+          </label>
+
           <div className="signupOptions__container">
             <span className="signupForm__span">
               <label htmlFor="conditions" className="signupForm__labelOpt">

@@ -12,5 +12,8 @@ async function getDoctors() {
     throw new Error(err);
   }
 }
+export function getEspecificDoctor(id) {
+  return fetch(`${API_URL}/api/doctors/${id}`).then((response) => response.json());
+}
 
 export default getDoctors;

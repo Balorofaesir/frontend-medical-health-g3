@@ -1,0 +1,15 @@
+.productsContainer__title {
+  padding: 0;
+  margin: 0;
+  overflow-y: hidden;
+}
+
+.productsContainer__buttonAdd {
+  background-color: #3ba6d6;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 0.5em;
+  border: none;
+  cursor: pointer;
+}

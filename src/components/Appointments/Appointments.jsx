@@ -9,16 +9,11 @@ const Appointments = () => {
   const doctors = useSelector(selectDoctor);
   const dispatch = useDispatch();
 
-  const getLocalStorage = window.localStorage.getItem('appointment');
+
+  const getLocalStorage = localStorage.getItem('appointment');
   const data = JSON.parse(getLocalStorage);
   const { user, email, doctor, specialty, reasonForConsultation, date } = data;
-  const country = ['Canada', 'Colombia', 'USA', 'Mexico'];
-  const hospital = [
-    'Mebid Hospital',
-    'Centro Médico Nacional Siglo XXI',
-    'Hospital Ángeles Loma',
-    'Hospital General de México',
-  ];
+
   useEffect(() => {
     dispatch(setDoctors());
   }, [dispatch]);
@@ -47,145 +42,36 @@ const Appointments = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      dispatch(makeAppointment(appointment));
-      window.localStorage.removeItem('token');
+      const dataToSend = {
+        doctorId: appointment.doctor,
+        date: appointment.dateAppointment,
+        place: "virtual",
+        speciality:appointment.speciality,
+        reasonForConsultation:appointment.reasonForConsultation,
+      }
+      console.log(dataToSend)
+      dispatch(makeAppointment(dataToSend));
       setAppointment('');
     } catch (err) {
       throw new Error(err);
     }
   };
 
+
   return (
     <div className="appointment__globalContainer">
       {/* <Modal text="Need to login" /> */}
       <p className="appointment__introParagraph">If you need to appointment</p>
       <form onSubmit={handleSubmit} className="appointment__formContainer">
-        <fieldset className="form__fieldset">
-          <legend className="form__title">Patient Information</legend>
-          <span className="formSpan__group">
-            <label htmlFor="name" className="form__label">
-              Patient name
-              <input
-                type="text"
-                id="user"
-                name="user"
-                className="form__input"
-                key={user}
-                defaultValue={user}
-                onChange={handleInput}
-              />
-            </label>
-            <label htmlFor="email" className="form__label">
-              Email address
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="form__input"
-                key={email}
-                defaultValue={email}
-                onChange={handleInput}
-              />
-            </label>
-          </span>
-          <span className="formSpan__group">
-            <label htmlFor="phoneNumber" className="form__label">
-              Phone number
-              <input
-                type="text"
-                id="phoneNumber"
-                className="form__input"
-                key="phoneNumber"
-                name="phoneNumber"
-                onChange={handleInput}
-              />
-            </label>
-            <label htmlFor="nationality" className="form__label">
-              Nationality
-              <select
-                name="nationality"
-                id="nationality"
-                defaultValue="default"
-                className="form__input--select"
-                onChange={handleInput}
-              >
-                <option value="default" hidden disabled>
-                  Select your country
-                </option>
-                {country.map((countries) => (
-                  <option value={countries} key={countries}>
-                    {countries}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </span>
-          <span className="formSpan__group">
-            <label htmlFor="birth" className="form__label">
-              Date of birth
-              <input
-                type="date"
-                id="birth"
-                name="birth"
-                className="form__input"
-                key="birth"
-                onChange={handleInput}
-              />
-            </label>
-            <label htmlFor="residence" className="form__label">
-              Country of residence
-              <select
-                name="residence"
-                id="residence"
-                defaultValue="default"
-                className="form__input--select"
-                onChange={handleInput}
-              >
-                <option value="default" hidden disabled>
-                  Select your country
-                </option>
-                {country.map((countries) => (
-                  <option value={countries} key={countries}>
-                    {countries}
-                  </option>
-                ))}
-              </select>
-            </label>
-          </span>
-          <span>
-            <label htmlFor="male">
-              <input
-                type="checkbox"
-                name="sex"
-                className="form__labelSex"
-                id="male"
-                value="male"
-                onChange={handleInput}
-              />
-              Male
-            </label>
-            <label htmlFor="female">
-              <input
-                type="checkbox"
-                name="sex"
-                className="form__labelSex"
-                id="female"
-                value="female"
-                onChange={handleInput}
-              />
-              Female
-            </label>
-          </span>
-        </fieldset>
 
         <fieldset className="form__fieldset">
           <legend className="form__title">Appointment Information</legend>
           <span className="formSpan__group">
-            <label htmlFor="department" className="form__label">
+            <label htmlFor="specialty" className="form__label">
               Speciality
               <select
-                name="department"
-                id="department"
+                name="specialty"
+                id="specialty"
                 className="form__input--select"
                 defaultValue={specialty}
                 onChange={handleInput}
@@ -207,7 +93,7 @@ const Appointments = () => {
                 onChange={handleInput}
               >
                 {doctors.map((doctorOpt) => (
-                  <option value={doctorOpt.name} key={doctorOpt._id}>
+                  <option value={doctorOpt._id} key={doctorOpt._id}>
                     {doctorOpt.name}
                   </option>
                 ))}
@@ -215,7 +101,7 @@ const Appointments = () => {
             </label>
           </span>
           <span className="formSpan__group">
-            <label htmlFor="hospital" className="form__label">
+            {/* <label htmlFor="hospital" className="form__label">
               At the following hospital
               <select
                 name="hospital"
@@ -227,7 +113,7 @@ const Appointments = () => {
                   <option value={hospitals}>{hospitals}</option>
                 ))}
               </select>
-            </label>
+            </label> */}
             <label htmlFor="dateAppointment" className="form__label">
               Date of appointment
               <input
@@ -235,8 +121,6 @@ const Appointments = () => {
                 name="dateAppointment"
                 className="form__input"
                 id="dateAppointment"
-                key={date}
-                defaultValue={date}
                 onChange={handleInput}
               />
             </label>

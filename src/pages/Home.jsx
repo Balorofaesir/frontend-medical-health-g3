@@ -12,7 +12,7 @@ const HomePage = () => (
       <Button />
       <BookAppointment />
     </div>
-    <div className="book2">
+    <div className="book book-two">
       <Article />
       <Emergency />
     </div>
