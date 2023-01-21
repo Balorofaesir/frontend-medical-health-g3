@@ -144,7 +144,6 @@ const Signup = () => {
                 >
                   Terms & Conditions
                 </button>
-                </button>
               </label>
             </span>
           </div>

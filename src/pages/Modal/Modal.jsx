@@ -14,10 +14,10 @@ const Modal = ({ text, button, textButton }) => (
   </aside>
 );
 
-export default Modal;
+
 export default Modal;
 
-Modal.propTypes = {
+
 Modal.propTypes = {
   text: PropTypes.string.isRequired,
   button: PropTypes.func,
