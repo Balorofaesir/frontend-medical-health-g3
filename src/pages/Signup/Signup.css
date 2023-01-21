@@ -30,6 +30,15 @@
   font-size: 17px;
 }
 
+.signupForm__input--select {
+  background-color: white;
+  width: 100%;
+}
+
+.signupForm__input--date {
+  background-color: white;
+  width: 96.5%;
+}
 .signupOptions__container {
   margin: 0.5em 0 0.5em;
 }
@@ -61,7 +70,7 @@
   color: #565656;
   text-decoration: none;
   font-size: 17px;
-  margin-top: 1em;
+  margin: 1em 0 2em;
 }
 
 .signupForm__btn {
@@ -72,6 +81,29 @@
   border: none;
   font-size: 17px;
   width: 35%;
+  cursor: pointer;
+  transition: 0.6s;
+}
+
+.signupForm__btn:disabled {
+  background-color: gray;
+  color: white;
+  padding: 1em;
+  text-align: center;
+  border: none;
+  font-size: 17px;
+  width: 35%;
+  cursor: not-allowed;
+}
+
+.signupForm__terms--conditions {
+  color: #3eb6d6;
+  text-decoration: none;
+  font-size: 18px;
+  border: none;
+  background-color: white;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 @media (max-width: 700px) {

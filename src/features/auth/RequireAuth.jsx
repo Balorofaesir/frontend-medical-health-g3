@@ -1,22 +1,29 @@
 /* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
-import { Navigate } from "react-router-dom"
-import { useSelector } from "react-redux"
-
-import { selectAuth } from "./authSlice"
+import { Navigate, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Modal from '../../pages/Modal/Modal';
+import { selectAuth } from './authSlice';
 
 const RequireAuth = ({ children, roles }) => {
-  const { isAuth, profile } = useSelector(selectAuth)
+  const navigate = useNavigate();
+  const { isAuth, profile } = useSelector(selectAuth);
   if (!isAuth) {
-    return (console.log(alert("must login first")), <Navigate to="/login" />)
+    return (
+      <Modal
+        text="Must login first"
+        button={() => navigate('/login')}
+        textButton="Login"
+      />
+    );
   }
 
   if (roles && !roles.includes(profile.role)) {
-    return <Navigate to="/unauthorized" />
+    return <Navigate to="/unauthorized" />;
   }
-  return children
+  return children;
   // return (console.log("children:", children, "roles:", roles ))
-}
+};
 
-export default RequireAuth
+export default RequireAuth;

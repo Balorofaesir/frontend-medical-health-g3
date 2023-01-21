@@ -19,3 +19,13 @@
   padding: 2rem 1rem;
   text-align: center;
 }
+
+.buttonModal {
+  background-color: #3ba6d6;
+  color: white;
+  font-weight: 600;
+  border: none;
+  font-size: 20px;
+  padding: 0.5em;
+  border-radius: 6px;
+}

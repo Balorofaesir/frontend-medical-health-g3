@@ -9,18 +9,17 @@ const Appointments = () => {
   const doctors = useSelector(selectDoctor);
   const dispatch = useDispatch();
 
-
   const getLocalStorage = localStorage.getItem('appointment');
   const data = JSON.parse(getLocalStorage);
-  const { user, email, doctor, specialty, reasonForConsultation, date } = data;
+  const { doctor, specialty, reasonForConsultation, date } = data;
 
   useEffect(() => {
     dispatch(setDoctors());
   }, [dispatch]);
 
   const [appointment, setAppointment] = useState({
-    user,
-    email,
+    user: '',
+    email: '',
     doctor,
     specialty,
     reasonForConsultation,
@@ -45,11 +44,11 @@ const Appointments = () => {
       const dataToSend = {
         doctorId: appointment.doctor,
         date: appointment.dateAppointment,
-        place: "virtual",
-        speciality:appointment.speciality,
-        reasonForConsultation:appointment.reasonForConsultation,
-      }
-      console.log(dataToSend)
+        place: 'virtual',
+        speciality: appointment.specialty,
+        reasonForConsultation: appointment.reasonForConsultation,
+      };
+      console.log(dataToSend);
       dispatch(makeAppointment(dataToSend));
       setAppointment('');
     } catch (err) {
@@ -57,13 +56,11 @@ const Appointments = () => {
     }
   };
 
-
   return (
     <div className="appointment__globalContainer">
       {/* <Modal text="Need to login" /> */}
       <p className="appointment__introParagraph">If you need to appointment</p>
       <form onSubmit={handleSubmit} className="appointment__formContainer">
-
         <fieldset className="form__fieldset">
           <legend className="form__title">Appointment Information</legend>
           <span className="formSpan__group">
