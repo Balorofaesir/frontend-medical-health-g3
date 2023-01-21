@@ -1,8 +1,8 @@
 const API_URL = process.env.REACT_APP_API_URL;
 
-export async function getDoctors() {
+async function getCarts() {
   try {
-    const response = await fetch(`${API_URL}api/doctors`);
+    const response = await fetch(`${API_URL}/api/carts`);
     if (!response.ok) {
       throw new Error(`Error! status: ${response.status}`);
     }
@@ -12,6 +12,5 @@ export async function getDoctors() {
     throw new Error(err);
   }
 }
-export function getEspecificDoctor(id) {
-  return fetch(`${API_URL}/api/doctors/${id}`).then((response) => response.json());
-}
+
+export default getCarts;

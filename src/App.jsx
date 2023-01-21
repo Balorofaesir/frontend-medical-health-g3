@@ -19,6 +19,7 @@ import Login from './pages/Login/Login';
 import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
 import Profile from './pages/Profile/Profile';
+import Payment from './pages/Payment/Payment';
 // import Payments from './pages/Payment';
 // import { selectAuth,
 // setAuthUser
@@ -71,6 +72,7 @@ const App = () => {
             </RequireAuth>
           }
         />
+        <Route path="payment" element={<Payment />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/payments" element={<Payments />} /> */}

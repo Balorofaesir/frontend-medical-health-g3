@@ -3,9 +3,9 @@ import { getcarts, sendCartList, confirmCart } from './cartAPI';
 
 const initialState = {
   carts: [],
+  total: 0,
   loading: false,
   error: null,
-  total: 0,
 };
 
 export const setCarts = createAsyncThunk('carts/getcarts', async () => {
@@ -20,7 +20,7 @@ export const makeCartList = createAsyncThunk(
     const response = await sendCartList(values);
 
     return response;
-  },
+  }
 );
 
 export const makeCartUser = createAsyncThunk(
