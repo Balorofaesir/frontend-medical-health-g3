@@ -1,6 +1,8 @@
 .appointment__globalContainer {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+
 }
 
 .appointment__introParagraph {
@@ -10,70 +12,97 @@
 }
 
 .appointment__formContainer {
-  margin: 0 8em;
   font-size: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .form__fieldset {
   border: none;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   color: #565656;
   font-size: 16px;
+  align-content: center;
+  width: 100%;
 }
 
 .form__title {
   text-align: center;
-  font-size: 30px;
+  font-size: 18px;
   font-weight: 600;
   color: black;
 }
 
 .formSpan__group {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
+  gap: 0px;
+
+}
+.formSpan__group p{
+
+margin: 0;
 }
 
 .form__label {
-  margin: 0 2em 1em;
-  width: 100%;
+
 }
 
 .form__input {
-  width: 100%;
-  padding: 0.8em;
+
   color: #565656;
 }
 
 .form__input--select {
-  width: 103.3%;
-  padding: 0.8em;
   color: #565656;
 }
 
 .form__labelSex {
-  margin-left: 3em;
+  min-width: 211px;
 }
 
 .form__label--message {
   display: flex;
   flex-direction: row;
-  margin-left: 2em;
 }
 
 .form__textMessage {
-  margin-top: 2em;
-  margin-left: -13.4em;
-  resize: none;
+  resize:horizontal;
+}
+
+.form__textMessage{
+  resize:horizontal;
+  width: 100%;
+  height: 100px;
 }
 
 .form__button {
-  margin-left: 3em;
-  padding: 1em 2em;
-  margin-bottom: 3em;
   background-color: #3eb6d6;
   color: white;
-  font-size: 15px;
+  font-size: 30px;
   border: none;
+  align-self: center;
+  justify-self: center;
+  margin-top: 5px;
+}
+@media   (min-width:850px){
+
+.form__input{
+  width: 800px;
+}
+
+.form__input--select {
+  color: #565656;
+  width: 800px;
+}
+
+.form__textMessage{
+
+    resize:horizontal;
+    width: 800px;
+    height: 100px;
+  }
 }

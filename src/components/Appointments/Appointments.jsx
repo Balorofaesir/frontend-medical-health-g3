@@ -18,17 +18,11 @@ const Appointments = () => {
   }, [dispatch]);
 
   const [appointment, setAppointment] = useState({
-    user: '',
-    email: '',
+
     doctor,
     specialty,
     reasonForConsultation,
     dateAppointment,
-    phoneNumber: 0,
-    nationality: '',
-    residence: '',
-    sex: '',
-    hospital: '',
   });
 
   const handleInput = (e) => {
@@ -59,13 +53,14 @@ const Appointments = () => {
   return (
     <div className="appointment__globalContainer">
       {/* <Modal text="Need to login" /> */}
-      <p className="appointment__introParagraph">If you need to appointment</p>
       <form onSubmit={handleSubmit} className="appointment__formContainer">
         <fieldset className="form__fieldset">
-          <legend className="form__title">Appointment Information</legend>
+      <p className="appointment__introParagraph">If you need to appointment</p>
+
+          <h1 className="form__title">Appointment Information</h1>
           <span className="formSpan__group">
+            <p> specialty </p>
             <label htmlFor="specialty" className="form__label">
-              Speciality
               <select
                 name="specialty"
                 id="specialty"
@@ -80,8 +75,10 @@ const Appointments = () => {
                 ))}
               </select>
             </label>
+          </span>
+          <span className="formSpan__group">
+            <p>prefered doctor</p>
             <label htmlFor="doctor" className="form__label">
-              Preferred doctor
               <select
                 name="doctor"
                 id="doctor"
@@ -98,21 +95,8 @@ const Appointments = () => {
             </label>
           </span>
           <span className="formSpan__group">
-            {/* <label htmlFor="hospital" className="form__label">
-              At the following hospital
-              <select
-                name="hospital"
-                id="hospital"
-                className="form__input--select"
-                onChange={handleInput}
-              >
-                {hospital.map((hospitals) => (
-                  <option value={hospitals}>{hospitals}</option>
-                ))}
-              </select>
-            </label> */}
+            <p>date of appointment</p>
             <label htmlFor="dateAppointment" className="form__label">
-              Date of appointment
               <input
                 type="datetime-local"
                 name="dateAppointment"
@@ -123,20 +107,24 @@ const Appointments = () => {
               />
             </label>
           </span>
-          <label htmlFor="message" className="form__label--message">
-            Reason of consultation
-            <textarea
-              defaultValue={reasonForConsultation}
-              name="reasonForConsultation"
-              cols="180"
-              rows="5"
-              className="form__textMessage"
-            />
-          </label>
-        </fieldset>
-        <button type="submit" className="form__button">
+          <span className="formSpan__group">
+
+              <p>reason for consultation</p>
+              <label htmlFor="reasonForConsultation" className="form__label--message">
+                <input
+                  defaultValue={reasonForConsultation}
+                  name="reasonForConsultation"
+                  // cols="180"
+                  rows="5"
+                  className="form__textMessage"
+                />
+              </label>
+
+          </span>
+          <button type="submit" className="form__button">
           Submit →
         </button>
+        </fieldset>
       </form>
     </div>
   );

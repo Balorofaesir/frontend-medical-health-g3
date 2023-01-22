@@ -2,7 +2,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 async function getCarts() {
   try {
-    const response = await fetch(`${API_URL}/api/carts`);
+    const response = await fetch(`${API_URL}/api/products`);
     if (!response.ok) {
       throw new Error(`Error! status: ${response.status}`);
     }
