@@ -48,7 +48,6 @@ const Appointments = () => {
         speciality: appointment.specialty,
         reasonForConsultation: appointment.reasonForConsultation,
       };
-      console.log(dataToSend);
       dispatch(makeAppointment(dataToSend));
       setAppointment('');
     } catch (err) {
@@ -98,23 +97,10 @@ const Appointments = () => {
             </label>
           </span>
           <span className="formSpan__group">
-            {/* <label htmlFor="hospital" className="form__label">
-              At the following hospital
-              <select
-                name="hospital"
-                id="hospital"
-                className="form__input--select"
-                onChange={handleInput}
-              >
-                {hospital.map((hospitals) => (
-                  <option value={hospitals}>{hospitals}</option>
-                ))}
-              </select>
-            </label> */}
             <label htmlFor="dateAppointment" className="form__label">
               Date of appointment
               <input
-                type="datetime"
+                type="datetime-local"
                 name="dateAppointment"
                 className="form__input"
                 id="dateAppointment"

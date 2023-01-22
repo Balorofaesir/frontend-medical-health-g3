@@ -19,20 +19,18 @@ const Profile = () => {
       const responseAppointments = await getAppointmentsByUser();
       setAppointment(responseAppointments);
       setProfile(response);
-      console.log('profile', responseAppointments);
     };
     fetchData();
   }, []);
-  const doccc= () => {
-    if (appointment === null) {
-      return 'nada'
-    }
-     return appointment.map((doc) =>  doc.doctorId.name)
-  }
-  console.log("🚀 ~ file: Profile.jsx:27 ~ Profile ~ doccc", doccc())
-  window.localStorage.setItem('doctor', doccc())
 
-  console.log('state', profile);
+  const doccc = () => {
+    if (appointment === null) {
+      return 'nada';
+    }
+    return appointment.map((doc) => doc.doctorId);
+  };
+  window.localStorage.setItem('doctor', JSON.stringify(doccc()));
+
   return (
     <main>
       {profile === null ? <Loading /> : null}
