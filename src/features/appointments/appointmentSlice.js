@@ -7,7 +7,7 @@ import sendAppointment, {
 
 const initialState = {
   appointment: [],
-  loading: false,
+  status: 'idle',
   error: null,
 };
 
@@ -54,72 +54,70 @@ const appointmentSlice = createSlice({
     builder
       .addCase(makeAppointment.pending, (state) => {
         const newState = { ...state };
-        newState.loading = true;
+        newState.status = 'loading';
         return newState;
       })
       .addCase(makeAppointment.fulfilled, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'succeded';
         newState.appointment = action.payload;
         return newState;
       })
       .addCase(makeAppointment.rejected, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'failed';
         newState.error = action.payload;
       })
       .addCase(getAppointment.pending, (state) => {
         const newState = { ...state };
-        newState.loading = true;
+        newState.status = 'loading';
         return newState;
       })
       .addCase(getAppointment.fulfilled, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'succeded';
         newState.appointment = action.payload;
         return newState;
       })
       .addCase(getAppointment.rejected, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'failed';
         newState.error = action.payload;
       })
       .addCase(createAppointment.pending, (state) => {
         const newState = { ...state };
-        newState.loading = true;
+        newState.status = 'loading';
         return newState;
       })
       .addCase(createAppointment.fulfilled, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'succeded';
         newState.appointment = action.payload;
         return newState;
       })
       .addCase(createAppointment.rejected, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'failed';
         newState.error = action.payload;
       })
       .addCase(setAppointments.pending, (state) => {
         const newState = { ...state };
-        newState.loading = true;
+        newState.status = 'loading';
         return newState;
       })
       .addCase(setAppointments.fulfilled, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'succeded';
         newState.appointment = action.payload;
         return newState;
       })
       .addCase(setAppointments.rejected, (state, action) => {
         const newState = { ...state };
-        newState.loading = false;
+        newState.status = 'failed';
         newState.error = action.payload;
       });
   },
 });
-
-/* export const { makeAppointment } = appointmentSlice.actions; */
 
 export const selectAppointment = (state) => state.appointment;
 

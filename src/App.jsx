@@ -72,10 +72,9 @@ const App = () => {
             </RequireAuth>
           }
         />
-        <Route path="payment" element={<Payment />} />
+        <Route path="payment/:_id" element={<Payment />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/payments" element={<Payments />} /> */}
         <Route
           path="profile"
           element={
