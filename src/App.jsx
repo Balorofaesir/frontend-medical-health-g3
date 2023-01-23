@@ -20,6 +20,7 @@ import Emergency from './components/Emergency/Emergency';
 import Appointments from './components/Appointments/Appointments';
 import Profile from './pages/Profile/Profile';
 import Payment from './pages/Payment/Payment';
+import ProfileDoctor from './pages/profileDoctor/ProfileDoctor';
 // import Payments from './pages/Payment';
 // import { selectAuth,
 // setAuthUser
@@ -67,7 +68,7 @@ const App = () => {
         <Route
           path="appointment"
           element={
-            <RequireAuth roles={['USER']}>
+            <RequireAuth roles={['USER', 'ADMIN']}>
               <Appointments />{' '}
             </RequireAuth>
           }
@@ -78,9 +79,19 @@ const App = () => {
         <Route
           path="profile"
           element={
-            <RequireAuth roles={['ADMIN', 'USER']}>
+            <RequireAuth roles={['USER']}>
               <Profile />
             </RequireAuth>
+          }
+        />
+        <Route
+          path="profile-doctor"
+          element={
+
+              <ProfileDoctor />
+
+
+
           }
         />
       </Routes>
