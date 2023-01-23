@@ -12,6 +12,7 @@ const Appointments = () => {
   const getLocalStorage = localStorage.getItem('appointment');
   const data = JSON.parse(getLocalStorage);
   const { doctor, specialty, reasonForConsultation, dateAppointment } = data;
+  const { doctor, specialty, reasonForConsultation, dateAppointment } = data;
 
   useEffect(() => {
     dispatch(setDoctors());
@@ -102,6 +103,7 @@ const Appointments = () => {
                 name="dateAppointment"
                 className="form__input"
                 id="dateAppointment"
+                defaultValue={dateAppointment}
                 onChange={handleInput}
                 defaultValue={dateAppointment}
               />

@@ -1,0 +1,41 @@
+.paymentContainer__global {
+  display: flex;
+  flex-direction: column;
+  width: 30em;
+  margin: 0 auto;
+  margin-bottom: 3em;
+}
+.paymentContainer__local {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.paymentContainer__title {
+  color: #3ba6d6;
+  font-size: 40px;
+  margin-bottom: 0;
+}
+
+.payment__separator {
+  border: 2px solid black;
+  width: 100%;
+}
+
+.paymentData__element {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 0.5em;
+}
+
+.paymentData__value {
+  font-weight: 400;
+}
+
+.paymentData__price {
+  color: black;
+}
+
+.paymentData__value--price {
+  color: #3ba6d6;
+}

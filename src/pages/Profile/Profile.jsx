@@ -31,8 +31,7 @@ const Profile = () => {
       const responseAppoiments = await getAppointmentsByUser();
       setAppoiment(responseAppoiments);
       setProfile(response);
-      // console.log('state', appoiment);
-      // console.log('profile', profile);
+
     };
     fetchData();
   }, []);
@@ -116,6 +115,7 @@ const Profile = () => {
                   </div>
                   <div className="profile_container--containers">
                     <p>Doctor Name</p>
+                    <p>{data.doctorId?.name}</p>
                     <p>{data.doctorId?.name}</p>
                   </div>
                   <div className="profile_container--containers">
