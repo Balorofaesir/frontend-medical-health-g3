@@ -16,8 +16,8 @@ const HomePage = () => (
       <Article />
       <Emergency />
     </div>
-    <WebPageInfoComponent />
     <OurDepartment />
+    <WebPageInfoComponent />
   </section>
 );
 

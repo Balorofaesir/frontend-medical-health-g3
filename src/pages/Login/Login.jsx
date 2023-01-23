@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-curly-brace-presence */
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -16,12 +17,12 @@ const Login = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState(false);
 
-  const handleCheck = () => {
-    setChecked(!checked);
-  };
+  // const handleCheck = () => {
+  //   setChecked(!checked);
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,7 +77,7 @@ const Login = () => {
             />
           </label>
           <div className="options__container">
-            <span className="loginForm__span">
+            {/* <span className="loginForm__span">
               <label htmlFor="remember" className="loginForm__labelOpt">
                 <input
                   type="checkbox"
@@ -89,10 +90,10 @@ const Login = () => {
                 />
                 Remember me
               </label>
-            </span>
+            </span> */}
             <span className="loginForm__span">
               <Link to="/sign-up" className="loginForm__link">
-                no user yet? Sign up here
+              {"don't"} have an account yet? Sign Up!
               </Link>
             </span>
           </div>

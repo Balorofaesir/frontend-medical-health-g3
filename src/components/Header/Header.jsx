@@ -77,8 +77,8 @@ const Header = ({ toggle, open }) => {
             <BsTelephone /> (04) 8544 3222
           </p>
           <p>
-            <ImProfile /> User:{' '}
-            {isAuth ? <span>{profile.firstName} </span> : <span> </span>}
+            <ImProfile  /> User:{' '}
+            {isAuth ? <button type='button' onClick={ClickProfile} className="Home__button__white">{profile.firstName} </button> : <span> </span>}
           </p>
         </div>
       </section>

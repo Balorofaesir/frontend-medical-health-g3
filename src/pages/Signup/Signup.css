@@ -74,28 +74,36 @@
   font-size: 17px;
   margin: 1em 0 2em;
 }
+.signupForm__link--login:hover{
+  color: #3eb6d6;
+}
 
 .signupForm__btn {
-  background-color: #3eb6d6;
+   background-color: #3ba6d6;
   color: white;
-  padding: 1em;
-  text-align: center;
-  border: none;
-  font-size: 17px;
-  width: 35%;
-  cursor: pointer;
-  transition: 0.6s;
+  border: transparent;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 15px;
+  max-width: 350px;
 }
 
 .signupForm__btn:disabled {
-  background-color: gray;
+  background-color: #3ba6d6;
   color: white;
-  padding: 1em;
-  text-align: center;
-  border: none;
-  font-size: 17px;
-  width: 35%;
+  border: transparent;
+  padding: 5px;
+  font-size: 16px;
+  border-radius: 15px;
   cursor: not-allowed;
+}
+.signupForm__btn:hover {
+  color: rgb(0, 82, 185);
+  opacity: 80%;
+}
+.signupForm__btn:active {
+  background-color: rgb(0, 82, 185);
+  color: white;
 }
 
 .signupForm__terms--conditions {
@@ -106,6 +114,9 @@
   background-color: white;
   font-weight: 700;
   cursor: pointer;
+}
+.signupForm__terms--conditions:hover{
+  color: rgb(0, 82, 185);
 }
 
 @media (max-width: 700px) {
