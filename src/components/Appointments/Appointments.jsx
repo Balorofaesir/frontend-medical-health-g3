@@ -6,7 +6,7 @@ import { selectDoctor, setDoctors } from '../../features/doctors/doctorSlice';
 import './Appointment.css';
 
 const Appointments = () => {
- const navigate = useNavigate()
+  const navigate = useNavigate();
   const doctors = useSelector(selectDoctor);
   const dispatch = useDispatch();
   const getLocalData = () => {
@@ -44,7 +44,8 @@ const Appointments = () => {
     if (opt === 'Select specialty' || opt === 'Select doctor') {
       return (
         <select
-          name="specialty"
+          name="dateAppointment"
+          id="dateAppointment"
           className="form__input--select"
           defaultValue="default"
           onChange={handleInput}
@@ -53,9 +54,9 @@ const Appointments = () => {
           <option value="default" disabled hidden>
             {opt}
           </option>
-          {doctors.map((department) => (
-            <option value={department.specialty} key={department._id}>
-              {department.specialty}
+          {doctors.map((data) => (
+            <option value={data.specialty} key={data._id}>
+              {data.specialty}
             </option>
           ))}
         </select>
@@ -63,15 +64,55 @@ const Appointments = () => {
     }
     return (
       <select
-        name="specialty"
+        name="dateAppointment"
+        id="dateAppointment"
         className="form__input--select"
-        defaultValue={opt}
+        defaultValue="default"
         onChange={handleInput}
         required
       >
-        {doctors.map((department) => (
-          <option value={department.specialty} key={department._id}>
-            {department.specialty}
+        {doctors.map((data) => (
+          <option value={data.specialty} key={data._id}>
+            {data.specialty}
+          </option>
+        ))}
+      </select>
+    );
+  };
+  const options2 = (opt) => {
+    if (opt === 'Select specialty' || opt === 'Select doctor') {
+      return (
+        <select
+          name="doctor"
+          id="doctor"
+          className="form__input--select"
+          defaultValue="default"
+          onChange={handleInput}
+          required
+        >
+          <option value="default" disabled hidden>
+            {opt}
+          </option>
+          {doctors.map((data) => (
+            <option value={data.name} key={data._id}>
+              {data.name}
+            </option>
+          ))}
+        </select>
+      );
+    }
+    return (
+      <select
+        name="doctor"
+        id="doctor"
+        className="form__input--select"
+        defaultValue="default"
+        onChange={handleInput}
+        required
+      >
+        {doctors.map((data) => (
+          <option value={data.name} key={data._id}>
+            {data.name}
           </option>
         ))}
       </select>
@@ -88,9 +129,10 @@ const Appointments = () => {
         reasonForConsultation: appointment.reasonForConsultation,
       };
       dispatch(makeAppointment(dataToSend));
+      console.log(dataToSend)
       setAppointment('');
-      alert("appointment created")
-      navigate("/profile")
+      alert('appointment created');
+      navigate('/profile');
     } catch (err) {
       throw new Error(err);
     }
@@ -111,8 +153,8 @@ const Appointments = () => {
           </span>
           <span className="formSpan__group">
             <p>preferred doctor</p>
-            <label htmlFor="doctor" className="form__label" >
-              {options(doctor)}
+            <label htmlFor="doctor" className="form__label">
+              {options2(doctor)}
             </label>
           </span>
           <span className="formSpan__group">
@@ -139,6 +181,7 @@ const Appointments = () => {
                 defaultValue={reasonForConsultation}
                 name="reasonForConsultation"
                 cols="180"
+                id='reasonForConsultation'
                 rows="5"
                 className="form__textMessage"
                 required
