@@ -9,7 +9,7 @@ import { getAppointmentsByUser } from '../../features/appointments/appointmentAP
 // import Calendar from '../../components/Calendar/Calendar';
 import NamePages from '../../components/NamePages/NamePages';
 import './Profile.css';
-import { modProfile } from '../../features/users/usersSlice';
+import { modifyUser } from '../../features/users/usersAPI';
 
 const Profile = () => {
   // const { isAuth, profile } = useSelector(selectAuth);
@@ -53,8 +53,8 @@ const Profile = () => {
         gender: gender.value,
       };
       console.log(dataToSend, "id:", profile._id);
-      dispatch(modProfile(profile._id,dataToSend));
-      toggle();
+      dispatch(modifyUser(profile._id,dataToSend));
+
 
     } catch (err) {
       throw new Error(err);
@@ -170,7 +170,7 @@ const Profile = () => {
               id="email"
             />
           </label>
-          <label htmlFor="password" className="signupForm__label">
+          <label htmlFor="phone" className="signupForm__label">
             phone
             <input
               type="number"
@@ -211,7 +211,7 @@ const Profile = () => {
               ))}
             </select>
           </label>
-          <button type="submit" className="form__button">
+          <button type="submit" className="form__button" onClick={toggle}>
           edit profile
         </button>
         <button type="button" className="form__button" onClick={toggle}>

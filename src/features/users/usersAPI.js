@@ -13,7 +13,7 @@ async function sendUser(userData) {
 export async function modifyUser(id, userData) {
   const res = await fetch(`${API_URL}/api/users/edit/${id}`, {
     method: 'PATCH',
-    headers: {'Content-Type': 'application/json' },
+    headers: ({'Content-Type': 'application/json'}),
     body: JSON.stringify(userData)
   });
   if (res.ok) return res.json();
