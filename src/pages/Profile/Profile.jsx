@@ -1,4 +1,5 @@
 // import { useSelector, } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -15,6 +16,7 @@ const Profile = () => {
   // const { isAuth, profile } = useSelector(selectAuth);
   const [profile, setProfile] = useState(null);
   const [appoiment, setAppoiment] = useState(null);
+  const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
   const toggle = () => {
@@ -33,6 +35,14 @@ const Profile = () => {
     };
     fetchData();
   }, []);
+
+  const doccc = () => {
+    if (appoiment === null) {
+      return 'nada';
+    }
+    return appoiment.map((doc) => doc.doctorId);
+  };
+  window.localStorage.setItem('doctor', JSON.stringify(doccc()));
 
   const handleModifyProfileInput = (event) => {
     event.preventDefault();
@@ -127,6 +137,15 @@ const Profile = () => {
                         <p>Doctor specialty</p>
                         <p>{data.doctorId?.specialty}</p>
                       </div>
+                      <div className="profile_container--containers">
+                    <p>{`Price $ ${data.price}`}</p>
+                    <button
+                      type="button" className='Home__button'
+                      onClick={() => navigate(`/payment/${data._id}`)}
+                    >
+                      pay
+                    </button>
+                  </div>
                     </section>
                   );
                 })
