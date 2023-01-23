@@ -69,7 +69,7 @@ const BookAppointment = () => {
             hidden
             className="formBappointment__opt--disabled"
           >
-            Department
+            Specialty
           </option>
           {doctors.map((department) => (
             <option

@@ -31,8 +31,8 @@ const Profile = () => {
       const responseAppoiments = await getAppointmentsByUser();
       setAppoiment(responseAppoiments);
       setProfile(response);
-      console.log('state', appoiment);
-      console.log('profile', profile);
+      // console.log('state', appoiment);
+      // console.log('profile', profile);
     };
     fetchData();
   }, []);
@@ -52,7 +52,7 @@ const Profile = () => {
         birthday: birthday.value,
         gender: gender.value,
       };
-      console.log(dataToSend, "id:", profile._id);
+      // console.log(dataToSend, "id:", profile._id);
       dispatch(modifyUser(profile._id,dataToSend));
 
 
