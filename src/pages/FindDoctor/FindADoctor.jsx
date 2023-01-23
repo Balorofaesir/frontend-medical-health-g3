@@ -21,13 +21,13 @@ console.log()
     navigate(`/Doctor/${data}`);
   }
   function handleAppoiment() {
-    navigate(`/appointment/`);
+    navigate(`/appointment`);
   }
   console.log(doctors)
 
   return (
     <section className="findDr_Main">
-      {doctors.map((data) => (
+      {doctors && doctors.map((data) => (
         <section className="findDr_Main--container" key={data._id}>
           <p>{data.name} </p>
           <div>

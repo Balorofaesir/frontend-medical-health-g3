@@ -16,123 +16,133 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [appoiment, setAppoiment] = useState(null);
 
+  const [open, setOpen] = useState(false);
+  const toggle = () => {
+    setOpen(!open);
+  };
+  const genderOpt = ['Male', 'Female', 'Other'];
+  console.log(profile)
 
-
-    const [open, setOpen] = useState(false);
-    const toggle = () => {
-      setOpen(!open);
-    };
-    const genderOpt = ['Male', 'Female', 'Other'];
-
- const dispatch = useDispatch();
+  const dispatch = useDispatch();
   useEffect(() => {
     const fetchData = async () => {
       const response = await getMyProfile();
       const responseAppoiments = await getAppointmentsByUser();
       setAppoiment(responseAppoiments);
       setProfile(response);
-
     };
     fetchData();
   }, []);
 
-
-
-
   const handleModifyProfileInput = (event) => {
     event.preventDefault();
-    const { firstName, lastName, phone, email, birthday, gender } = event.target;
+    const { firstName, lastName, phone, email, date, gender } =
+      event.target;
     try {
       const dataToSend = {
         firstName: firstName.value.toUpperCase(),
         lastName: lastName.value.toUpperCase(),
         email: email.value.toLowerCase(),
         phone: phone.value,
-        birthday: birthday.value,
+        date: date.value,
         gender: gender.value,
       };
-      // console.log(dataToSend, "id:", profile._id);
-      dispatch(modifyUser(profile._id,dataToSend));
-
-
+      console.log(dataToSend, "id:", profile._id);
+      dispatch(modifyUser(profile._id, dataToSend));
     } catch (err) {
       throw new Error(err);
     }
   };
   return (
-    <main className='mainProfile'>
+    <main className="mainProfile">
       {profile === null ? <Loading /> : null}
       {appoiment === null ? <Loading /> : null}
-      {!open && <section className="profile">
-        <NamePages />
-        <section className="profile_container1">
-          <p className="Home__button">
-            Patient name:
-            {profile ? (
-              <span>
-                {' '}
-                {profile.firstName} {profile.lastName}
-              </span>
-            ) : (
-              <span>loading</span>
-            )}
-          </p>
-          <p className="Home__button">
-            email:
-            {profile ? <span> {profile.email}</span> : <span>loading</span>}
-          </p>
-          <p className="Home__button">
-            phone:
-            {profile ? <span> {profile.phone}</span> : <span>loading</span>}
-          </p>
-          <p className="Home__button">
-            gender:
-            {profile ? <span> {profile.gender}</span> : <span>loading</span>}
-          </p>
-          <p className="Home__button">
-            birthday:
-            {profile ? <span> {profile.birthday}</span> : <span>loading</span>}
-          </p>
-          <button type='button' onClick={toggle} className="form__button" >edit profile</button>
-        </section>
-        <section className="profile_container">
-          <h1>Appoiments</h1>
-          {appoiment ? (
-            appoiment.map((data) => {
-              const day = data.date?.slice(0, -14);
-              const hour = data.date?.slice(11, -5);
-              return (
-                <section key={data._id}>
-                  <div className="profile_container--containers">
+      {!open && (
+        <section className="profile">
+          <NamePages />
+          <div className="Profile--generalContainer">
+            <section className="profile_container1">
+              <p className="Home__button">
+                Patient name:
+                {profile ? (
+                  <span>
                     {' '}
-                    <p>appoiment date</p>
-                    <p> {day}</p>
-                  </div>
-                  <div className="profile_container--containers">
-                    {' '}
-                    <p>appoiment hour</p>
-                    <p> {hour}</p>
-                  </div>
-                  <div className="profile_container--containers">
-                    <p>Doctor Name</p>
-                    <p>{data.doctorId?.name}</p>
-                    <p>{data.doctorId?.name}</p>
-                  </div>
-                  <div className="profile_container--containers">
-                    <p>Doctor specialty</p>
-                    <p>{data.doctorId?.specialty}</p>
-                  </div>
-                </section>
-              );
-            })
-          ) : (
-            <div> 0 appoiments</div>
-          )}
+                    {profile.firstName} {profile.lastName}
+                  </span>
+                ) : (
+                  <span>loading</span>
+                )}
+              </p>
+              <p className="Home__button">
+                email:
+                {profile ? <span> {profile.email}</span> : <span>loading</span>}
+              </p>
+              <p className="Home__button">
+                phone:
+                {profile ? <span> {profile.phone}</span> : <span>loading</span>}
+              </p>
+              <p className="Home__button">
+                gender:
+                {profile ? (
+                  <span> {profile.gender}</span>
+                ) : (
+                  <span>loading</span>
+                )}
+              </p>
+              <p className="Home__button">
+                birthday:
+                {profile ? (
+                  <span> {profile.date.slice(0,-14)}</span>
+                ) : (
+                  <span>loading</span>
+                )}
+              </p>
+              <button type="button" onClick={toggle} className="form__button">
+                edit profile
+              </button>
+            </section>
+            <section className="profile_container">
+              <h1>Appointments</h1>
+              {appoiment ? (
+                appoiment.map((data) => {
+                  const day = data.date?.slice(0, -14);
+                  const hour = data.date?.slice(11, -5);
+                  return (
+                    <section key={data._id}>
+                      <div className="profile_container--containers">
+                        {' '}
+                        <p>appoiment date</p>
+                        <p> {day}</p>
+                      </div>
+                      <div className="profile_container--containers">
+                        {' '}
+                        <p>appoiment hour</p>
+                        <p> {hour}</p>
+                      </div>
+                      <div className="profile_container--containers">
+                        <p>Doctor Name</p>
+                        <p>{data.doctorId?.name}</p>
+                      </div>
+                      <div className="profile_container--containers">
+                        <p>Doctor specialty</p>
+                        <p>{data.doctorId?.specialty}</p>
+                      </div>
+                    </section>
+                  );
+                })
+              ) : (
+                <div> 0 appoiments</div>
+              )}
+            </section>
+            <section>{/* <Calendar date={appoiment}/> */}</section>
+          </div>
         </section>
-        <section>{/* <Calendar date={appoiment}/> */}</section>
-
-      </section>}
-      {open && <form className="signupForm__container" onSubmit={handleModifyProfileInput}>
+      )}
+      {open && (
+        <form
+          className="signupForm__container"
+          onSubmit={handleModifyProfileInput}
+        >
           {/* <h1 className="signupForm__title">Register</h1> */}
           <label htmlFor="firstName" className="signupForm__label">
             First Name
@@ -212,12 +222,13 @@ const Profile = () => {
             </select>
           </label>
           <button type="submit" className="form__button" onClick={toggle}>
-          edit profile
-        </button>
-        <button type="button" className="form__button" onClick={toggle}>
-          cancel edit
-        </button>
-        </form>}
+            edit profile
+          </button>
+          <button type="button" className="form__button" onClick={toggle}>
+            cancel edit
+          </button>
+        </form>
+      )}
     </main>
   );
 };

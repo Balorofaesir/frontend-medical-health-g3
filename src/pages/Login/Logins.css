@@ -7,7 +7,7 @@
 .loginForm__container {
   display: flex;
   flex-flow: column nowrap;
-  font-size: 17px;
+  font-size: 24px;
   color: #565656;
   width: 40%;
 }
@@ -54,13 +54,24 @@
 }
 
 .loginForm__btn {
-  background-color: #3eb6d6;
+  background-color: #3ba6d6;
   color: white;
-  padding: 1em;
-  text-align: center;
-  border: none;
-  font-size: 17px;
-  width: 35%;
+  border: transparent;
+  padding: 5px 0px 5px 0px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 15px;
+  width: 50%;
+  align-self: center;
+  font-size:xx-large;
+}
+.loginForm__btn:hover {
+  color: rgb(0, 82, 185);
+  opacity: 80%;
+ }
+.loginForm__btn:active {
+ background-color: rgb(0, 82, 185);
+ color: white;
 }
 
 .loginForm__link--signup {

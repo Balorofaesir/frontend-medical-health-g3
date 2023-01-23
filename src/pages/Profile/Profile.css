@@ -3,7 +3,14 @@
   flex-direction: column;
   flex-wrap: wrap;
 }
+.Profile--generalContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: space-between;
+  gap: 50px;
 
+}
 .profile {
   display: flex;
   flex-direction: column;
@@ -15,9 +22,14 @@
   justify-content: center;
   flex-direction: column;
   align-content: center;
-  border: 1px solid grey;
+  border: 2px solid rgb(0, 82, 185) !important;
+  margin:5px ;
+  padding: 0px;
   max-width: 300px;
-  padding: 10px;
+}
+.profile_container h1{
+  margin: 0px;
+  padding: 0px;
 }
 .profile_container1 {
   display: flex;

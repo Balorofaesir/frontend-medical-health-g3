@@ -13,6 +13,7 @@
   column-gap: 35px;
   flex-wrap: wrap;
   color: white;
+  align-items: baseline;
 }
 .navegationBarList{
 display: flex;
@@ -57,6 +58,14 @@ flex-direction: column;
   font-weight: 600;
   margin: 16px;
 }
+.Home__button:hover {
+  color: #3ba6d6;
+}
+.Home__button:active {
+  color:white;
+  background-color: #3ba6d6;
+  border-radius: 15px;
+}
 .Home__button__white {
   background-color: transparent;
   border: 0px;
@@ -64,7 +73,19 @@ flex-direction: column;
   font: 16px Poppins, sans-serif;
   font-weight: 600;
   color: white;
+  padding-right: 4px;
+  padding-left: 4px;
 }
+.Home__button__white:hover{
+  color: #3ba6d6;
+}
+.Home__button__white:active{
+  color: #3ba6d6;
+  color:white;
+  background-color: #3ba6d6;
+  border-radius: 15px;
+}
+
 .miniContainer2 {
   display: none;
   flex-direction: row;
