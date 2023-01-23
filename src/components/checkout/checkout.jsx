@@ -1,58 +1,51 @@
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-import { useSelector } from 'react-redux';
+const API_URL = process.env.REACT_APP_API_URL;
 
 const Checkout = () => {
-const elements = useElements();
-const stripe = useStripe();
-const { total } = useSelector((state) => state.danielCart);
-console.log(total)
-
-
-
-
-
+  const elements = useElements();
+  const stripe = useStripe();
   const handleSubmit = async (event) => {
-    event.preventDefault()
-
-    const { error, paymentMethod} = await stripe.createPaymentMethod({
+    event.preventDefault();
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: 'card',
-      card: elements.getElement(CardElement)
-    })
-
-    console.log(paymentMethod)
-
+      card: elements.getElement(CardElement),
+    });
     if (error) {
       throw new Error(error);
-
     }
-    // const Total = localStorage.getItem('total')
-    // cons
+    const amount = window.localStorage.getItem('price')
+    const token = 'pk_test_51MF1FLIZSTomfzNxuUMmwuqeHcBVN91SDeKA41JgafquANphGNXTItQUjBJBS29zIBruRYN1JeEIdEAG3UihDp3100eELLO47e'
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({
         paymentMethod,
-        amount: Math.floor(200 * 100) // total.toFixed(2)
-      })
-    }
-    const response = await fetch('http://localhost:8080/api/payment', options)
-    const data = await response.json()
-    console.log(`hola ${data}` )
+        amount: Math.floor(amount * 100),
+      }),
+    };
+    const response = await fetch(
+      `${API_URL}/api/payment`,
+      options
+    );
+    const data = await response.json();
     return data;
-
-    // elements.getElement(CardElement).clear();
-  }
-
+  };
   return (
     <form onSubmit={handleSubmit}>
-    <CardElement />
-    <button type="submit">Pay</button>
-  </form>
-  )
-
+      <CardElement />
+      <button type="submit">Pay</button>
+    </form>
+  );
 };
-
 export default Checkout;
+
+
+
+
+
+
+

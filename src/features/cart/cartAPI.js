@@ -2,11 +2,11 @@ const API_URL = process.env.REACT_APP_API_URL;
 const token = localStorage.getItem('token');
 
 export function getcarts() {
-  return fetch(`${API_URL}/api/users`).then((response) => response.json());
+  return fetch(`${API_URL}/api/products`).then((response) => response.json());
 }
 
 export function sendCartList(values) {
-  return fetch(`${API_URL}/api/users`, {
+  return fetch(`${API_URL}/api/products`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -17,7 +17,7 @@ export function sendCartList(values) {
 }
 
 export function setCartList(values) {
-  return fetch(`${API_URL}/api/users`, {
+  return fetch(`${API_URL}/api/products`, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -28,7 +28,7 @@ export function setCartList(values) {
 }
 
 export function confirmCart(values, id) {
-  return fetch(`${API_URL}/api/users/${id}`, {
+  return fetch(`${API_URL}/api/products/${id}`, {
     method: 'PATCH',
     headers: {
       Accept: 'application/json',

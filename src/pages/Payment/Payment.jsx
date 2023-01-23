@@ -3,7 +3,7 @@ import { loadStripe } from '@stripe/stripe-js';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Checkout from '../../components/Checkout/Checkout';
+import Checkout from "../../components/checkout/checkout"
 import { getAppointment } from '../../features/appointments/appointmentSlice';
 import Loading from '../Loading/Loading';
 import  './Payment.css';

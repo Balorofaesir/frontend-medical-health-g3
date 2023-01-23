@@ -1,3 +1,9 @@
+.mainProfile{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .profile {
   display: flex;
   flex-direction: column;

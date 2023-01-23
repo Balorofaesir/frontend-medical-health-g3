@@ -6,7 +6,7 @@ import { setDoctors, selectDoctor } from '../../features/doctors/doctorSlice';
 import './FindADoctor.css';
 
 const FindADoctor = () => {
-  const { doctors } = useSelector(selectDoctor);
+  const  doctors  = useSelector(selectDoctor);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -16,13 +16,14 @@ const FindADoctor = () => {
   //   console.log();
   //   setIdDoctors();
   // };
-
+console.log()
   function handleClick(data) {
     navigate(`/Doctor/${data}`);
   }
   function handleAppoiment() {
     navigate(`/appointment/`);
   }
+  console.log(doctors)
 
   return (
     <section className="findDr_Main">

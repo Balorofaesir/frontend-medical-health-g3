@@ -8,7 +8,7 @@ import './Products.css';
 
 const Products = () => {
   // const { profile } = useSelector(selectAuth);
-  const { products } = useSelector(selectProduct);
+  const  {products}  = useSelector(selectProduct);
   const dispatch = useDispatch();
 
   useEffect(() => {

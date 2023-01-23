@@ -209,7 +209,13 @@ const Header = ({ toggle, open }) => {
             <div>
               <img src="" alt="" />
               <img src="" alt="" />
-              <button type="button">Appointment</button>
+              <button
+            className="Home__button"
+            onClick={handleAppoiment}
+            type="button"
+          >
+            Appointment
+          </button>
             </div>
           </section>
         )}

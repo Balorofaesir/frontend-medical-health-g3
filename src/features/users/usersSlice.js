@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import sendUser, {
   setUser,
   confirmUser,
+  modifyUser,
 } from './usersAPI';
 
 const initialState = {
@@ -27,6 +28,14 @@ export const getUser = createAsyncThunk(
     return response;
   }
 );
+export const modProfile = createAsyncThunk(
+  'User/modifyUser',
+  async (id, value) => {
+    const response = await modifyUser(id, value)
+    return response
+  }
+
+)
 
 export const makeUser = createAsyncThunk(
   'User/setUser',

@@ -25,7 +25,7 @@ async function sendLogin(values) {
 export async function validateUser(token) {
   try {
     const response = await fetch(
-      `${API_URL}auth/local/activate/:${token}`
+      `${API_URL}/auth/local/activate/:${token}`
     );
 
     if (!response.ok) {
