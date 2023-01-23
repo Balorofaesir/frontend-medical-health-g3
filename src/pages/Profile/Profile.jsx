@@ -92,7 +92,7 @@ const Profile = () => {
               <p className="Home__button">
                 birthday:
                 {profile ? (
-                  <span> {profile.date}</span>
+                  <span> {profile.date.slice(0,-14)}</span>
                 ) : (
                   <span>loading</span>
                 )}
