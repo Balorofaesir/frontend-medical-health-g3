@@ -17,7 +17,6 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
   const [appoiment, setAppoiment] = useState(null);
   const navigate = useNavigate();
-
   const [open, setOpen] = useState(false);
   const toggle = () => {
     setOpen(!open);
@@ -42,7 +41,7 @@ const Profile = () => {
     }
     return appoiment.map((doc) => doc.doctorId);
   };
-  window.localStorage.setItem('doctor', JSON.stringify(doccc()));
+  localStorage.setItem('doctor', JSON.stringify(doccc()));
 
   const handleModifyProfileInput = (event) => {
     event.preventDefault();

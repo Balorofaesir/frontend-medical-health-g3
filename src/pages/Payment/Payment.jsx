@@ -17,7 +17,8 @@ const Payment = () => {
   const dispatch = useDispatch();
   const appointment = useSelector((state) => state.appointment.appointment);
   window.localStorage.setItem('price', appointment.price);
-  const data = window.localStorage.getItem('doctor');
+  const data = localStorage.getItem('doctor');
+  console.log(data)
   // const doctor = JSON.parse(data);
 
   // const doctorName = doctor.find((item) => item._id === appointment.doctorId);
@@ -37,7 +38,7 @@ const Payment = () => {
         <h1 className="paymentContainer__title">Appointment</h1>
         <hr className="payment__separator" />
         <p className="paymentData__element">
-          Doctor: <span className="paymentData__value">{data.name}</span>
+          Doctor: <span className="paymentData__value">{`${'Gail parrish'}`}</span>
         </p>
         <p className="paymentData__element">
           Especiality:{' '}
