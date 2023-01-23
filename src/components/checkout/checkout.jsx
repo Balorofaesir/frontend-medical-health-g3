@@ -1,6 +1,6 @@
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 
-const API_URL = process.env.REACT_APP_API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const Checkout = () => {
   const elements = useElements();
@@ -28,11 +28,14 @@ const Checkout = () => {
       }),
     };
     const response = await fetch(
-      `${API_URL}/api/payment`,
+      'http://localhost:8080/api/payment',
       options
     );
     const data = await response.json();
+    console.log(`hola ${data}`);
     return data;
+
+    // elements.getElement(CardElement).clear();
   };
   return (
     <form onSubmit={handleSubmit}>
