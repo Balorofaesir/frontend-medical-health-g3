@@ -1,17 +1,15 @@
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import getMyProfile from '../../services/user';
 import { getAppointmentsByUser } from '../../features/appointments/appointmentAPI';
 // import Calendar from '../../components/Calendar/Calendar';
 import NamePages from '../../components/NamePages/NamePages';
 import Loading from '../Loading/Loading';
-import './Profile.css';
+import './ProfileDoctor.css';
 
-const Profile = () => {
+const ProfileDoctor = () => {
   // const { isAuth, profile } = useSelector(selectAuth);
   const [profile, setProfile] = useState(null);
   const [appointment, setAppointment] = useState(null);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,50 +39,20 @@ const Profile = () => {
         <NamePages />
         <section className="profile_container1">
           <p className="profile__elementName">
-            Patient name:
+            Hello Dr!
             {profile ? (
               <span className="profile__elementName--element">
-                {profile.firstName} {profile.lastName.toLowerCase()}
+                {`${'Gail Parrish'}`}
               </span>
             ) : (
               <span>loading</span>
             )}
           </p>
           <p className="profile__elementName">
-            email:
-            {profile ? (
-              <span className="profile__elementName--element email">
-                {profile.email}
-              </span>
-            ) : (
-              <span>loading</span>
-            )}
-          </p>
-          <p className="profile__elementName">
-            phone:
+          specialist in:
             {profile ? (
               <span className="profile__elementName--element">
-                {profile.phone}
-              </span>
-            ) : (
-              <span>loading</span>
-            )}
-          </p>
-          <p className="profile__elementName">
-            gender:
-            {profile ? (
-              <span className="profile__elementName--element">
-                {profile.gender}
-              </span>
-            ) : (
-              <span>loading</span>
-            )}
-          </p>
-          <p className="profile__elementName">
-            birthday:
-            {profile ? (
-              <span className="profile__elementName--element">
-                {profile.birthday}
+                {`${'General Surgeon'}`}
               </span>
             ) : (
               <span>loading</span>
@@ -100,29 +68,20 @@ const Profile = () => {
               return (
                 <section key={data._id}>
                   <div className="profile_container--containers">
-                    <p>appointment date</p>
+                    <p>appointment date:</p>
                     <p> {day}</p>
                   </div>
                   <div className="profile_container--containers">
-                    <p>appointment hour</p>
+                    <p>appointment hour:</p>
                     <p> {hour}</p>
                   </div>
                   <div className="profile_container--containers">
-                    <p>Doctor Name</p>
-                    <p>{data.doctorId?.name}</p>
+                    <p>patient:</p>
+                    <p>{`${'Juan Salomon Monsalve'}`}</p>
                   </div>
                   <div className="profile_container--containers">
-                    <p>Doctor specialty</p>
-                    <p>{data.doctorId?.specialty}</p>
-                  </div>
-                  <div className="profile_container--containers">
-                    <p>{`Price $ ${data.price}`}</p>
-                    <button
-                      type="button"
-                      onClick={() => navigate(`/payment/${data._id}`)}
-                    >
-                      pay
-                    </button>
+                    <p>sex</p>
+                    <p>{`${'Male'}`}</p>
                   </div>
                 </section>
               );
@@ -137,4 +96,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileDoctor;

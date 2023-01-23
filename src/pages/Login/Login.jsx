@@ -38,7 +38,7 @@ const Login = () => {
       window.localStorage.setItem('token', token);
 
       localStorage.setItem('auth', JSON.stringify(payload));
-      navigate('/profile');
+      navigate('/');
     } catch (err) {
       setErrorMessage(true);
       setTimeout(() => {

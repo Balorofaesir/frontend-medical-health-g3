@@ -11,7 +11,7 @@ const Appointments = () => {
 
   const getLocalStorage = localStorage.getItem('appointment');
   const data = JSON.parse(getLocalStorage);
-  const { doctor, specialty, reasonForConsultation, date } = data;
+  const { doctor, specialty, reasonForConsultation, dateAppointment } = data;
 
   useEffect(() => {
     dispatch(setDoctors());
@@ -23,7 +23,7 @@ const Appointments = () => {
     doctor,
     specialty,
     reasonForConsultation,
-    date,
+    dateAppointment,
     phoneNumber: 0,
     nationality: '',
     residence: '',
@@ -114,10 +114,11 @@ const Appointments = () => {
             <label htmlFor="dateAppointment" className="form__label">
               Date of appointment
               <input
-                type="date"
+                type="datetime"
                 name="dateAppointment"
                 className="form__input"
                 id="dateAppointment"
+                defaultValue={dateAppointment}
                 onChange={handleInput}
               />
             </label>
