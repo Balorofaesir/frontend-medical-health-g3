@@ -68,7 +68,7 @@ const App = () => {
         <Route
           path="appointment"
           element={
-            <RequireAuth roles={['USER', 'ADMIN']}>
+            <RequireAuth roles={['USER']}>
               <Appointments />{' '}
             </RequireAuth>
           }
